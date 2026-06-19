@@ -13,11 +13,11 @@
         <div class="hero-content js-reveal">
             <div class="avatar-container">
                 <div class="avatar-wrapper av-left">
-                    <img src="assets/1.jpg" alt="Rivals Profile">
+                    <img src="assets/diamondgamersyoutubeprofile.jpg" alt="Rivals Profile">
                     <span class="av-label">Rivals</span>
                 </div>
                 <div class="avatar-wrapper av-right">
-                    <img src="assets/2.png" alt="Discord Profile">
+                    <img src="assets/diamondgamerprofile.png" alt="Discord Profile">
                     <span class="av-label">Discord</span>
                 </div>
             </div>
@@ -33,10 +33,10 @@
             <div class="center-header">
                 <span class="badge badge-cyan">YouTube Media Showcase</span>
                 <h2>Recent Video Content</h2>
-                <p>Use the arrows to browse challenges, game updates, and custom loadout runs.</p>
+                <p>Hover over the showcase to reveal glass controls and browse interactive challenges.</p>
             </div>
 
-            <div class="carousel-outer">
+            <div class="carousel-outer" id="carouselContainer">
                 <button class="nav-btn prev-btn" id="prevBtn">&#8249;</button>
                 <div class="carousel-track" id="carouselTrack">
                     </div>
@@ -48,7 +48,7 @@
     <section class="section">
         <div class="split-container js-reveal">
             <div class="split-img">
-                <img src="assets/12.jpg" alt="BlockRealms">
+                <img src="assets/1000252082.png" alt="BlockRealms">
             </div>
             <div class="split-text">
                 <span class="badge badge-purple">Staff & Operations</span>
@@ -61,7 +61,7 @@
     <section class="section alt-row">
         <div class="split-container js-reveal">
             <div class="split-img">
-                <img src="assets/13.jpg" alt="PowerCraft SMP">
+                <img src="assets/powercraft.jpeg" alt="PowerCraft SMP">
             </div>
             <div class="split-text">
                 <span class="badge badge-purple">Management</span>
@@ -74,7 +74,7 @@
     <section class="section">
         <div class="split-container js-reveal">
             <div class="split-img">
-                <img src="assets/14.webp" alt="DimeHosting">
+                <img src="assets/5a15c0fb38e2a9d0ca7168ab043deb06.webp" alt="DimeHosting">
             </div>
             <div class="split-text">
                 <span class="badge badge-orange">Founder / Owner</span>
@@ -87,7 +87,7 @@
     <section class="section alt-row">
         <div class="split-container js-reveal">
             <div class="split-img">
-                <img src="assets/15.jpg" alt="Eterrnal Adam GFX">
+                <img src="assets/adam.jpeg" alt="Eterrnal Adam GFX">
             </div>
             <div class="split-text">
                 <span class="badge badge-cyan">Creative GFX</span>
@@ -100,7 +100,7 @@
     <section class="section">
         <div class="split-container js-reveal">
             <div class="split-img">
-                <img src="assets/16.jpg" alt="Amirpros Admin">
+                <img src="assets/adamamirbanappeal.jpeg" alt="Amirpros Admin">
             </div>
             <div class="split-text">
                 <span class="badge badge-blue">Systems Administration</span>
@@ -113,7 +113,7 @@
     <section class="section alt-row">
         <div class="split-container js-reveal">
             <div class="split-img">
-                <img src="assets/17.png" alt="Kuda's Kingdom">
+                <img src="assets/kuda.jpeg" alt="Kuda's Kingdom">
             </div>
             <div class="split-text">
                 <span class="badge badge-blue">Community Moderation</span>
@@ -129,8 +129,8 @@
             <h2>Tung Tung Sahoor: Maze Hunt</h2>
             <p class="mid-p">A high-responsiveness 3D web application layout showcasing dynamic UI data integration, configuration bindings, and instant frame performance scaling.</p>
             <div class="img-grid-dual">
-                <img src="assets/18.png" alt="Menu View">
-                <img src="assets/19.webp" alt="Gameplay View">
+                <img src="assets/tunggamemenu.png" alt="Menu View">
+                <img src="assets/tunggameplay.jpeg" alt="Gameplay View">
             </div>
         </div>
     </section>
@@ -141,7 +141,7 @@
             <h2>GuildReceipt Application</h2>
             <p class="mid-p">Engineered an elegant server system parsing business automation scripts to route transaction details instantly to designated logging hubs via webhook handlers.</p>
             <div class="img-block-single">
-                <img src="assets/20.webp" alt="Receipt App Layout">
+                <img src="assets/recieptgenerator.png" alt="Receipt App Layout">
             </div>
         </div>
     </section>
@@ -152,49 +152,68 @@
     </footer>
 
     <script>
-        // Data Array holding video metadata safely
+        // Exact names mapped directly from your upload configuration to prevent image glitches
         const videoData = [
-            { id: 3, title: "Rivals, but my LOADOUT UPGRADES!", url: "https://www.youtube.com/watch?v=eVD_6Ba-6H0&t=19s" },
-            { id: 4, title: "I Hired Rivals #1 YouTubers to Coach Me...", url: "https://www.youtube.com/watch?v=9TbpAUYDlF0" },
-            { id: 5, title: "Unlocking the RARE NOSNIY CHARM in Roblox Rivals...", url: "https://www.youtube.com/watch?v=ilI5kEstT0U&t=74s" },
-            { id: 6, title: "I Unlocked EVERYTHING in NEW RIVALS UPDATE..", url: "https://www.youtube.com/watch?v=annIbh_LzV8&t=79s" },
-            { id: 7, title: "ChatGPT Decides my LOADOUT in Roblox Rivals..", url: "https://www.youtube.com/watch?v=fYvbSPDSkzU&t=1s" },
-            { id: 8, title: "I tried the RANDOM ONLY challenge in Roblox Rivals...", url: "https://www.youtube.com/watch?v=Ifi3jRmmoBU&t=7s" },
-            { id: 9, title: "I tried the FOV challenge....", url: "https://www.youtube.com/watch?v=VYxT66QTyLs&t=16s" },
-            { id: 10, title: "This Rivals Update is INSANE...", url: "https://www.youtube.com/watch?v=Jecjk4XiRaM&t=65s" },
-            { id: 11, title: "I played with THE #1 RIVALS MOBILE PLAYER", url: "https://www.youtube.com/watch?v=pbGes3V8-Eo" },
-            { id: null, title: "So i tried the NO JUMP challenge..", url: "https://www.youtube.com/watch?v=K-OxgZS1o_s&t=26s", fallback: "NO JUMP CHALLENGE" },
-            { id: null, title: "RIVALS Just Gave EVERY PLAYER HACKS… THIS IS INSANE!", url: "https://www.youtube.com/watch?v=IAGcxvjtTKg&t=27s", fallback: "EVERY PLAYER HACKS" }
+            { file: "Rivals,butmyLOADOUTUPGRADES!.t.jpg", url: "https://www.youtube.com/watch?v=eVD_6Ba-6H0&t=19s" },
+            { file: "IHiredRivals#1YouTuberstoCoachMe.jpg", url: "https://www.youtube.com/watch?v=9TbpAUYDlF0" },
+            { file: "UnlockingtheRARENOSNIYCHARMinRoblox Rivals.jpg", url: "https://www.youtube.com/watch?v=ilI5kEstT0U&t=74s" },
+            { file: "IUnlockedEVERYTHINGinNEWRIVALSUPDATE.jpg", url: "https://www.youtube.com/watch?v=annIbh_LzV8&t=79s" },
+            { file: "ChatGPTDecidesmyLOADOUTinRoblox Rivals.jpg", url: "https://www.youtube.com/watch?v=fYvbSPDSkzU&t=1s" },
+            { file: "ItriedtheRANDOMONLYchallengeinRoblox Rivals.jpg", url: "https://www.youtube.com/watch?v=Ifi3jRmmoBU&t=7s" },
+            { file: "ItriedtheFOVchallenge.jpg", url: "https://www.youtube.com/watch?v=VYxT66QTyLs&t=16s" },
+            { file: "ThisRivalsUPdateIsInsane.jpg", url: "https://www.youtube.com/watch?v=Jecjk4XiRaM&t=65s" },
+            { file: "IplayedWithTHE#1RIVALSMOBILEPLAYER.jpg", url: "https://www.youtube.com/watch?v=pbGes3V8-Eo" },
+            { file: "image_dc1121.jpg", url: "https://www.youtube.com/watch?v=K-OxgZS1o_s&t=26s" }, 
+            { file: "image_dc1106.png", url: "https://www.youtube.com/watch?v=IAGcxvjtTKg&t=27s" }
         ];
 
-        // Inject video cards into HTML template container automatically
         const track = document.getElementById('carouselTrack');
+        
+        // Loop and load images securely
         videoData.forEach(video => {
             const card = document.createElement('a');
             card.href = video.url;
             card.target = "_blank";
             card.className = "video-card";
-
-            let mediaContent = '';
-            if(video.id) {
-                mediaContent = `<div class="img-container"><img src="assets/${video.id}.jpg" alt="${video.title}"></div>`;
-            } else {
-                mediaContent = `<div class="img-container fallback-box">${video.fallback}</div>`;
-            }
-
-            card.innerHTML = `${mediaContent}<h3>${video.title}</h3>`;
+            card.innerHTML = `<div class="img-container"><img src="assets/${video.file}" alt="YouTube Showcase Stream Link"></div>`;
             track.appendChild(card);
         });
 
-        // Smooth Carousel arrow execution
+        // 1. Smooth Auto Scroll Animation Function
+        let scrollSpeed = 1.2; 
+        let autoScrollTimer = null;
+
+        function startAutoScroll() {
+            autoScrollTimer = setInterval(() => {
+                if (track.scrollLeft >= (track.scrollWidth - track.clientWidth - 1)) {
+                    track.scrollLeft = 0;
+                } else {
+                    track.scrollLeft += scrollSpeed;
+                }
+            }, 16); // Target fluid 60FPS tickrates
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollTimer);
+        }
+
+        // Start cycling layout on execution
+        startAutoScroll();
+
+        // Control pause/unpause hooks on user container hover
+        const container = document.getElementById('carouselContainer');
+        container.addEventListener('mouseenter', stopAutoScroll);
+        container.addEventListener('mouseleave', startAutoScroll);
+
+        // 2. Click Navigation Handler Configurations
         document.getElementById('prevBtn').addEventListener('click', () => {
-            track.scrollBy({ left: -360, behavior: 'smooth' });
+            track.scrollBy({ left: -480, behavior: 'smooth' });
         });
         document.getElementById('nextBtn').addEventListener('click', () => {
-            track.scrollBy({ left: 360, behavior: 'smooth' });
+            track.scrollBy({ left: 480, behavior: 'smooth' });
         });
 
-        // Reveal animations layout framework observer
+        // 3. Elements Scroll Reveal Engine
         const revealElements = document.querySelectorAll('.js-reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
