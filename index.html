@@ -1,233 +1,272 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DiamondGamer | Content Creator & Developer Portfolio</title>
+    <title>DiamondGamer | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <section class="scroll-section hero">
-        <div class="hero-bg-glow"></div>
-        <div class="hero-content reveal">
-            <div class="profile-header">
-                <img src="assets/diamondgamersyoutubeprofile.jpg" alt="Roblox Rivals Profile" class="pfp pfp-roblox">
-                <img src="assets/diamondgamerprofile.png" alt="Discord Profile" class="pfp pfp-discord">
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-glow"></div>
+        <div class="hero-content js-reveal">
+            <div class="avatar-container">
+                <div class="avatar-wrapper av-left">
+                    <img src="assets/diamondgamersyoutubeprofile.jpg" alt="Rivals Profile">
+                    <span class="av-label">Rivals</span>
+                </div>
+                <div class="avatar-wrapper av-right">
+                    <img src="assets/diamondgamerprofile.png" alt="Discord Profile">
+                    <span class="av-label">Discord</span>
+                </div>
             </div>
             <h1>DiamondGamer</h1>
-            <p class="subtitle">Content Creator | Game Developer | Config Designer | Systems Builder</p>
-            <div class="bio-tagline">
-                I am a versatile creator who loves breaking boundaries—constantly exploring new mediums, coding custom software tools, building server configurations, and staging high-tier gaming content.
-            </div>
-            <div class="scroll-indicator">Scroll Down to Explore Tour ↓</div>
+            <p class="subtitle">Content Creator & Developer</p>
+            <p class="bio">I am a versatile creator who loves breaking boundaries—constantly exploring new mediums, coding custom software tools, building server configurations, and staging high-tier gaming content.</p>
+            <div class="scroll-down">Scroll to explore portfolio ↓</div>
         </div>
     </section>
 
-    <section class="scroll-section video-showcase">
-        <div class="container reveal">
-            <div class="section-header">
-                <span class="badge design">YouTube Media Showcase</span>
+    <!-- INTERACTIVE YOUTUBE SLIDER SECTION -->
+    <section class="section">
+        <div class="container js-reveal">
+            <div class="center-header">
+                <span class="badge badge-cyan">YouTube Media Showcase</span>
                 <h2>Recent Video Content</h2>
-                <p>Interactive slider showcasing challenges, gameplay runs, and updates on Roblox Rivals. Click a card to watch!</p>
+                <p>Use the arrows to browse challenges, game updates, and custom loadout runs.</p>
             </div>
 
-            <div class="slider-wrapper">
-                <button class="slider-arrow left-arrow" id="slideLeft">&#8249;</button>
+            <div class="carousel-outer">
+                <button class="nav-btn prev-btn" id="prevBtn">&#8249;</button>
                 
-                <div class="video-slider" id="videoSlider">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Card 1 -->
                     <a href="https://www.youtube.com/watch?v=eVD_6Ba-6H0&t=19s" target="_blank" class="video-card">
-                        <img src="assets/Rivals,butmyLOADOUTUPGRADES!t.jpg" alt="Rivals, but my LOADOUT UPGRADES!">
-                        <div class="video-info">
-                            <h3>Rivals, but my LOADOUT UPGRADES!</h3>
+                        <div class="img-container">
+                            <img src="assets/Rivals,butmyLOADOUTUPGRADES!t.jpg" alt="Loadout Upgrades">
                         </div>
+                        <h3>Rivals, but my LOADOUT UPGRADES!</h3>
                     </a>
+                    <!-- Card 2 -->
                     <a href="https://www.youtube.com/watch?v=9TbpAUYDlF0" target="_blank" class="video-card">
-                        <img src="assets/IHiredRivals#1YouTuberstoCoachMe.jpg" alt="I Hired Rivals #1 YouTubers to Coach Me...">
-                        <div class="video-info">
-                            <h3>I Hired Rivals #1 YouTubers to Coach Me...</h3>
+                        <div class="img-container">
+                            <img src="assets/IHiredRivals#1YouTuberstoCoachMe.jpg" alt="Coached by #1">
                         </div>
+                        <h3>I Hired Rivals #1 YouTubers to Coach Me...</h3>
                     </a>
+                    <!-- Card 3 -->
                     <a href="https://www.youtube.com/watch?v=ilI5kEstT0U&t=74s" target="_blank" class="video-card">
-                        <img src="assets/UnlockingtheRARENOSNIYCHARMinRoblox Rivals.jpg" alt="Unlocking the RARE NOSNIY CHARM">
-                        <div class="video-info">
-                            <h3>Unlocking the RARE NOSNIY CHARM in Roblox Rivals...</h3>
+                        <div class="img-container">
+                            <img src="assets/UnlockingtheRARENOSNIYCHARMinRoblox Rivals.jpg" alt="Nosniy Charm">
                         </div>
+                        <h3>Unlocking the RARE NOSNIY CHARM in Roblox Rivals...</h3>
                     </a>
+                    <!-- Card 4 -->
                     <a href="https://www.youtube.com/watch?v=annIbh_LzV8&t=79s" target="_blank" class="video-card">
-                        <img src="assets/IUnlockedEVERYTHINGinNEWRIVALSUPDATE.jpg" alt="I Unlocked EVERYTHING">
-                        <div class="video-info">
-                            <h3>I Unlocked EVERYTHING in NEW RIVALS UPDATE..</h3>
+                        <div class="img-container">
+                            <img src="assets/IUnlockedEVERYTHINGinNEWRIVALSUPDATE.jpg" alt="Unlocked Everything">
                         </div>
+                        <h3>I Unlocked EVERYTHING in NEW RIVALS UPDATE..</h3>
                     </a>
+                    <!-- Card 5 -->
                     <a href="https://www.youtube.com/watch?v=fYvbSPDSkzU&t=1s" target="_blank" class="video-card">
-                        <img src="assets/ChatGPTDecidesmyLOADOUTinRoblox Rivals.jpg" alt="ChatGPT Decides my LOADOUT">
-                        <div class="video-info">
-                            <h3>ChatGPT Decides my LOADOUT in Roblox Rivals..</h3>
+                        <div class="img-container">
+                            <img src="assets/ChatGPTDecidesmyLOADOUTinRoblox Rivals.jpg" alt="ChatGPT Loadout">
                         </div>
+                        <h3>ChatGPT Decides my LOADOUT in Roblox Rivals..</h3>
                     </a>
+                    <!-- Card 6 -->
                     <a href="https://www.youtube.com/watch?v=Ifi3jRmmoBU&t=7s" target="_blank" class="video-card">
-                        <img src="assets/ItriedtheRANDOMONLYchallengeinRoblox Rivals.jpg" alt="I tried the RANDOM ONLY challenge">
-                        <div class="video-info">
-                            <h3>I tried the RANDOM ONLY challenge in Roblox Rivals...</h3>
+                        <div class="img-container">
+                            <img src="assets/ItriedtheRANDOMONLYchallengeinRoblox Rivals.jpg" alt="Random Only">
                         </div>
+                        <h3>I tried the RANDOM ONLY challenge in Roblox Rivals...</h3>
                     </a>
+                    <!-- Card 7 -->
                     <a href="https://www.youtube.com/watch?v=VYxT66QTyLs&t=16s" target="_blank" class="video-card">
-                        <img src="assets/ItriedtheFOVchallenge.jpg" alt="I tried the FOV challenge">
-                        <div class="video-info">
-                            <h3>I tried the FOV challenge....</h3>
+                        <div class="img-container">
+                            <img src="assets/ItriedtheFOVchallenge.jpg" alt="FOV Challenge">
                         </div>
+                        <h3>I tried the FOV challenge....</h3>
                     </a>
+                    <!-- Card 8 -->
                     <a href="https://www.youtube.com/watch?v=Jecjk4XiRaM&t=65s" target="_blank" class="video-card">
-                        <img src="assets/ThisRivalsUPdateIsInsane.jpg" alt="This Rivals Update is INSANE">
-                        <div class="video-info">
-                            <h3>This Rivals Update is INSANE...</h3>
+                        <div class="img-container">
+                            <img src="assets/ThisRivalsUPdateIsInsane.jpg" alt="Rivals Update">
                         </div>
+                        <h3>This Rivals Update is INSANE...</h3>
                     </a>
+                    <!-- Card 9 -->
                     <a href="https://www.youtube.com/watch?v=pbGes3V8-Eo" target="_blank" class="video-card">
-                        <img src="assets/IplayedWithTHE#1RIVALSMOBILEPLAYER.jpg" alt="I played with THE #1 RIVALS MOBILE PLAYER">
-                        <div class="video-info">
-                            <h3>I played with THE #1 RIVALS MOBILE PLAYER</h3>
+                        <div class="img-container">
+                            <img src="assets/IplayedWithTHE#1RIVALSMOBILEPLAYER.jpg" alt="Mobile Player">
                         </div>
+                        <h3>I played with THE #1 RIVALS MOBILE PLAYER</h3>
                     </a>
+                    <!-- Card 10 -->
                     <a href="https://www.youtube.com/watch?v=K-OxgZS1o_s&t=26s" target="_blank" class="video-card">
-                        <div class="fallback-thumb">NO JUMP CHALLENGE</div>
-                        <div class="video-info">
-                            <h3>So i tried the NO JUMP challenge..</h3>
-                        </div>
+                        <div class="img-container fallback-box">NO JUMP CHALLENGE</div>
+                        <h3>So i tried the NO JUMP challenge..</h3>
                     </a>
+                    <!-- Card 11 -->
                     <a href="https://www.youtube.com/watch?v=IAGcxvjtTKg&t=27s" target="_blank" class="video-card">
-                        <div class="fallback-thumb">RIVALS HACKS UPDATE</div>
-                        <div class="video-info">
-                            <h3>RIVALS Just Gave EVERY PLAYER HACKS… THIS IS INSANE!</h3>
-                        </div>
+                        <div class="img-container fallback-box">EVERY PLAYER HACKS</div>
+                        <h3>RIVALS Just Gave EVERY PLAYER HACKS… THIS IS INSANE!</h3>
                     </a>
                 </div>
 
-                <button class="slider-arrow right-arrow" id="slideRight">&#8250;</button>
+                <button class="nav-btn next-btn" id="nextBtn">&#8250;</button>
             </div>
         </div>
     </section>
 
-    <section class="scroll-section panel">
-        <div class="panel-container reveal">
-            <div class="panel-img">
-                <img src="assets/1000252082.png" alt="BlockRealms Branding">
+    <!-- BLOCKREALMS -->
+    <section class="section">
+        <div class="split-container js-reveal">
+            <div class="split-img">
+                <img src="assets/1000252082.png" alt="BlockRealms">
             </div>
-            <div class="panel-text">
-                <span class="badge management">Staff & Operations</span>
+            <div class="split-text">
+                <span class="badge badge-purple">Staff & Operations</span>
                 <h2>BlockRealms</h2>
-                <p>Spearheaded community structural changes and server architecture protocols. Maintained high-uptime community metrics and handled server configuration layouts.</p>
+                <p>Managed community systems and game server configurations. Oversaw player infrastructure pipelines to ensure secure, high-performance gameplay environments.</p>
             </div>
         </div>
     </section>
 
-    <section class="scroll-section panel alt-layout">
-        <div class="panel-container reveal">
-            <div class="panel-img">
-                <img src="assets/powercraft.jpeg" alt="PowerCraft SMP Core">
+    <!-- POWERCRAFT -->
+    <section class="section alt-row">
+        <div class="split-container js-reveal">
+            <div class="split-img">
+                <img src="assets/powercraft.jpeg" alt="PowerCraft SMP">
             </div>
-            <div class="panel-text">
-                <span class="badge management">Staff & Management</span>
+            <div class="split-text">
+                <span class="badge badge-purple">Management</span>
                 <h2>PowerCraft SMP</h2>
-                <p>Managed global configurations, moderation pipelines, and server security profiles to foster an active, safe, and balanced player sandbox community.</p>
+                <p>Administered core server builds and customized system configurations. Maintained structural integrity and community balance across network platforms.</p>
             </div>
         </div>
     </section>
 
-    <section class="scroll-section panel">
-        <div class="panel-container reveal">
-            <div class="panel-img">
-                <img src="assets/5a15c0fb38e2a9d0ca7168ab043deb06.webp" alt="DimeHosting Node Systems">
+    <!-- DIMEHOSTING -->
+    <section class="section">
+        <div class="split-container js-reveal">
+            <div class="split-img">
+                <img src="assets/5a15c0fb38e2a9d0ca7168ab043deb06.webp" alt="DimeHosting">
             </div>
-            <div class="panel-text">
-                <span class="badge ownership">Founder / Owner</span>
+            <div class="split-text">
+                <span class="badge badge-orange">Founder / Owner</span>
                 <h2>DimeHosting</h2>
-                <p>Architected and launched an enterprise server deployment system. Optimized compute nodes to provide lightning-fast, budget-friendly bare-metal gaming environments.</p>
+                <p>Founded and developed dedicated bare-metal infrastructure solutions for multi-platform game server frameworks, prioritizing high availability and low latencies.</p>
             </div>
         </div>
     </section>
 
-    <section class="scroll-section panel alt-layout">
-        <div class="panel-container reveal">
-            <div class="panel-img">
-                <img src="assets/adam.jpeg" alt="Eterrnal_Adam Render Design">
+    <!-- ETERRNAL ADAM -->
+    <section class="section alt-row">
+        <div class="split-container js-reveal">
+            <div class="split-img">
+                <img src="assets/adam.jpeg" alt="Eterrnal Adam GFX">
             </div>
-            <div class="panel-text">
-                <span class="badge design">Creative GFX Showcase</span>
-                <h2>Eterrnal_Adam Discord</h2>
-                <p>Rendered advanced spatial Roblox GFX branding frames. Created distinct theme environments tailored to fit highly fast-paced streaming styles modeled on creator formats like Steak.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="scroll-section panel">
-        <div class="panel-container reveal">
-            <div class="panel-img">
-                <img src="assets/adamamirbanappeal.jpeg" alt="Ban Appeals Operational Grid">
-            </div>
-            <div class="panel-text">
-                <span class="badge operations">Systems Admin</span>
-                <h2>Appeals Hub & Amirpros</h2>
-                <p>Deployed multi-tiered security structures and logs processing algorithms for high-volume support ecosystems across Amirpros Discord networks.</p>
+            <div class="split-text">
+                <span class="badge badge-cyan">Creative GFX</span>
+                <h2>Eterrnal_Adam Hub</h2>
+                <p>Produced personalized Roblox GFX asset concepts and dynamic visual materials tailored to match action-heavy content delivery channels.</p>
             </div>
         </div>
     </section>
 
-    <section class="scroll-section panel alt-layout">
-        <div class="panel-container reveal">
-            <div class="panel-img">
-                <img src="assets/kuda.jpeg" alt="Kuda's Kingdom Avatar Profile">
+    <!-- AMIRPROS -->
+    <section class="section">
+        <div class="split-container js-reveal">
+            <div class="split-img">
+                <img src="assets/adamamirbanappeal.jpeg" alt="Amirpros Admin">
             </div>
-            <div class="panel-text">
-                <span class="badge operations">Community Infrastructure</span>
+            <div class="split-text">
+                <span class="badge badge-blue">Systems Administration</span>
+                <h2>Amirpros Support</h2>
+                <p>Developed systemic user management protocols and tracking logic frameworks to support multi-guild Discord networks efficiently.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KUDA'S KINGDOM -->
+    <section class="section alt-row">
+        <div class="split-container js-reveal">
+            <div class="split-img">
+                <img src="assets/kuda.jpeg" alt="Kuda's Kingdom">
+            </div>
+            <div class="split-text">
+                <span class="badge badge-blue">Community Moderation</span>
                 <h2>Kuda's Kingdom</h2>
-                <p>Supervised events coordination and moderator logistics handling for Kuda's Roblox community hub, supporting high player counts during heavy Rivals video releases.</p>
+                <p>Maintained interactive community balance configurations, acting as principal systems monitoring staff during heavy video rollout peaks.</p>
             </div>
         </div>
     </section>
 
-    <section class="scroll-section panel wide-display">
-        <div class="panel-container vertical-stack reveal">
-            <span class="badge dev">Lead Game Programmer</span>
-            <h2>Tung Tung Sahoor: Maze Hunt Adventure</h2>
-            <p class="wide-desc">A deep, responsive 3D web-space first-person labyrinth pursuit experience engine featuring full client UI configurations, local/cloud state synchronizations, control binds mappings, and live target trackers.</p>
-            <div class="dual-images">
-                <img src="assets/tunggamemenu.png" alt="Tung Tung Sahoor Main System Dashboard">
-                <img src="assets/tunggameplay.jpeg" alt="In-Game First-Person Dynamic View">
+    <!-- TUNG TUNG SAHOOR -->
+    <section class="section text-center-block">
+        <div class="full-container js-reveal">
+            <span class="badge badge-green">Game Development</span>
+            <h2>Tung Tung Sahoor: Maze Hunt</h2>
+            <p class="mid-p">A high-responsiveness 3D web application layout showcasing dynamic UI data integration, configuration bindings, and instant frame performance scaling.</p>
+            <div class="img-grid-dual">
+                <img src="assets/tunggamemenu.png" alt="Menu View">
+                <img src="assets/tunggameplay.jpeg" alt="Gameplay View">
             </div>
         </div>
     </section>
 
-    <section class="scroll-section panel wide-display">
-        <div class="panel-container vertical-stack reveal">
-            <span class="badge dev">Full-Stack System Utility</span>
-            <h2>GuildReceipt Application Layout</h2>
-            <p class="wide-desc">Developed an automated workflow automation matrix designed to convert studio transaction milestones directly into beautiful localized billing ledger logs via instant dynamic webhook callbacks.</p>
-            <div class="single-wide-img">
-                <img src="assets/recieptgenerator.png" alt="GuildReceipt Multi-Session Progressive Form Platform UI">
+    <!-- RECEIPT GENERATOR -->
+    <section class="section text-center-block">
+        <div class="full-container js-reveal">
+            <span class="badge badge-green">Software Utility</span>
+            <h2>GuildReceipt Application</h2>
+            <p class="mid-p">Engineered an elegant server system parsing business automation scripts to route transaction details instantly to designated logging hubs via webhook handlers.</p>
+            <div class="img-block-single">
+                <img src="assets/recieptgenerator.png" alt="Receipt App Layout">
             </div>
         </div>
     </section>
 
-    <section class="scroll-section footer-panel">
-        <div class="reveal">
-            <p class="footer-title">DiamondGamer Portfolio</p>
-            <p class="footer-subtext">&copy; 2026. All rights reserved. Created with modern web motion frameworks.</p>
-        </div>
-    </section>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p class="f-title">DiamondGamer Portfolio</p>
+        <p>&copy; 2026. All rights reserved.</p>
+    </footer>
 
+    <!-- INTERSECTION OBSERVER & CAROUSEL JAVASCRIPT -->
     <script>
-        const slider = document.getElementById('videoSlider');
-        const slideLeft = document.getElementById('slideLeft');
-        const slideRight = document.getElementById('slideRight');
-
-        slideLeft.addEventListener('click', () => {
-            slider.scrollBy({ left: -340, behavior: 'smooth' });
+        // 1. Smooth Reveal-On-Scroll Animation Script
+        const revealElements = document.querySelectorAll('.js-reveal');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
         });
 
-        slideRight.addEventListener('click', () => {
-            slider.scrollBy({ left: 340, behavior: 'smooth' });
+        revealElements.forEach(el => observer.observe(el));
+
+        // 2. Horizontal Video Carousel Script
+        const track = document.getElementById('carouselTrack');
+        const prev = document.getElementById('prevBtn');
+        const next = document.getElementById('nextBtn');
+
+        prev.addEventListener('click', () => {
+            track.scrollBy({ left: -350, behavior: 'smooth' });
+        });
+
+        next.addEventListener('click', () => {
+            track.scrollBy({ left: 350, behavior: 'smooth' });
         });
     </script>
 </body>
