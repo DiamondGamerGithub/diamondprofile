@@ -73,6 +73,7 @@ body {
 .nav-logo {
     font-weight: 900; font-size: 1.25rem; color: var(--text-white);
     letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;
+    overflow-wrap: break-word; word-break: break-word; flex-shrink: 1; min-width: 0;
 }
 .logo-highlight { color: var(--cyan); }
 .logo-dot { width: 7px; height: 7px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 10px var(--cyan); }
@@ -164,6 +165,7 @@ body {
 .main-identity-card h1 {
     font-size: 4rem; font-weight: 900; color: var(--text-white);
     letter-spacing: -2px; margin-bottom: 5px; line-height: 1.1;
+    overflow-wrap: break-word; word-break: break-word;
 }
 .subtitle { font-size: 1.3rem; font-weight: 600; color: var(--cyan); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
 .bio { font-size: 1.15rem; line-height: 1.8; text-align: justify; text-justify: inter-word; color: #cbd5e1; }
@@ -306,4 +308,15 @@ body {
     .img-grid-dual { flex-direction: column; }
     .img-grid-dual img { width: 100%; }
     .video-card { flex: 0 0 320px; height: 180px; }
+}
+
+@media (max-width: 480px) {
+    .hero-section { padding: 100px 14px 40px 14px; }
+    .main-identity-card.unified-card { padding: 30px 22px; border-radius: 24px; }
+    .main-avatar { width: 110px; height: 110px; }
+    .main-identity-card h1 { font-size: 2.1rem; letter-spacing: -1px; }
+    .subtitle { font-size: 1rem; }
+    .bio { font-size: 1rem; line-height: 1.65; text-align: left; }
+    .center-header h2, .split-text h2, .text-center-block h2 { font-size: 1.8rem; }
+    .nav-inner { width: 94%; }
 }
