@@ -1,0 +1,73 @@
+:root {
+    --bg-dark: #0e1726;
+    --card-surface: rgba(20, 32, 54, 0.75);
+    --card-border: rgba(6, 182, 212, 0.15);
+    --cyan: #06b6d4;
+    --text-white: #ffffff;
+    --text-slate: #94a3b8;
+}
+
+/* --- RESET & GLOBAL --- */
+* {
+    box-sizing: border-box; /* This is vital: prevents padding from breaking width */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-slate);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
+}
+
+/* --- MAIN CARD LAYOUT --- */
+.main-identity-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    border-radius: 32px;
+    padding: 40px;
+    width: 90%;          /* Responsive width */
+    max-width: 600px;    /* Stops it from getting too wide on PC */
+    margin: 100px auto;  /* Centers the card vertically and horizontally */
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* --- AVATAR --- */
+.main-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 28px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid var(--cyan);
+}
+
+/* --- TYPOGRAPHY --- */
+h1 {
+    font-size: 2.5rem;
+    color: var(--text-white);
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Prevents the text from pushing the card width */
+}
+
+.bio {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-slate);
+    text-align: center; /* Centering avoids wide gaps on mobile */
+    margin-top: 15px;
+}
+
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 600px) {
+    .main-identity-card {
+        padding: 20px;
+        margin: 60px auto;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+}
