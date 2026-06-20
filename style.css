@@ -2,134 +2,72 @@
     --bg-dark: #0e1726;
     --card-surface: rgba(20, 32, 54, 0.75);
     --card-border: rgba(6, 182, 212, 0.15);
-    --purple: #bfdbfe;
     --cyan: #06b6d4;
-    --blue: #2563eb;
-    --blue-hover: #1d4ed8;
-    --orange: #f97316;
-    --green: #22c55e;
     --text-white: #ffffff;
     --text-slate: #94a3b8;
 }
 
+/* 1. Global Reset - Crucial for fixing layout glitches */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-}
-
 body {
     background-color: var(--bg-dark);
     color: var(--text-slate);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    overflow-x: hidden;
-    width: 100%;
+    font-family: sans-serif;
+    overflow-x: hidden; /* Prevents horizontal scroll bars */
 }
 
-/* NAVIGATION */
-.top-nav-bar {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 70px;
-    background: rgba(14, 23, 38, 0.8);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--card-border);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-inner {
-    width: 90%; max-width: 1440px;
-    display: flex; align-items: center; justify-content: space-between;
-}
-
-.nav-logo { font-weight: 900; color: var(--text-white); display: flex; align-items: center; gap: 8px; }
-.logo-highlight { color: var(--cyan); }
-
-/* HERO / IDENTITY SECTION */
-.hero-section {
-    min-height: 80vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 120px 20px 60px 20px;
-}
-
+/* 2. Fix the Identity Card container */
 .main-identity-card {
     background: var(--card-surface);
     border: 1px solid var(--card-border);
     backdrop-filter: blur(12px);
     border-radius: 32px;
-    padding: 50px;
+    padding: 40px;
+    
+    /* These three lines fix the layout shown in image_cd8163.png */
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto; 
+    
     text-align: center;
-    max-width: 800px;
-    width: 100%;
 }
 
-.main-identity-card h1 {
-    font-size: 3.5rem;
+/* 3. Ensure images don't overflow */
+.main-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* 4. Fix typography to be responsive */
+h1 {
+    font-size: 2.5rem;
     color: var(--text-white);
     margin-bottom: 10px;
-    word-wrap: break-word; /* Prevents overflow */
+    word-wrap: break-word;
 }
 
 .bio {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #cbd5e1;
-    text-align: center; /* Fixed alignment */
-    margin: 20px auto;
-    max-width: 600px;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    color: var(--text-slate);
 }
 
-/* QUICK LINKS */
-.quick-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-    flex-wrap: wrap;
+/* 5. Mobile Adjustments */
+@media (max-width: 600px) {
+    .main-identity-card {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
 }
-
-.quick-links a {
-    color: var(--cyan);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 16px;
-    border: 1px solid var(--cyan);
-    border-radius: 8px;
-    transition: 0.3s;
-}
-
-.quick-links a:hover {
-    background: var(--cyan);
-    color: var(--bg-dark);
-}
-
-/* SECTIONS */
-.section { padding: 80px 20px; }
-.split-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 900px) {
-    .nav-links, .nav-status { display: none; }
-    .main-identity-card h1 { font-size: 2.2rem; }
-    .split-container { flex-direction: column; text-align: center; }
-    .main-identity-card { padding: 30px 20px; }
-}
-
-/* UTILITIES */
-.js-reveal { opacity: 0; transform: translateY(20px); transition: 0.6s; }
-.js-reveal.active { opacity: 1; transform: translateY(0); }
-.grid-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.5; }
