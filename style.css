@@ -292,9 +292,9 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
 .split-img img {
     max-width: 100%; max-height: 45vh; border-radius: 24px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid var(--card-border);
-    transition: transform 0.25s ease, box-shadow 0.4s, border-color 0.4s;
+    transition: transform 0.18s ease, box-shadow 0.22s, border-color 0.22s;
 }
-.split-img img:hover { transform: translateY(-6px); }
+.split-img img:hover { transform: translateY(-3px); }
 
 .accent-green .split-img img { border-color: rgba(34,197,94,0.35); }
 .accent-green .split-img img:hover { box-shadow: 0 20px 45px rgba(34,197,94,0.25); border-color: rgba(34,197,94,0.6); }
@@ -332,8 +332,8 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
 .mid-p { max-width: 740px; margin: 0 auto 40px auto; font-size: 1.1rem; line-height: 1.7; color: #cbd5e1; }
 
 .img-grid-dual { display: flex; gap: 24px; }
-.img-grid-dual img { width: 50%; border-radius: 20px; border: 1px solid var(--card-border); box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.25s ease, box-shadow 0.25s ease; }
-.img-block-single img { width: 100%; border-radius: 20px; border: 1px solid var(--card-border); box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.img-grid-dual img { width: 50%; border-radius: 20px; border: 1px solid var(--card-border); box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.img-block-single img { width: 100%; border-radius: 20px; border: 1px solid var(--card-border); box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: transform 0.18s ease, box-shadow 0.18s ease; }
 
 .badge { display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 .badge-purple { background: rgba(168,85,247,0.1); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.2); }
@@ -528,15 +528,16 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
 
 .lightbox {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(10, 17, 30, 0.9); backdrop-filter: blur(20px);
+    background: rgba(10, 17, 30, 0.92);
     z-index: 9999; display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+    opacity: 0; pointer-events: none; transition: opacity 0.18s ease;
 }
 .lightbox.visible { opacity: 1; pointer-events: auto; }
 .lightbox-content {
     max-width: 85%; max-height: 82vh; border-radius: 20px; border: 1px solid var(--card-border);
-    transform: scale(0.96);
-    transition: transform 0.25s ease;
+    transform: scale(0.985);
+    transition: transform 0.16s ease;
+    will-change: transform;
 }
 .lightbox.visible .lightbox-content {
     transform: scale(1);
