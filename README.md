@@ -15,7 +15,7 @@ This site showcases DiamondGamer's content creation, community management work, 
 - Auto-scrolling YouTube showcase carousel
 - Click-to-preview image lightbox
 - Clipboard contact button for Discord username
-- Request form that sends portfolio requests to Discord
+- Contact section with email and Discord username copy button
 - Active community links for BlockRealms, Kuda, Adam's Army, and Adam/Amir's ban appeal server
 - Minecraft IP copy button for `play.blockrealms.net`
 - Highlight cards for staff support, community management, and Minecraft plugin configs
@@ -40,8 +40,6 @@ This site showcases DiamondGamer's content creation, community management work, 
 
 Created and maintained by DiamondGamer.
 
-## Contact Form
+## Contact
 
-The contact form sends the visitor's name, contact info, request type, and details to Discord.
-
-The request payload includes `<@789933912171479120>` so the owner is pinged when a request arrives.
+Email: [diamond@diamondgamer.xyz](mailto:diamond@diamondgamer.xyz)

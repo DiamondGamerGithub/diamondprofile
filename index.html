@@ -247,41 +247,22 @@
         <div class="contact-container js-reveal">
             <div class="contact-copy">
                 <span class="badge badge-cyan">Contact</span>
-                <h2>Request My Help</h2>
-                <p>Need staff help, community management, server setup, or project support? Send a request with your info and what you need. You can also copy my Discord username directly.</p>
-                <button class="contact-trigger-btn" id="contactBtn">
-                    <span class="btn-text">Copy Discord Username</span>
-                    <span class="btn-glow-effect"></span>
-                </button>
+                <h2>Get In Touch</h2>
+                <p>Need staff help, community management, Minecraft plugin configs, or project support? Email me or copy my Discord username and message me directly.</p>
             </div>
-
-            <form class="request-form" id="requestForm">
-                <label>
-                    Your Name
-                    <input type="text" name="name" placeholder="Your name or username" required>
-                </label>
-                <label>
-                    Contact Info
-                    <input type="text" name="contact" placeholder="Discord, email, or another way to reach you" required>
-                </label>
-                <label>
-                    What do you need?
-                    <select name="requestType" required>
-                        <option value="">Select a request type</option>
-                        <option value="Discord staff work">Discord staff work</option>
-                        <option value="Community management">Community management</option>
-                        <option value="Server setup">Server setup</option>
-                        <option value="Content/project help">Content/project help</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </label>
-                <label>
-                    Request Details
-                    <textarea name="details" rows="5" placeholder="Tell me what you need, the server/project name, and any important links." required></textarea>
-                </label>
-                <button type="submit" class="form-submit-btn">Send Request</button>
-                <p class="form-status" id="requestStatus">Send a request and I will review it as soon as I can.</p>
-            </form>
+            <div class="contact-card">
+                <div class="contact-method">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:diamond@diamondgamer.xyz" class="contact-value">diamond@diamondgamer.xyz</a>
+                </div>
+                <div class="contact-method">
+                    <span class="contact-label">Discord</span>
+                    <button class="contact-trigger-btn" id="contactBtn">
+                        <span class="btn-text">Copy Discord Username</span>
+                        <span class="btn-glow-effect"></span>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 

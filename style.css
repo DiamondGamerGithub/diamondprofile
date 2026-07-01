@@ -435,7 +435,7 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     align-items: stretch;
 }
 .contact-copy,
-.request-form {
+.contact-card {
     background: var(--card-surface);
     border: 1px solid rgba(6, 182, 212, 0.18);
     border-radius: 24px;
@@ -461,69 +461,34 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     line-height: 1.75;
     margin-bottom: 28px;
 }
-.request-form {
+.contact-card {
     display: grid;
-    gap: 16px;
+    gap: 18px;
 }
-.request-form label {
+.contact-method {
     display: grid;
-    gap: 8px;
-    color: var(--text-white);
-    font-size: 0.86rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
+    gap: 10px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(148, 163, 184, 0.14);
 }
-.request-form input,
-.request-form select,
-.request-form textarea {
-    width: 100%;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: 14px;
-    background: rgba(15, 23, 42, 0.74);
-    color: var(--text-white);
-    padding: 13px 14px;
-    font: inherit;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-}
-.request-form textarea {
-    resize: vertical;
-    min-height: 132px;
-}
-.request-form input:focus,
-.request-form select:focus,
-.request-form textarea:focus {
-    border-color: rgba(34, 211, 238, 0.65);
-    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.12);
-    background: rgba(15, 23, 42, 0.92);
-}
-.form-submit-btn {
-    border: none;
-    border-radius: 14px;
-    background: var(--blue);
-    color: var(--text-white);
-    cursor: pointer;
-    font-weight: 800;
-    padding: 14px 18px;
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
-    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-}
-.form-submit-btn:hover {
-    background: var(--blue-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.5);
-}
-.form-status {
+.contact-label {
     color: var(--text-slate);
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
-.form-status.success {
-    color: #86efac;
+.contact-value {
+    color: var(--text-white);
+    font-size: 1.08rem;
+    font-weight: 800;
+    text-decoration: none;
+    word-break: break-word;
 }
-.form-status.error {
-    color: #fca5a5;
+.contact-value:hover {
+    color: var(--cyan);
 }
 
 .lightbox {
@@ -631,7 +596,7 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     .nav-actions { gap: 8px; }
     .link-button { padding: 7px 12px; }
     .contact-copy,
-    .request-form { padding: 24px 18px; border-radius: 20px; }
+    .contact-card { padding: 24px 18px; border-radius: 20px; }
     .contact-copy h2 { font-size: 1.9rem; }
 }
 

@@ -26,11 +26,7 @@ document.addEventListener('keydown', (e) => {
 const topNav = document.getElementById('topNav');
 const contactBtn = document.getElementById('contactBtn');
 const toast = document.getElementById('notificationToast');
-const requestForm = document.getElementById('requestForm');
-const requestStatus = document.getElementById('requestStatus');
 const targetUsername = 'therealdiamondgamer';
-const discordMention = '<@789933912171479120>';
-const requestEndpoint = 'https://discord.com/api/webhooks/1521681066694414463/WI_MCzIHa8M32WokTS-qRgcDtwJauaAmpJs4pWpgGcEf_TXCQsGl_67QZ3esd7vXTtvA';
 
 window.addEventListener('scroll', () => {
     topNav.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -43,61 +39,6 @@ contactBtn.addEventListener('click', () => {
     }).catch((err) => {
         console.error('Clipboard write rejected:', err);
     });
-});
-
-requestForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(requestForm);
-    const payload = {
-        name: formData.get('name').trim(),
-        contact: formData.get('contact').trim(),
-        requestType: formData.get('requestType'),
-        details: formData.get('details').trim(),
-        mention: discordMention,
-        sentAt: new Date().toISOString()
-    };
-
-    try {
-        requestStatus.textContent = 'Sending request...';
-        requestStatus.className = 'form-status';
-
-        const response = await fetch(requestEndpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                content: `${discordMention} New DiamondGamer request received.`,
-                allowed_mentions: {
-                    users: ['789933912171479120']
-                },
-                embeds: [
-                    {
-                        title: 'New Portfolio Request',
-                        color: 4437377,
-                        fields: [
-                            { name: 'Name', value: payload.name || 'Not provided', inline: true },
-                            { name: 'Contact', value: payload.contact || 'Not provided', inline: true },
-                            { name: 'Request Type', value: payload.requestType || 'Not provided', inline: false },
-                            { name: 'Details', value: payload.details.slice(0, 1000) || 'Not provided', inline: false }
-                        ],
-                        timestamp: payload.sentAt
-                    }
-                ]
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Request failed with status ${response.status}`);
-        }
-
-        requestForm.reset();
-        requestStatus.textContent = 'Request sent. I will review it as soon as I can.';
-        requestStatus.className = 'form-status success';
-    } catch (error) {
-        console.error('Request submission failed:', error);
-        requestStatus.textContent = 'Request could not be sent. Please copy my Discord username and message me directly.';
-        requestStatus.className = 'form-status error';
-    }
 });
 
 document.querySelectorAll('[data-copy]').forEach((button) => {
