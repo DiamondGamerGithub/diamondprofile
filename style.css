@@ -430,9 +430,9 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     width: 90%;
     max-width: 1140px;
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
     gap: 36px;
-    align-items: stretch;
+    align-items: center;
 }
 .contact-copy,
 .contact-card {
@@ -459,11 +459,12 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     color: #cbd5e1;
     font-size: 1.08rem;
     line-height: 1.75;
-    margin-bottom: 28px;
+    margin-bottom: 0;
 }
 .contact-card {
     display: grid;
     gap: 18px;
+    align-content: center;
 }
 .contact-method {
     display: grid;
@@ -472,6 +473,7 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     border-radius: 18px;
     background: rgba(15, 23, 42, 0.55);
     border: 1px solid rgba(148, 163, 184, 0.14);
+    min-width: 0;
 }
 .contact-label {
     color: var(--text-slate);
@@ -482,7 +484,7 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
 }
 .contact-value {
     color: var(--text-white);
-    font-size: 1.08rem;
+    font-size: clamp(0.98rem, 2.2vw, 1.08rem);
     font-weight: 800;
     text-decoration: none;
     word-break: break-word;
@@ -544,6 +546,8 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
     transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    width: fit-content;
+    max-width: 100%;
 }
 .contact-trigger-btn::after {
     content: "";
@@ -577,7 +581,7 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     .top-nav-bar { width: min(94%, 680px); }
     .split-container { flex-direction: column !important; gap: 30px; text-align: center; }
     .inline-link-row { justify-content: center; }
-    .contact-container { grid-template-columns: 1fr; }
+    .contact-container { grid-template-columns: minmax(0, 1fr); }
     .highlights-grid { grid-template-columns: 1fr; }
     .img-grid-dual { flex-direction: column; }
     .img-grid-dual img { width: 100%; }
@@ -598,6 +602,7 @@ h1, h2, .nav-logo, .contact-trigger-btn, .f-title {
     .contact-copy,
     .contact-card { padding: 24px 18px; border-radius: 20px; }
     .contact-copy h2 { font-size: 1.9rem; }
+    .contact-trigger-btn { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
