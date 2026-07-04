@@ -55,3 +55,6 @@ Email: [diamond@diamondgamer.xyz](mailto:diamond@diamondgamer.xyz)
 
 
 V6 notes: replaced the old bottom-nav with a fresh mobile-dock component to avoid all previous left-shift CSS conflicts.
+
+
+V7: bumped mobile CSS/script cache versions and added a stronger visible mobile dock guarantee.

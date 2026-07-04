@@ -130,7 +130,7 @@ if ('IntersectionObserver' in window) {
 window.setTimeout(activateReveals, 1300);
 
 const sections = Array.from(document.querySelectorAll('section[id], div[id]')).filter((el) => ['about','showcase','networks','software','contact'].includes(el.id));
-const navLinks = Array.from(document.querySelectorAll('.bottom-nav a'));
+const navLinks = Array.from(document.querySelectorAll('.mobile-dock a, .bottom-nav a'));
 function setActiveNav() {
   let current = 'about';
   for (const section of sections) {
@@ -152,3 +152,14 @@ function lockHorizontalScroll() {
 }
 window.addEventListener('scroll', lockHorizontalScroll, { passive: true });
 window.addEventListener('load', lockHorizontalScroll, { passive: true });
+
+
+// v7 fallback: if the dock HTML is missing for any reason, create it.
+(function () {
+  if (document.querySelector('.mobile-dock')) return;
+  const nav = document.createElement('nav');
+  nav.className = 'mobile-dock';
+  nav.setAttribute('aria-label', 'Mobile navigation');
+  nav.innerHTML = '<div class="mobile-dock-inner"><a href="#about"><span>⌂</span><em>Home</em></a><a href="#showcase"><span>▶</span><em>Videos</em></a><a href="#networks"><span>◆</span><em>Servers</em></a><a href="#software"><span>▣</span><em>Projects</em></a><a href="#contact"><span>✉</span><em>Contact</em></a></div>';
+  document.body.appendChild(nav);
+})();
