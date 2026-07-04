@@ -1,6 +1,17 @@
 (() => {
     const mobileQuery = window.matchMedia('(max-width: 900px)');
 
+    const loadCleanMobileCss = () => {
+        if (!mobileQuery.matches) return;
+        if (document.querySelector('link[href*="mobile-clean.css"]')) return;
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'mobile-clean.css?v=1';
+        document.head.appendChild(link);
+    };
+
+    loadCleanMobileCss();
+
     const lockHorizontalScroll = () => {
         if (!mobileQuery.matches) return;
 
@@ -19,8 +30,14 @@
     let startY = 0;
 
     window.addEventListener('scroll', lockHorizontalScroll, { passive: true });
-    window.addEventListener('resize', lockHorizontalScroll, { passive: true });
-    window.addEventListener('orientationchange', () => setTimeout(lockHorizontalScroll, 250), { passive: true });
+    window.addEventListener('resize', () => {
+        loadCleanMobileCss();
+        lockHorizontalScroll();
+    }, { passive: true });
+    window.addEventListener('orientationchange', () => setTimeout(() => {
+        loadCleanMobileCss();
+        lockHorizontalScroll();
+    }, 250), { passive: true });
 
     document.addEventListener('touchstart', (event) => {
         if (!mobileQuery.matches || !event.touches.length) return;
@@ -44,6 +61,12 @@
         }
     }, { passive: false });
 
-    document.addEventListener('DOMContentLoaded', lockHorizontalScroll);
-    window.addEventListener('load', () => setTimeout(lockHorizontalScroll, 200), { passive: true });
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCleanMobileCss();
+        lockHorizontalScroll();
+    });
+    window.addEventListener('load', () => setTimeout(() => {
+        loadCleanMobileCss();
+        lockHorizontalScroll();
+    }, 200), { passive: true });
 })();
