@@ -38,6 +38,10 @@ jobs:
           cp mobileindex.html _site/mobileindex.html
           cp mobilestyle.css _site/mobilestyle.css
           cp mobilescript.js _site/mobilescript.js
+          printf '\n/* Smooth scroll injected by workflow */\n' >> _site/script.js
+          cat smoothscroll.js >> _site/script.js
+          printf '\n/* Smooth scroll injected by workflow */\n' >> _site/mobilescript.js
+          cat smoothscroll.js >> _site/mobilescript.js
           if [ -f CNAME ]; then cp CNAME _site/CNAME; fi
           if [ -d assets ]; then cp -R assets _site/assets; fi
           touch _site/.nojekyll
