@@ -461,3 +461,26 @@ body {
     transition: none !important;
   }
 }
+
+/* v5 fix: bottom nav centered, not stuck left */
+.bottom-nav,
+.bottom-nav.merged-nav {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: max(10px, env(safe-area-inset-bottom)) !important;
+  width: min(calc(100vw - 20px), 520px) !important;
+  max-width: min(calc(100vw - 20px), 520px) !important;
+  margin: 0 !important;
+  transform: translateX(-50%) !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  z-index: 3000 !important;
+  box-sizing: border-box !important;
+}
+
+.bottom-nav.merged-nav a {
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
