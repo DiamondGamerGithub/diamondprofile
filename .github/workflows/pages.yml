@@ -34,6 +34,7 @@ jobs:
           cp index.html _site/index.html
           cp style.css _site/style.css
           cp script.js _site/script.js
+          cp smoothscroll.js _site/smoothscroll.js
           cp mobileindex.html _site/mobileindex.html
           cp mobilestyle.css _site/mobilestyle.css
           cp mobilescript.js _site/mobilescript.js
