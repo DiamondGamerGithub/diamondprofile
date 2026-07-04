@@ -29,11 +29,11 @@ This site showcases DiamondGamer's content creation, community management work, 
 
 ```text
 .
-├── index.html
-├── style.css
-├── script.js
-├── CNAME
-└── assets/
+|-- index.html
+|-- style.css
+|-- script.js
+|-- CNAME
+`-- assets/
 ```
 
 ## Credits
@@ -43,3 +43,12 @@ Created and maintained by DiamondGamer.
 ## Contact
 
 Email: [diamond@diamondgamer.xyz](mailto:diamond@diamondgamer.xyz)
+
+
+## Asset folders
+
+- `assets/branding/` - logos and site branding
+- `assets/experience/` - community/server experience images
+- `assets/projects/` - project screenshots
+- `assets/thumbnails/` - video thumbnails for the carousel
+- `assets/misc/` - unused or extra media
