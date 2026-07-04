@@ -52,3 +52,6 @@ Email: [diamond@diamondgamer.xyz](mailto:diamond@diamondgamer.xyz)
 - `assets/projects/` - project screenshots
 - `assets/thumbnails/` - video thumbnails for the carousel
 - `assets/misc/` - unused or extra media
+
+
+V6 notes: replaced the old bottom-nav with a fresh mobile-dock component to avoid all previous left-shift CSS conflicts.
