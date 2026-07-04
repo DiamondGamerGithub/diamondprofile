@@ -52,8 +52,14 @@ function showToast(message, duration = 2600) {
 }
 
 if (topNav) {
+    let navTicking = false;
     window.addEventListener('scroll', () => {
-        topNav.classList.toggle('is-scrolled', window.scrollY > 24);
+        if (navTicking) return;
+        navTicking = true;
+        window.requestAnimationFrame(() => {
+            topNav.classList.toggle('is-scrolled', window.scrollY > 24);
+            navTicking = false;
+        });
     }, { passive: true });
 }
 
@@ -112,7 +118,7 @@ function createCardElement(video) {
 }
 
 if (track && carouselContainer) {
-    const repeatedVideos = [...videoData, ...videoData, ...videoData, ...videoData];
+    const repeatedVideos = [...videoData, ...videoData, ...videoData];
     const fragment = document.createDocumentFragment();
     repeatedVideos.forEach((video) => fragment.appendChild(createCardElement(video)));
     track.appendChild(fragment);

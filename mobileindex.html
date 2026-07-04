@@ -16,8 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="mobilestyle.css?v=mobile-friendly-2">
-    <meta name="site-version" content="mobile-friendly-2">
+    <link rel="stylesheet" href="mobilestyle.css?v=app-mobile-3">
+    <meta name="site-version" content="app-mobile-3">
 </head>
 <body>
     <div id="notificationToast" class="toast-notification">Copied Diamond's Discord username</div>
@@ -28,10 +28,10 @@
                 <img src="assets/branding/diamondgamer-logo.png" alt="DiamondGamer logo" decoding="async">
             </a>
             <nav class="nav-links" aria-label="Main navigation">
-                <a href="#about">About Me</a>
-                <a href="#showcase">My Videos</a>
+                <a href="#about">Home</a>
+                <a href="#showcase">Videos</a>
                 <a href="#networks">Servers</a>
-                <a href="#software">My Projects</a>
+                <a href="#software">Projects</a>
                 <a href="#contact">Contact</a>
             </nav>
             <div class="nav-actions">
@@ -67,6 +67,12 @@
                     <p class="bio">
                         I create content, manage online communities, and help servers stay organized. My work focuses on Discord staff teams, Minecraft server operations, community safety, and clean project setups that are easy for members and staff to use.
                     </p>
+                    <div class="hero-actions" aria-label="Quick actions">
+                        <a href="#showcase" class="primary-action">Watch Videos</a>
+                        <a href="#networks" class="secondary-action">View Servers</a>
+                        <a href="#contact" class="secondary-action">Contact</a>
+                    </div>
+
                     <div class="hero-stats" aria-label="Portfolio highlights">
                         <div class="stat-pill">
                             <strong>5+</strong>
@@ -86,6 +92,21 @@
         </div>
     </section>
 
+    <section class="quick-panel" aria-label="Mobile quick overview">
+        <a href="#networks" class="quick-tile">
+            <span>Staff Work</span>
+            <strong>Servers</strong>
+        </a>
+        <a href="#software" class="quick-tile">
+            <span>Built Projects</span>
+            <strong>Apps</strong>
+        </a>
+        <a href="#contact" class="quick-tile">
+            <span>Fast Reply</span>
+            <strong>Contact</strong>
+        </a>
+    </section>
+
     <section class="section" id="showcase">
         <div class="container js-reveal">
             <div class="center-header">
@@ -96,7 +117,7 @@
 
             <div class="carousel-outer" id="carouselContainer">
                 <button class="nav-btn prev-btn" id="prevBtn" aria-label="Previous videos">&#8249;</button>
-                <div class="carousel-track" id="carouselTrack"></div>
+                <div class="carousel-track" id="carouselTrack" aria-label="Swipeable video list"></div>
                 <button class="nav-btn next-btn" id="nextBtn" aria-label="Next videos">&#8250;</button>
             </div>
         </div>
@@ -298,7 +319,18 @@
         </div>
     </footer>
 
-    <script src="mobilescript.js?v=mobile-friendly-2" defer></script>
+    <nav class="bottom-nav" aria-label="Mobile bottom navigation">
+        <a href="#about"><span>⌂</span>Home</a>
+        <a href="#showcase"><span>▶</span>Videos</a>
+        <a href="#networks"><span>◆</span>Servers</a>
+        <a href="#software"><span>▣</span>Projects</a>
+        <a href="#contact"><span>✉</span>Contact</a>
+    </nav>
+
+    <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+    <a class="float-contact" href="#contact" aria-label="Jump to contact">Message</a>
+
+    <script src="mobilescript.js?v=app-mobile-3" defer></script>
 </body>
 </html>
 

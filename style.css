@@ -1562,3 +1562,33 @@ h2,
     .carousel-track { gap: 14px; animation-duration: 34s; }
     .video-card { flex-basis: min(300px, 74vw); }
 }
+
+
+/* Desktop performance-only tuning: visual layout is unchanged. */
+@media (min-width: 901px) {
+    .section,
+    #networks,
+    #software,
+    .highlights-section,
+    .contact-section,
+    .footer {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 860px;
+    }
+
+    .orb-1,
+    .orb-2,
+    .avatar-holder::before {
+        animation-duration: 24s !important;
+    }
+
+    .scroll-pop,
+    .media-shell,
+    .split-container,
+    .full-container,
+    .contact-container,
+    .highlight-card,
+    .video-card {
+        will-change: auto !important;
+    }
+}

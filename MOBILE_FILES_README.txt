@@ -1,7 +1,8 @@
-Mobile-only files:
-- mobileindex.html
-- mobilestyle.css
-- mobilescript.js
+Mobile version is separated from desktop:
 
-Use /mobileindex.html to test the mobile-first page. Desktop remains index.html, style.css, script.js.
-This version is phone-first instead of desktop squeezed down.
+- Desktop: index.html, style.css, script.js
+- Mobile: mobileindex.html, mobilestyle.css, mobilescript.js
+
+Upload everything in this ZIP to the repo.
+Desktop keeps the same design, with only lightweight performance tuning added.
+Phones should automatically redirect from index.html to mobileindex.html.

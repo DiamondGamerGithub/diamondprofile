@@ -12,20 +12,32 @@
 const topNav = document.getElementById('topNav');
 const contactBtn = document.getElementById('contactBtn');
 const toast = document.getElementById('notificationToast');
+const backTop = document.getElementById('backTop');
 const targetUsername = 'therealdiamondgamer';
 
-function showToast(message, duration = 2200) {
+function showToast(message, duration = 2100) {
   if (!toast) return;
   toast.textContent = message;
   toast.classList.add('show-toast');
   window.setTimeout(() => toast.classList.remove('show-toast'), duration);
 }
 
-if (topNav) {
-  window.addEventListener('scroll', () => {
-    topNav.classList.toggle('is-scrolled', window.scrollY > 18);
-  }, { passive: true });
+let lastKnownY = 0;
+let ticking = false;
+function updateScrollUI() {
+  if (topNav) topNav.classList.toggle('is-scrolled', lastKnownY > 16);
+  if (backTop) backTop.classList.toggle('show', lastKnownY > 520);
+  ticking = false;
 }
+window.addEventListener('scroll', () => {
+  lastKnownY = window.scrollY || 0;
+  if (!ticking) {
+    window.requestAnimationFrame(updateScrollUI);
+    ticking = true;
+  }
+}, { passive: true });
+
+if (backTop) backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 if (contactBtn) {
   contactBtn.addEventListener('click', () => {
@@ -43,7 +55,7 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
       .then(() => {
         button.textContent = 'Copied';
         showToast(`Copied ${copyValue}`);
-        window.setTimeout(() => { button.textContent = originalText; }, 1800);
+        window.setTimeout(() => { button.textContent = originalText; }, 1600);
       })
       .catch(() => showToast('Could not copy'));
   });
@@ -70,8 +82,8 @@ function createCardElement(video, index) {
   card.target = '_blank';
   card.rel = 'noopener';
   card.className = 'video-card';
-  const loading = index < videoData.length ? 'eager' : 'lazy';
-  const priority = index < 3 ? 'high' : 'auto';
+  const loading = index < 6 ? 'eager' : 'lazy';
+  const priority = index < 2 ? 'high' : 'auto';
   card.innerHTML = `<div class="img-container"><img src="${video.thumbnail}" alt="Showcase video" loading="${loading}" fetchpriority="${priority}" decoding="async"></div>`;
   return card;
 }
@@ -85,7 +97,7 @@ if (track && carouselContainer) {
   const pause = () => carouselContainer.classList.add('is-paused');
   const resume = () => carouselContainer.classList.remove('is-paused');
   carouselContainer.addEventListener('touchstart', pause, { passive: true });
-  carouselContainer.addEventListener('touchend', () => setTimeout(resume, 450), { passive: true });
+  carouselContainer.addEventListener('touchend', () => setTimeout(resume, 550), { passive: true });
   carouselContainer.addEventListener('touchcancel', resume, { passive: true });
   carouselContainer.addEventListener('pointerenter', pause);
   carouselContainer.addEventListener('pointerleave', resume);
@@ -109,19 +121,35 @@ function closeLightbox() {
   lightbox.classList.remove('visible');
   window.setTimeout(() => lightboxImg.removeAttribute('src'), 180);
 }
-
 if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
 if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
-const revealElements = Array.from(document.querySelectorAll('.js-reveal, .center-header, .split-container, .full-container, .highlight-card, .contact-container'));
-
-function activateReveals() {
-  revealElements.forEach((el) => el.classList.add('active'));
+function makeCollapsible(card) {
+  if (!card || card.querySelector('.mobile-card-toggle')) return;
+  card.classList.add('collapsible-card', 'is-collapsed');
+  const title = card.querySelector('h2');
+  const area = card.querySelector('.split-text, .full-container') || card;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'mobile-card-toggle';
+  button.textContent = 'Tap to view details';
+  button.setAttribute('aria-expanded', 'false');
+  if (title) button.setAttribute('aria-label', `Toggle details for ${title.textContent.trim()}`);
+  area.appendChild(button);
+  button.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const expanded = !card.classList.toggle('is-collapsed');
+    button.textContent = expanded ? 'Hide details' : 'Tap to view details';
+    button.setAttribute('aria-expanded', String(expanded));
+  });
 }
 
-revealElements.forEach((el) => el.classList.add('pre-reveal'));
+document.querySelectorAll('#networks .split-container, #software .full-container').forEach(makeCollapsible);
 
+const revealElements = Array.from(document.querySelectorAll('.js-reveal, .center-header, .quick-panel, .split-container, .full-container, .highlight-card, .contact-container'));
+revealElements.forEach((el) => el.classList.add('pre-reveal'));
+function activateReveals() { revealElements.forEach((el) => el.classList.add('active')); }
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -130,13 +158,29 @@ if ('IntersectionObserver' in window) {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -42px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -38px 0px' });
   revealElements.forEach((el) => observer.observe(el));
 } else {
   activateReveals();
 }
+window.setTimeout(activateReveals, 1000);
 
-window.setTimeout(activateReveals, 1200);
+const sections = Array.from(document.querySelectorAll('section[id], div[id]')).filter((el) => ['about','showcase','networks','software','contact'].includes(el.id));
+const bottomLinks = Array.from(document.querySelectorAll('.bottom-nav a'));
+const topLinks = Array.from(document.querySelectorAll('.nav-links a'));
+function setActiveNav() {
+  let current = 'about';
+  for (const section of sections) {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < 190) current = section.id;
+  }
+  [...bottomLinks, ...topLinks].forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    link.classList.toggle('active', href === `#${current}`);
+  });
+}
+window.addEventListener('scroll', () => window.requestAnimationFrame(setActiveNav), { passive: true });
+window.addEventListener('load', setActiveNav, { passive: true });
 
 function lockHorizontalScroll() {
   if (window.scrollX !== 0) window.scrollTo(0, window.scrollY);
