@@ -107,9 +107,9 @@ function createCardElement(video) {
     card.target = '_blank';
     card.rel = 'noopener';
     card.className = 'video-card';
-    const imageLoading = window.matchMedia('(max-width: 700px)').matches ? 'eager' : 'lazy';
-    const fetchPriority = imageLoading === 'eager' ? 'high' : 'auto';
-    card.innerHTML = `<div class="img-container"><img src="${video.thumbnail}" alt="Showcase video" loading="${imageLoading}" fetchpriority="${fetchPriority}" decoding="async"></div>`;
+    const loadingMode = window.matchMedia('(max-width: 900px)').matches ? 'eager' : 'lazy';
+    const fetchMode = window.matchMedia('(max-width: 900px)').matches ? 'high' : 'auto';
+    card.innerHTML = `<div class="img-container"><img src="${video.thumbnail}" alt="Showcase video" loading="${loadingMode}" fetchpriority="${fetchMode}" decoding="async"></div>`;
     return card;
 }
 
