@@ -3,9 +3,9 @@
     if (!versionMeta) return;
 
     const currentVersion = versionMeta.content;
-    const storedVersion = localStorage.getItem('dg_site_version');
+    const storedVersion = localStorage.getItem('dg_mobile_site_version');
     if (storedVersion !== currentVersion) {
-        localStorage.setItem('dg_site_version', currentVersion);
+        localStorage.setItem('dg_mobile_site_version', currentVersion);
         if (storedVersion !== null) {
             location.reload();
         }
