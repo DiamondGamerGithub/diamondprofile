@@ -12,12 +12,18 @@
 (function () {
   const style = document.createElement('style');
   style.textContent = `
-    html, body {
+    html,
+    body {
       width: 100%;
       max-width: 100%;
       overflow-x: hidden !important;
+      overscroll-behavior-x: none;
       -webkit-text-size-adjust: 100%;
       text-rendering: optimizeLegibility;
+    }
+
+    body {
+      touch-action: pan-y;
     }
 
     .hero-split-container,
@@ -116,7 +122,7 @@
       overscroll-behavior-x: contain;
       scroll-padding-inline: 14px;
       -webkit-overflow-scrolling: touch;
-      touch-action: pan-x pan-y;
+      touch-action: pan-x;
       contain: layout paint;
     }
 
@@ -133,7 +139,7 @@
 
     .pre-reveal {
       will-change: transform, opacity;
-      transform: translate3d(0, 24px, 0) scale(.985) !important;
+      transform: translate3d(0, 18px, 0) scale(.99) !important;
     }
 
     .pre-reveal.active {
@@ -379,7 +385,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLight
 const revealElements = Array.from(document.querySelectorAll('.js-reveal, .center-header, .split-container, .full-container, .highlight-card, .contact-container, .media-shell'));
 revealElements.forEach((el, index) => {
   el.classList.add('pre-reveal');
-  el.style.setProperty('--reveal-delay', `${Math.min((index % 3) * 55, 110)}ms`);
+  el.style.setProperty('--reveal-delay', `${Math.min((index % 3) * 45, 90)}ms`);
 });
 
 function activateReveals() {
@@ -391,16 +397,16 @@ if ('IntersectionObserver' in window) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-        window.setTimeout(() => { entry.target.style.willChange = 'auto'; }, 700);
+        window.setTimeout(() => { entry.target.style.willChange = 'auto'; }, 620);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.09, rootMargin: '0px 0px -42px 0px' });
+  }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
   revealElements.forEach((el) => observer.observe(el));
 } else {
   activateReveals();
 }
-window.setTimeout(activateReveals, 1300);
+window.setTimeout(activateReveals, 1100);
 
 const sections = Array.from(document.querySelectorAll('section[id], div[id]')).filter((el) => ['about','showcase','networks','software','contact'].includes(el.id));
 const navLinks = Array.from(document.querySelectorAll('.mobile-dock a, .bottom-nav a'));
@@ -409,7 +415,7 @@ function setActiveNav() {
   let current = 'about';
   for (const section of sections) {
     const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.45) current = section.id;
+    if (rect.top < window.innerHeight * 0.48) current = section.id;
   }
   navLinks.forEach((link) => {
     const href = link.getAttribute('href') || '';
@@ -425,15 +431,7 @@ function requestActiveNav() {
 window.addEventListener('scroll', requestActiveNav, { passive: true });
 window.addEventListener('load', setActiveNav, { passive: true });
 
-function lockHorizontalScroll() {
-  if (window.scrollX !== 0) window.scrollTo(0, window.scrollY);
-  document.documentElement.scrollLeft = 0;
-  document.body.scrollLeft = 0;
-}
-window.addEventListener('scroll', lockHorizontalScroll, { passive: true });
-window.addEventListener('load', lockHorizontalScroll, { passive: true });
-
-// v8 fallback: if the dock HTML is missing for any reason, create it.
+// v9 fallback: if the dock HTML is missing for any reason, create it.
 (function () {
   if (document.querySelector('.mobile-dock')) return;
   const nav = document.createElement('nav');
