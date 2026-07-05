@@ -1,166 +1,12 @@
 (() => {
   const versionMeta = document.querySelector('meta[name="site-version"]');
-  if (versionMeta) {
-    const currentVersion = versionMeta.content;
-    const storedVersion = localStorage.getItem('dg_site_version');
-    if (storedVersion !== currentVersion) {
-      localStorage.setItem('dg_site_version', currentVersion);
-      if (storedVersion !== null) location.reload();
-    }
+  if (!versionMeta) return;
+  const currentVersion = versionMeta.content;
+  const storedVersion = localStorage.getItem('dg_site_version');
+  if (storedVersion !== currentVersion) {
+    localStorage.setItem('dg_site_version', currentVersion);
+    if (storedVersion !== null) location.reload();
   }
-})();
-
-(() => {
-  const style = document.createElement('style');
-  style.textContent = `
-    html { scroll-behavior: smooth; }
-    body { overflow-x: hidden; }
-
-    .dg-scroll-progress {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      z-index: 2147483647 !important;
-      width: 100vw !important;
-      height: 6px !important;
-      pointer-events: none !important;
-      transform-origin: left center !important;
-      transform: scaleX(0);
-      background: linear-gradient(90deg, #67e8f9, #38bdf8, #2563eb, #22d3ee) !important;
-      box-shadow: 0 0 18px rgba(56, 189, 248, .85), 0 0 30px rgba(37, 99, 235, .45) !important;
-    }
-
-    .scroll-pop.pre-reveal,
-    .js-reveal.pre-reveal {
-      opacity: 0;
-      transform: translate3d(0, 22px, 0) scale(.985);
-      filter: blur(2px);
-      transition:
-        opacity .5s cubic-bezier(.16, 1, .3, 1),
-        transform .55s cubic-bezier(.16, 1, .3, 1),
-        filter .5s cubic-bezier(.16, 1, .3, 1);
-      transition-delay: var(--pop-delay, 0ms);
-    }
-
-    .scroll-pop.pop-left.pre-reveal,
-    .scroll-pop.pop-right.pre-reveal,
-    .scroll-pop.pop-zoom.pre-reveal {
-      transform: translate3d(0, 22px, 0) scale(.985);
-    }
-
-    .scroll-pop.active,
-    .js-reveal.active {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
-      filter: blur(0);
-    }
-
-    .video-card .video-play-badge { display: none !important; }
-
-    .video-embed-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 999999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-      background: rgba(4, 2, 10, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .video-embed-modal.visible { display: flex; }
-    .video-embed-card {
-      width: min(1040px, 94vw);
-      overflow: hidden;
-      border: 1px solid rgba(147, 197, 253, 0.28);
-      border-radius: 28px;
-      background: #080512;
-      box-shadow: 0 24px 72px rgba(0,0,0,.52), 0 0 34px rgba(56,189,248,.12);
-    }
-    .video-embed-frame-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #02040a;
-    }
-    .video-embed-frame-wrap iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .video-embed-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 2;
-      width: 46px;
-      height: 46px;
-      border: 1px solid rgba(147,197,253,.28);
-      border-radius: 999px;
-      background: rgba(0,0,0,.58);
-      color: #fff;
-      font-size: 1.35rem;
-      font-weight: 900;
-      cursor: pointer;
-    }
-    .video-embed-info {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 18px;
-      padding: 20px 24px 24px;
-      background: linear-gradient(180deg, rgba(20,8,34,.96), rgba(8,3,15,.98));
-    }
-    .video-embed-info h3 {
-      margin: 0 0 6px;
-      color: #faf7ff;
-      font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: clamp(1.1rem, 2vw, 1.55rem);
-    }
-    .video-embed-info p {
-      margin: 0;
-      color: #c8b9dd;
-      font-weight: 750;
-    }
-    .video-embed-actions {
-      display: flex !important;
-      flex-wrap: wrap !important;
-      justify-content: flex-end !important;
-      align-items: center !important;
-      gap: 10px !important;
-    }
-    .video-embed-actions a,
-    .video-embed-actions button {
-      min-width: 132px !important;
-      max-width: 180px !important;
-      min-height: 44px !important;
-      padding: 0 18px !important;
-      border: 1px solid rgba(147,197,253,.26) !important;
-      border-radius: 999px !important;
-      background: rgba(255,255,255,.08) !important;
-      color: #faf7ff !important;
-      text-decoration: none !important;
-      font-weight: 900 !important;
-      cursor: pointer !important;
-      display: inline-grid !important;
-      place-items: center !important;
-      text-align: center !important;
-      font: inherit;
-    }
-    body.video-modal-open { overflow: hidden; }
-
-    @media (max-width: 720px) {
-      .video-embed-modal { padding: 12px; }
-      .video-embed-card { width: 100%; border-radius: 22px; }
-      .video-embed-info { grid-template-columns: 1fr; align-items: stretch; padding: 18px; }
-      .video-embed-actions { justify-content: stretch !important; display: grid !important; grid-template-columns: 1fr 1fr; }
-      .video-embed-actions a, .video-embed-actions button { min-width: 0 !important; max-width: none !important; width: 100% !important; }
-    }
-  `;
-  document.head.appendChild(style);
 })();
 
 const topNav = document.getElementById('topNav');
@@ -211,88 +57,19 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
 });
 
 const videoData = [
-  { thumbnail: 'assets/thumbnails/showcase-01.jpg', url: 'https://www.youtube.com/watch?v=eVD_6Ba-6H0&t=19s', title: 'Featured DiamondGamer Video' },
-  { thumbnail: 'assets/thumbnails/showcase-02.jpg', url: 'https://www.youtube.com/watch?v=9TbpAUYDlF0', title: 'Featured DiamondGamer Video' },
-  { thumbnail: 'assets/thumbnails/showcase-03.jpg', url: 'https://www.youtube.com/watch?v=ilI5kEstT0U&t=74s', title: 'Featured DiamondGamer Video' },
-  { thumbnail: 'assets/thumbnails/showcase-04.jpg', url: 'https://www.youtube.com/watch?v=annIbh_LzV8&t=79s', title: 'Featured DiamondGamer Video' },
-  { thumbnail: 'assets/thumbnails/showcase-05.jpg', url: 'https://www.youtube.com/watch?v=fYvbSPDSkzU&t=1s', title: 'Featured DiamondGamer Video' },
-  { thumbnail: 'assets/thumbnails/showcase-06.jpg', url: 'https://www.youtube.com/watch?v=Ifi3jRmmoBU&t=7s', title: 'Featured DiamondGamer Video' },
-  { thumbnail: 'assets/thumbnails/showcase-07.jpg', url: 'https://www.youtube.com/watch?v=VYxT66QTyLs&t=16s', title: 'Featured DiamondGamer Video' },
-  { thumbnail: 'assets/thumbnails/showcase-08.jpg', url: 'https://www.youtube.com/watch?v=Jecjk4XiRaM&t=65s', title: 'Featured DiamondGamer Video' },
-  { thumbnail: 'assets/thumbnails/showcase-09.jpg', url: 'https://www.youtube.com/watch?v=pbGes3V8-Eo', title: 'Featured DiamondGamer Video' }
+  { thumbnail: 'assets/thumbnails/showcase-01.jpg', url: 'https://www.youtube.com/watch?v=eVD_6Ba-6H0&t=19s' },
+  { thumbnail: 'assets/thumbnails/showcase-02.jpg', url: 'https://www.youtube.com/watch?v=9TbpAUYDlF0' },
+  { thumbnail: 'assets/thumbnails/showcase-03.jpg', url: 'https://www.youtube.com/watch?v=ilI5kEstT0U&t=74s' },
+  { thumbnail: 'assets/thumbnails/showcase-04.jpg', url: 'https://www.youtube.com/watch?v=annIbh_LzV8&t=79s' },
+  { thumbnail: 'assets/thumbnails/showcase-05.jpg', url: 'https://www.youtube.com/watch?v=fYvbSPDSkzU&t=1s' },
+  { thumbnail: 'assets/thumbnails/showcase-06.jpg', url: 'https://www.youtube.com/watch?v=Ifi3jRmmoBU&t=7s' },
+  { thumbnail: 'assets/thumbnails/showcase-07.jpg', url: 'https://www.youtube.com/watch?v=VYxT66QTyLs&t=16s' },
+  { thumbnail: 'assets/thumbnails/showcase-08.jpg', url: 'https://www.youtube.com/watch?v=Jecjk4XiRaM&t=65s' },
+  { thumbnail: 'assets/thumbnails/showcase-09.jpg', url: 'https://www.youtube.com/watch?v=pbGes3V8-Eo' }
 ];
 
 const track = document.getElementById('carouselTrack');
 const carouselContainer = document.getElementById('carouselContainer');
-
-function getYoutubeId(url) {
-  try {
-    const parsed = new URL(url);
-    if (parsed.hostname.includes('youtu.be')) return parsed.pathname.replace('/', '');
-    if (parsed.searchParams.get('v')) return parsed.searchParams.get('v');
-    const embedMatch = parsed.pathname.match(/\/embed\/([^/?]+)/);
-    if (embedMatch) return embedMatch[1];
-  } catch (err) {
-    const fallback = String(url).match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{6,})/);
-    return fallback ? fallback[1] : '';
-  }
-  return '';
-}
-
-function ensureVideoModal() {
-  let modal = document.getElementById('videoEmbedModal');
-  if (modal) return modal;
-
-  modal = document.createElement('div');
-  modal.id = 'videoEmbedModal';
-  modal.className = 'video-embed-modal';
-  modal.innerHTML = `
-    <div class="video-embed-card" role="dialog" aria-modal="true" aria-label="Video player">
-      <div class="video-embed-frame-wrap">
-        <button type="button" class="video-embed-close" aria-label="Close video">×</button>
-        <iframe id="videoEmbedFrame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="video-embed-info">
-        <div>
-          <h3 id="videoEmbedTitle">DiamondGamer Video</h3>
-          <p>Watch without leaving the portfolio.</p>
-        </div>
-        <div class="video-embed-actions">
-          <a id="videoEmbedOpen" href="#" target="_blank" rel="noopener">Open YouTube</a>
-          <button type="button" id="videoEmbedDone">Close</button>
-        </div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(modal);
-
-  const closeVideo = () => {
-    modal.classList.remove('visible');
-    document.body.classList.remove('video-modal-open');
-    const frame = document.getElementById('videoEmbedFrame');
-    if (frame) frame.removeAttribute('src');
-  };
-
-  modal.addEventListener('click', (event) => { if (event.target === modal) closeVideo(); });
-  modal.querySelector('.video-embed-close').addEventListener('click', closeVideo);
-  modal.querySelector('#videoEmbedDone').addEventListener('click', closeVideo);
-  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.classList.contains('visible')) closeVideo(); });
-  return modal;
-}
-
-function openVideoEmbed(video) {
-  const videoId = getYoutubeId(video.url);
-  if (!videoId) {
-    window.open(video.url, '_blank', 'noopener');
-    return;
-  }
-  const modal = ensureVideoModal();
-  modal.querySelector('#videoEmbedTitle').textContent = video.title || 'DiamondGamer Video';
-  modal.querySelector('#videoEmbedOpen').href = video.url;
-  modal.querySelector('#videoEmbedFrame').src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-  document.body.classList.add('video-modal-open');
-  modal.classList.add('visible');
-}
 
 function createCardElement(video) {
   const card = document.createElement('a');
@@ -301,17 +78,12 @@ function createCardElement(video) {
   card.rel = 'noopener';
   card.className = 'video-card';
   card.innerHTML = `<div class="img-container"><img src="${video.thumbnail}" alt="Showcase video" loading="lazy" decoding="async"></div>`;
-  card.addEventListener('click', (event) => {
-    event.preventDefault();
-    openVideoEmbed(video);
-  });
   return card;
 }
 
 if (track && carouselContainer) {
-  const repeatedVideos = [...videoData, ...videoData, ...videoData];
   const fragment = document.createDocumentFragment();
-  repeatedVideos.forEach((video) => fragment.appendChild(createCardElement(video)));
+  [...videoData, ...videoData, ...videoData].forEach((video) => fragment.appendChild(createCardElement(video)));
   track.appendChild(fragment);
 }
 
@@ -373,39 +145,42 @@ window.setTimeout(activateReveals, 1300);
 const sparkField = document.getElementById('sparkField');
 if (sparkField) sparkField.textContent = '';
 
-(() => {
-  if (track && 'IntersectionObserver' in window) {
-    const carouselObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        track.style.animationPlayState = entry.isIntersecting ? '' : 'paused';
-      });
-    }, { threshold: 0.05 });
-    carouselObserver.observe(track);
-  }
-})();
+if (track && 'IntersectionObserver' in window) {
+  const carouselObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      track.style.animationPlayState = entry.isIntersecting ? '' : 'paused';
+    });
+  }, { threshold: 0.05 });
+  carouselObserver.observe(track);
+}
 
 (() => {
-  const existingProgress = document.querySelector('.dg-scroll-progress');
-  const progress = existingProgress || document.createElement('div');
+  const progress = document.querySelector('.dg-scroll-progress') || document.createElement('div');
   progress.className = 'dg-scroll-progress';
-  if (!existingProgress) document.body.appendChild(progress);
+  progress.style.position = 'fixed';
+  progress.style.top = '0';
+  progress.style.left = '0';
+  progress.style.zIndex = '1000000';
+  progress.style.width = '100vw';
+  progress.style.height = '6px';
+  progress.style.pointerEvents = 'none';
+  progress.style.transformOrigin = 'left center';
+  progress.style.background = 'linear-gradient(90deg, #67e8f9, #38bdf8, #2563eb, #22d3ee)';
+  progress.style.boxShadow = '0 0 18px rgba(56, 189, 248, .85), 0 0 30px rgba(37, 99, 235, .45)';
+  if (!progress.parentElement) document.body.appendChild(progress);
 
   let ticking = false;
   const updateProgress = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const amount = Math.min(1, Math.max(0, scrollTop / maxScroll));
-    progress.style.transform = `scaleX(${amount})`;
-    progress.style.opacity = maxScroll > 20 ? '1' : '0';
+    progress.style.transform = `scaleX(${Math.min(1, scrollTop / maxScroll)})`;
     ticking = false;
   };
-
   const requestProgressUpdate = () => {
     if (ticking) return;
     ticking = true;
     window.requestAnimationFrame(updateProgress);
   };
-
   window.addEventListener('scroll', requestProgressUpdate, { passive: true });
   window.addEventListener('resize', requestProgressUpdate, { passive: true });
   updateProgress();
