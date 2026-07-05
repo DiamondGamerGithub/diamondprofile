@@ -15,25 +15,27 @@
   style.textContent = `
     @media (min-width: 761px) {
       body::before { opacity: 0.55 !important; }
-      .glow-orb { filter: blur(44px) !important; opacity: 0.08 !important; animation: none !important; }
-      .main-identity-card.unified-card, .media-shell, .highlight-card, .contact-card, .full-container, .split-container {
+      .glow-orb { filter: blur(54px) !important; opacity: 0.1 !important; }
+      .top-nav-bar, .main-identity-card.unified-card, .media-shell, .highlight-card, .contact-card, .full-container, .split-container {
         backface-visibility: hidden;
+      }
+      .main-identity-card.unified-card, .media-shell, .highlight-card, .contact-card, .full-container, .split-container {
         transform: translateZ(0);
       }
       .main-identity-card.unified-card, .full-container, .split-container, .highlight-card, .contact-card {
-        backdrop-filter: blur(4px) !important;
-        -webkit-backdrop-filter: blur(4px) !important;
-        box-shadow: 0 18px 42px rgba(0,0,0,.24), 0 0 22px rgba(37,99,235,.09) !important;
+        backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important;
+        box-shadow: 0 22px 58px rgba(0,0,0,.28), 0 0 34px rgba(37,99,235,.12) !important;
       }
       .top-nav-bar {
         transform: translateX(-50%) translateZ(0) !important;
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
         transition: background .18s ease, box-shadow .18s ease, border-color .18s ease !important;
       }
-      .carousel-track { will-change: transform; transform: translateZ(0); }
+      .carousel-track { will-change: transform; transform: translateZ(0); animation-duration: 52s !important; }
       .video-card { transform: translateZ(0); backface-visibility: hidden; }
-      .scroll-pop, .js-reveal { transition-duration: .36s !important; }
+      .scroll-pop, .js-reveal { transition-duration: .42s !important; }
       .video-play-badge {
         position: absolute;
         inset: 0;
@@ -48,7 +50,7 @@
         font-size: 1.4rem;
         font-weight: 900;
         pointer-events: none;
-        box-shadow: 0 12px 26px rgba(0,0,0,.28);
+        box-shadow: 0 14px 34px rgba(0,0,0,.34);
       }
       .img-container { position: relative; }
     }
@@ -62,8 +64,8 @@
       justify-content: center;
       padding: 28px;
       background: rgba(4, 2, 10, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
     .video-embed-modal.visible { display: flex; }
     .video-embed-card {
@@ -72,7 +74,7 @@
       border: 1px solid rgba(147, 197, 253, 0.28);
       border-radius: 28px;
       background: #080512;
-      box-shadow: 0 24px 70px rgba(0,0,0,0.52), 0 0 34px rgba(56,189,248,0.12);
+      box-shadow: 0 28px 90px rgba(0,0,0,0.58), 0 0 42px rgba(56,189,248,0.14);
     }
     .video-embed-frame-wrap {
       position: relative;
@@ -394,53 +396,6 @@ const sparkField = document.getElementById('sparkField');
 if (sparkField) sparkField.textContent = '';
 
 (() => {
-  const performanceStyle = document.createElement('style');
-  performanceStyle.textContent = `
-    @media (min-width: 761px) {
-      .top-nav-bar { transform: translateX(-50%) translateZ(0) !important; }
-      .glow-orb, .avatar-holder::before, .hero-eyebrow, .badge { animation-play-state: paused !important; }
-      .main-identity-card.unified-card,
-      .full-container,
-      .split-container,
-      .highlight-card,
-      .contact-card,
-      .stat-pill {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-      }
-      .main-identity-card.unified-card,
-      .media-shell,
-      .highlight-card,
-      .contact-card,
-      .full-container,
-      .split-container,
-      .video-card {
-        will-change: auto !important;
-      }
-      .main-identity-card.unified-card,
-      .split-img img,
-      .img-grid-dual img,
-      .img-block-single img,
-      .video-card,
-      .media-shell {
-        box-shadow: 0 16px 38px rgba(0,0,0,.25) !important;
-        filter: none !important;
-      }
-      .carousel-outer { contain: content; }
-      .carousel-track { animation-duration: 58s !important; will-change: transform !important; }
-      .scroll-pop, .js-reveal { transition-duration: .28s !important; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.001ms !important;
-      }
-    }
-  `;
-  document.head.appendChild(performanceStyle);
-
   if (track && 'IntersectionObserver' in window) {
     const carouselObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
