@@ -2,12 +2,20 @@
   const style = document.createElement('style');
   style.textContent = `
     @media (max-width: 760px) {
-      html, body {
+      html,
+      body {
         overflow-x: hidden !important;
         overscroll-behavior-x: none !important;
-        scroll-behavior: smooth;
       }
 
+      .pre-reveal,
+      .pre-reveal.active,
+      .js-reveal,
+      .js-reveal.active,
+      .scroll-pop,
+      .scroll-pop.active,
+      .smooth-reveal,
+      .smooth-reveal.revealed,
       .main-identity-card,
       .split-container,
       .full-container,
@@ -15,37 +23,35 @@
       .highlight-card,
       .contact-card,
       .media-shell,
-      .mobile-dock-inner {
+      .mobile-dock,
+      .mobile-dock-inner,
+      .carousel-track,
+      .video-card {
+        opacity: 1 !important;
         transform: none !important;
+        filter: none !important;
+        animation: none !important;
+        transition-property: background-color, border-color, color, box-shadow !important;
+        transition-duration: .18s !important;
         will-change: auto !important;
         backface-visibility: visible !important;
       }
 
-      .pre-reveal {
-        transform: translateY(14px) !important;
-        filter: none !important;
-        will-change: opacity, transform;
-      }
-
-      .pre-reveal.active {
-        transform: none !important;
-        will-change: auto !important;
-      }
-
       .mobile-dock,
       .mobile-dock-inner {
-        transform: none !important;
         contain: paint !important;
-      }
-
-      .carousel-track,
-      .video-card {
-        transform: none !important;
-        will-change: auto !important;
       }
     }
   `;
   document.head.appendChild(style);
+
+  document.querySelectorAll('.pre-reveal, .js-reveal, .scroll-pop, .smooth-reveal').forEach((el) => {
+    el.classList.add('active', 'revealed');
+    el.style.removeProperty('transform');
+    el.style.removeProperty('filter');
+    el.style.removeProperty('opacity');
+    el.style.removeProperty('will-change');
+  });
 
   const links = Array.from(document.querySelectorAll('.mobile-dock a, .bottom-nav a'));
   const sections = ['about', 'showcase', 'networks', 'software', 'contact']
