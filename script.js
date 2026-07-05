@@ -59,71 +59,6 @@
       .img-container { position: relative; }
     }
 
-    .dg-scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000000;
-      width: 100%;
-      height: 3px;
-      pointer-events: none;
-      transform-origin: left center;
-      transform: scaleX(0);
-      background: linear-gradient(90deg, #38bdf8, #2563eb, #22d3ee);
-      box-shadow: 0 0 18px rgba(56,189,248,.58);
-    }
-
-    .dg-scroll-ready .js-reveal.pre-reveal,
-    .dg-scroll-ready .scroll-pop.pre-reveal {
-      opacity: 0 !important;
-      filter: blur(9px);
-      transform: translate3d(var(--dg-reveal-x, 0), 44px, 0) scale(.965) !important;
-      transition:
-        opacity .72s cubic-bezier(.16, 1, .3, 1),
-        filter .72s cubic-bezier(.16, 1, .3, 1),
-        transform .82s cubic-bezier(.16, 1, .3, 1) !important;
-      transition-delay: var(--pop-delay, 0ms) !important;
-      will-change: opacity, filter, transform;
-    }
-    .dg-scroll-ready .scroll-pop.pop-left.pre-reveal { --dg-reveal-x: -42px; }
-    .dg-scroll-ready .scroll-pop.pop-right.pre-reveal { --dg-reveal-x: 42px; }
-    .dg-scroll-ready .scroll-pop.pop-zoom.pre-reveal {
-      transform: translate3d(0, 34px, 0) scale(.9) !important;
-    }
-    .dg-scroll-ready .js-reveal.active,
-    .dg-scroll-ready .scroll-pop.active {
-      opacity: 1 !important;
-      filter: blur(0);
-      transform: translate3d(0, 0, 0) scale(1) !important;
-      will-change: auto;
-    }
-    .dg-scroll-ready .media-shell.scroll-pop.pre-reveal::before,
-    .dg-scroll-ready .highlight-card.scroll-pop.pre-reveal::before,
-    .dg-scroll-ready .contact-card.pre-reveal::before {
-      opacity: 0;
-      transform: scale(.86) rotate(-6deg);
-      transition: opacity .78s cubic-bezier(.16, 1, .3, 1), transform .84s cubic-bezier(.16, 1, .3, 1);
-    }
-    .dg-scroll-ready .media-shell.scroll-pop.active::before,
-    .dg-scroll-ready .highlight-card.scroll-pop.active::before,
-    .dg-scroll-ready .contact-card.active::before {
-      opacity: .72;
-      transform: scale(1) rotate(0deg);
-    }
-    .dg-scroll-ready .section::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 20px;
-      width: min(680px, 72vw);
-      height: 1px;
-      pointer-events: none;
-      transform: translateX(-50%) scaleX(var(--dg-line, 0));
-      transform-origin: center;
-      background: linear-gradient(90deg, transparent, rgba(56,189,248,.38), transparent);
-      opacity: .75;
-    }
-
     .video-embed-modal {
       position: fixed;
       inset: 0;
@@ -229,43 +164,20 @@
       .video-embed-card { width: 100%; border-radius: 22px; }
       .video-embed-info { grid-template-columns: 1fr; align-items: stretch; padding: 18px; }
       .video-embed-actions { justify-content: stretch !important; display: grid !important; grid-template-columns: 1fr 1fr; }
-      .video-embed-actions a, .video-embed-actions button { min-width: 0 !important; max-width: none !important; width: 100% !important; }
+      .video-embed-actions a,
+      .video-embed-actions button { min-width: 0 !important; max-width: none !important; width: 100% !important; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .dg-scroll-progress { display: none; }
-      .dg-scroll-ready .js-reveal.pre-reveal,
-      .dg-scroll-ready .scroll-pop.pre-reveal,
-      .dg-scroll-ready .js-reveal.active,
-      .dg-scroll-ready .scroll-pop.active {
-        opacity: 1 !important;
-        filter: none !important;
-        transform: none !important;
-        transition: none !important;
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
       }
     }
   `;
   document.head.appendChild(style);
-  document.documentElement.classList.add('dg-scroll-ready');
 })();
-
-document.addEventListener('contextmenu', (event) => event.preventDefault());
-document.addEventListener('dragstart', (event) => event.preventDefault());
-document.addEventListener('selectstart', (event) => {
-  if (!event.target.closest('input, textarea')) event.preventDefault();
-});
-
-document.addEventListener('keydown', (event) => {
-  const key = event.key.toUpperCase();
-  const code = event.code ? event.code.toUpperCase() : '';
-  const blockCombo = key === 'F12' || code === 'F12' ||
-    (event.ctrlKey && event.shiftKey && ['I', 'J', 'C', 'K', 'E'].includes(key)) ||
-    (event.metaKey && event.altKey && ['I', 'J', 'C', 'K'].includes(key)) ||
-    ((event.ctrlKey || event.metaKey) && ['U', 'S', 'P'].includes(key));
-  if (blockCombo) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
-}, true);
 
 const topNav = document.getElementById('topNav');
 const contactBtn = document.getElementById('contactBtn');
@@ -451,7 +363,7 @@ popTargets.forEach((el, index) => {
   if (index % 3 === 0) el.classList.add('pop-left');
   if (index % 3 === 1) el.classList.add('pop-right');
   if (index % 3 === 2) el.classList.add('pop-zoom');
-  el.style.setProperty('--pop-delay', `${Math.min((index % 4) * 55, 165)}ms`);
+  el.style.setProperty('--pop-delay', `${Math.min((index % 3) * 35, 70)}ms`);
 });
 
 const revealElements = Array.from(document.querySelectorAll('.js-reveal, .scroll-pop'));
@@ -464,7 +376,7 @@ if ('IntersectionObserver' in window) {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.11, rootMargin: '0px 0px -70px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -54px 0px' });
   revealElements.forEach((el) => {
     el.classList.add('pre-reveal');
     observer.observe(el);
@@ -472,7 +384,7 @@ if ('IntersectionObserver' in window) {
 } else {
   activateReveals();
 }
-window.setTimeout(activateReveals, 1400);
+window.setTimeout(activateReveals, 1300);
 
 const sparkField = document.getElementById('sparkField');
 if (sparkField) sparkField.textContent = '';
@@ -488,63 +400,17 @@ if (sparkField) sparkField.textContent = '';
   }
 })();
 
-(() => {
-  const progress = document.createElement('div');
-  progress.className = 'dg-scroll-progress';
-  document.body.appendChild(progress);
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const id = link.getAttribute('href');
+    if (!id || id === '#') return;
+    const target = document.querySelector(id);
+    if (!target) return;
 
-  const sections = Array.from(document.querySelectorAll('.section, .hero-section'));
-  let ticking = false;
-  const updateScrollEffects = () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    progress.style.transform = `scaleX(${Math.min(1, scrollTop / maxScroll)})`;
-
-    const viewportMid = window.innerHeight * 0.62;
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      const distance = Math.abs(rect.top - viewportMid);
-      const amount = Math.max(0, 1 - distance / window.innerHeight);
-      section.style.setProperty('--dg-line', amount.toFixed(3));
-    });
-    ticking = false;
-  };
-
-  const requestScrollUpdate = () => {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(updateScrollEffects);
-  };
-
-  window.addEventListener('scroll', requestScrollUpdate, { passive: true });
-  window.addEventListener('resize', requestScrollUpdate, { passive: true });
-  updateScrollEffects();
-
-  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-  function smoothScrollTo(targetY, duration = 760) {
-    const startY = window.scrollY || document.documentElement.scrollTop;
-    const distance = targetY - startY;
-    const start = performance.now();
-    const step = (now) => {
-      const elapsed = now - start;
-      const progressAmount = Math.min(1, elapsed / duration);
-      window.scrollTo(0, startY + distance * easeOutCubic(progressAmount));
-      if (progressAmount < 1) window.requestAnimationFrame(step);
-    };
-    window.requestAnimationFrame(step);
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const id = link.getAttribute('href');
-      if (!id || id === '#') return;
-      const target = document.querySelector(id);
-      if (!target) return;
-      event.preventDefault();
-      const navOffset = 96;
-      const targetY = target.getBoundingClientRect().top + window.scrollY - navOffset;
-      smoothScrollTo(Math.max(0, targetY));
-      history.pushState(null, '', id);
-    });
+    event.preventDefault();
+    const navOffset = 96;
+    const targetY = target.getBoundingClientRect().top + window.scrollY - navOffset;
+    window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+    history.pushState(null, '', id);
   });
-})();
+});
