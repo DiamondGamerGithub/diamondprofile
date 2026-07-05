@@ -16,6 +16,20 @@
     html { scroll-behavior: smooth; }
     body { overflow-x: hidden; }
 
+    .dg-scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000000;
+      width: 100%;
+      height: 3px;
+      pointer-events: none;
+      transform-origin: left center;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, #38bdf8, #2563eb, #22d3ee);
+      box-shadow: 0 0 18px rgba(56, 189, 248, .58);
+    }
+
     @media (min-width: 901px) {
       .section,
       #networks,
@@ -433,6 +447,30 @@ if (sparkField) sparkField.textContent = '';
     }, { threshold: 0.05 });
     carouselObserver.observe(track);
   }
+})();
+
+(() => {
+  const progress = document.createElement('div');
+  progress.className = 'dg-scroll-progress';
+  document.body.appendChild(progress);
+
+  let ticking = false;
+  const updateProgress = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    progress.style.transform = `scaleX(${Math.min(1, scrollTop / maxScroll)})`;
+    ticking = false;
+  };
+
+  const requestProgressUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateProgress);
+  };
+
+  window.addEventListener('scroll', requestProgressUpdate, { passive: true });
+  window.addEventListener('resize', requestProgressUpdate, { passive: true });
+  updateProgress();
 })();
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
