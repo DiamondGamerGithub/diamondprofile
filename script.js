@@ -11,172 +11,12 @@
 })();
 
 (() => {
-  const style = document.createElement('style');
-  style.textContent = `
-    @media (min-width: 761px) {
-      body::before { opacity: 0.55 !important; }
-      .glow-orb { filter: blur(54px) !important; opacity: 0.1 !important; }
-      .top-nav-bar,
-      .main-identity-card.unified-card,
-      .media-shell,
-      .highlight-card,
-      .contact-card,
-      .full-container,
-      .split-container,
-      .video-card {
-        backface-visibility: hidden;
-      }
-      .main-identity-card.unified-card,
-      .media-shell,
-      .highlight-card,
-      .contact-card,
-      .full-container,
-      .split-container,
-      .video-card {
-        transform: translateZ(0);
-      }
-      .main-identity-card.unified-card,
-      .full-container,
-      .split-container,
-      .highlight-card,
-      .contact-card {
-        backdrop-filter: blur(6px) !important;
-        -webkit-backdrop-filter: blur(6px) !important;
-        box-shadow: 0 22px 58px rgba(0,0,0,.28), 0 0 34px rgba(37,99,235,.12) !important;
-      }
-      .top-nav-bar {
-        transform: translateX(-50%) translateZ(0) !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-        transition: background .18s ease, box-shadow .18s ease, border-color .18s ease !important;
-      }
-      .carousel-track {
-        will-change: transform;
-        transform: translateZ(0);
-        animation-duration: 52s !important;
-      }
-      .scroll-pop, .js-reveal { transition-duration: .42s !important; }
-      .img-container { position: relative; }
-    }
-
-    .video-embed-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 999999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-      background: rgba(4, 2, 10, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-    .video-embed-modal.visible { display: flex; }
-    .video-embed-card {
-      width: min(1040px, 94vw);
-      overflow: hidden;
-      border: 1px solid rgba(147, 197, 253, 0.28);
-      border-radius: 28px;
-      background: #080512;
-      box-shadow: 0 28px 90px rgba(0,0,0,0.58), 0 0 42px rgba(56,189,248,0.14);
-    }
-    .video-embed-frame-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #02040a;
-    }
-    .video-embed-frame-wrap iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .video-embed-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 2;
-      width: 46px;
-      height: 46px;
-      border: 1px solid rgba(147,197,253,.28);
-      border-radius: 999px;
-      background: rgba(0,0,0,.58);
-      color: #fff;
-      font-size: 1.35rem;
-      font-weight: 900;
-      cursor: pointer;
-    }
-    .video-embed-info {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 18px;
-      padding: 20px 24px 24px;
-      background: linear-gradient(180deg, rgba(20,8,34,.96), rgba(8,3,15,.98));
-    }
-    .video-embed-info h3 {
-      margin: 0 0 6px;
-      color: #faf7ff;
-      font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: clamp(1.1rem, 2vw, 1.55rem);
-    }
-    .video-embed-info p {
-      margin: 0;
-      color: #c8b9dd;
-      font-weight: 750;
-    }
-    .video-embed-actions {
-      display: flex !important;
-      flex-wrap: wrap !important;
-      justify-content: flex-end !important;
-      align-items: center !important;
-      gap: 10px !important;
-      min-width: 0 !important;
-      max-width: 100% !important;
-    }
-    .video-embed-actions a,
-    .video-embed-actions button {
-      width: auto !important;
-      min-width: 132px !important;
-      max-width: 180px !important;
-      min-height: 44px !important;
-      padding: 0 18px !important;
-      border: 1px solid rgba(147,197,253,.26) !important;
-      border-radius: 999px !important;
-      background: rgba(255,255,255,.08) !important;
-      color: #faf7ff !important;
-      text-decoration: none !important;
-      font-weight: 900 !important;
-      cursor: pointer !important;
-      display: inline-grid !important;
-      place-items: center !important;
-      text-align: center !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      font: inherit;
-    }
-    body.video-modal-open { overflow: hidden; }
-    @media (max-width: 720px) {
-      .video-embed-modal { padding: 12px; }
-      .video-embed-card { width: 100%; border-radius: 22px; }
-      .video-embed-info { grid-template-columns: 1fr; align-items: stretch; padding: 18px; }
-      .video-embed-actions { justify-content: stretch !important; display: grid !important; grid-template-columns: 1fr 1fr; }
-      .video-embed-actions a,
-      .video-embed-actions button { min-width: 0 !important; max-width: none !important; width: 100% !important; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.001ms !important;
-      }
-    }
-  `;
-  document.head.appendChild(style);
+  if (!document.querySelector('link[href^="performance-fix.css"]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'performance-fix.css?v=clean-1';
+    document.head.appendChild(link);
+  }
 })();
 
 const topNav = document.getElementById('topNav');
@@ -406,7 +246,6 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     if (!id || id === '#') return;
     const target = document.querySelector(id);
     if (!target) return;
-
     event.preventDefault();
     const navOffset = 96;
     const targetY = target.getBoundingClientRect().top + window.scrollY - navOffset;
