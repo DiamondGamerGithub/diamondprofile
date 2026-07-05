@@ -16,13 +16,30 @@
     @media (min-width: 761px) {
       body::before { opacity: 0.55 !important; }
       .glow-orb { filter: blur(54px) !important; opacity: 0.1 !important; }
-      .top-nav-bar, .main-identity-card.unified-card, .media-shell, .highlight-card, .contact-card, .full-container, .split-container {
+      .top-nav-bar,
+      .main-identity-card.unified-card,
+      .media-shell,
+      .highlight-card,
+      .contact-card,
+      .full-container,
+      .split-container,
+      .video-card {
         backface-visibility: hidden;
       }
-      .main-identity-card.unified-card, .media-shell, .highlight-card, .contact-card, .full-container, .split-container {
+      .main-identity-card.unified-card,
+      .media-shell,
+      .highlight-card,
+      .contact-card,
+      .full-container,
+      .split-container,
+      .video-card {
         transform: translateZ(0);
       }
-      .main-identity-card.unified-card, .full-container, .split-container, .highlight-card, .contact-card {
+      .main-identity-card.unified-card,
+      .full-container,
+      .split-container,
+      .highlight-card,
+      .contact-card {
         backdrop-filter: blur(6px) !important;
         -webkit-backdrop-filter: blur(6px) !important;
         box-shadow: 0 22px 58px rgba(0,0,0,.28), 0 0 34px rgba(37,99,235,.12) !important;
@@ -33,25 +50,12 @@
         -webkit-backdrop-filter: blur(10px) !important;
         transition: background .18s ease, box-shadow .18s ease, border-color .18s ease !important;
       }
-      .carousel-track { will-change: transform; transform: translateZ(0); animation-duration: 52s !important; }
-      .video-card { transform: translateZ(0); backface-visibility: hidden; }
-      .scroll-pop, .js-reveal { transition-duration: .42s !important; }
-      .video-play-badge {
-        position: absolute;
-        inset: 0;
-        margin: auto;
-        width: 58px;
-        height: 58px;
-        display: grid;
-        place-items: center;
-        border-radius: 999px;
-        background: rgba(0,0,0,.56);
-        color: #fff;
-        font-size: 1.4rem;
-        font-weight: 900;
-        pointer-events: none;
-        box-shadow: 0 14px 34px rgba(0,0,0,.34);
+      .carousel-track {
+        will-change: transform;
+        transform: translateZ(0);
+        animation-duration: 52s !important;
       }
+      .scroll-pop, .js-reveal { transition-duration: .42s !important; }
       .img-container { position: relative; }
     }
 
@@ -400,7 +404,7 @@ function createCardElement(video) {
   card.target = '_blank';
   card.rel = 'noopener';
   card.className = 'video-card';
-  card.innerHTML = `<div class="img-container"><img src="${video.thumbnail}" alt="Showcase video" loading="lazy" decoding="async"><span class="video-play-badge">▶</span></div>`;
+  card.innerHTML = `<div class="img-container"><img src="${video.thumbnail}" alt="Showcase video" loading="lazy" decoding="async"></div>`;
   card.addEventListener('click', (event) => {
     event.preventDefault();
     openVideoEmbed(video);
