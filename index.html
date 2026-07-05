@@ -22,7 +22,131 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=desktop-fast-1">
-    <meta name="site-version" content="10">
+    <style>
+        /* Restored stable desktop layout for the sections that were drifting. */
+        #software .section.text-center-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        #software .full-container {
+            width: min(1120px, 100%);
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #software .center-header,
+        #software h2,
+        #software .mid-p,
+        #software .project-cta-wrap {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        #software .img-grid-dual {
+            width: min(980px, 100%);
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            justify-items: center;
+            align-items: stretch;
+        }
+
+        #software .img-block-single {
+            width: min(940px, 100%);
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        #software .img-grid-dual > .media-shell,
+        #software .img-block-single > .media-shell {
+            width: 100%;
+            max-width: none;
+        }
+
+        .highlights-section .container {
+            width: min(1140px, calc(100% - 36px));
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlights-grid {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-items: stretch;
+            justify-items: stretch;
+        }
+
+        .highlight-card {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .contact-container {
+            width: min(1160px, 100%);
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            align-items: stretch;
+            justify-items: stretch;
+        }
+
+        .contact-copy,
+        .contact-card,
+        .contact-method {
+            min-width: 0;
+        }
+
+        .contact-value {
+            display: inline-block;
+            max-width: 100%;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: normal;
+            line-height: 1.35;
+        }
+
+        @media (max-width: 1000px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            #software .img-grid-dual,
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <meta name="site-version" content="13">
 </head>
 <body>
     <div id="notificationToast" class="toast-notification">Copied Diamond's Discord username</div>
@@ -303,7 +427,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=desktop-fast-1" defer></script>
+    <script src="script.js?v=clean-layout-3" defer></script>
 </body>
 </html>
-
