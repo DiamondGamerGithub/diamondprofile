@@ -17,17 +17,17 @@
     body { overflow-x: hidden; }
 
     .dg-scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000000;
-      width: 100%;
-      height: 3px;
-      pointer-events: none;
-      transform-origin: left center;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      z-index: 2147483647 !important;
+      width: 100vw !important;
+      height: 6px !important;
+      pointer-events: none !important;
+      transform-origin: left center !important;
       transform: scaleX(0);
-      background: linear-gradient(90deg, #38bdf8, #2563eb, #22d3ee);
-      box-shadow: 0 0 18px rgba(56, 189, 248, .58);
+      background: linear-gradient(90deg, #67e8f9, #38bdf8, #2563eb, #22d3ee) !important;
+      box-shadow: 0 0 18px rgba(56, 189, 248, .85), 0 0 30px rgba(37, 99, 235, .45) !important;
     }
 
     @media (min-width: 901px) {
@@ -450,15 +450,18 @@ if (sparkField) sparkField.textContent = '';
 })();
 
 (() => {
-  const progress = document.createElement('div');
+  const existingProgress = document.querySelector('.dg-scroll-progress');
+  const progress = existingProgress || document.createElement('div');
   progress.className = 'dg-scroll-progress';
-  document.body.appendChild(progress);
+  if (!existingProgress) document.body.appendChild(progress);
 
   let ticking = false;
   const updateProgress = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    progress.style.transform = `scaleX(${Math.min(1, scrollTop / maxScroll)})`;
+    const amount = Math.min(1, Math.max(0, scrollTop / maxScroll));
+    progress.style.transform = `scaleX(${amount})`;
+    progress.style.opacity = maxScroll > 20 ? '1' : '0';
     ticking = false;
   };
 
