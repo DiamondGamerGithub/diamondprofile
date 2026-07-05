@@ -9,6 +9,44 @@
   }
 })();
 
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    .js-reveal,
+    .scroll-pop {
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .js-reveal.pre-reveal,
+    .scroll-pop.pre-reveal,
+    .js-reveal.active,
+    .scroll-pop.active {
+      will-change: transform, opacity;
+    }
+
+    .scroll-pop.pre-reveal {
+      transform: translate3d(0, 22px, 0) scale(.985);
+    }
+
+    .scroll-pop.pop-left.pre-reveal,
+    .scroll-pop.pop-right.pre-reveal,
+    .scroll-pop.pop-zoom.pre-reveal {
+      transform: translate3d(0, 22px, 0) scale(.985);
+    }
+
+    .js-reveal.active,
+    .scroll-pop.active {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    body.is-page-scrolling .carousel-track {
+      animation-play-state: paused !important;
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
 const topNav = document.getElementById('topNav');
 const contactBtn = document.getElementById('contactBtn');
 const toast = document.getElementById('notificationToast');
@@ -129,6 +167,9 @@ if ('IntersectionObserver' in window) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
+        window.setTimeout(() => {
+          entry.target.style.willChange = 'auto';
+        }, 760);
         observer.unobserve(entry.target);
       }
     });
@@ -155,6 +196,18 @@ if (track && 'IntersectionObserver' in window) {
 }
 
 (() => {
+  let scrollPauseTimer;
+  const markScrolling = () => {
+    document.body.classList.add('is-page-scrolling');
+    window.clearTimeout(scrollPauseTimer);
+    scrollPauseTimer = window.setTimeout(() => {
+      document.body.classList.remove('is-page-scrolling');
+    }, 120);
+  };
+  window.addEventListener('scroll', markScrolling, { passive: true });
+})();
+
+(() => {
   const progress = document.querySelector('.dg-scroll-progress') || document.createElement('div');
   progress.className = 'dg-scroll-progress';
   progress.style.position = 'fixed';
@@ -167,13 +220,14 @@ if (track && 'IntersectionObserver' in window) {
   progress.style.transformOrigin = 'left center';
   progress.style.background = 'linear-gradient(90deg, #67e8f9, #38bdf8, #2563eb, #22d3ee)';
   progress.style.boxShadow = '0 0 18px rgba(56, 189, 248, .85), 0 0 30px rgba(37, 99, 235, .45)';
+  progress.style.willChange = 'transform';
   if (!progress.parentElement) document.body.appendChild(progress);
 
   let ticking = false;
   const updateProgress = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    progress.style.transform = `scaleX(${Math.min(1, scrollTop / maxScroll)})`;
+    progress.style.transform = `scale3d(${Math.min(1, scrollTop / maxScroll)}, 1, 1)`;
     ticking = false;
   };
   const requestProgressUpdate = () => {
