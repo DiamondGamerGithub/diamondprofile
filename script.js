@@ -40,8 +40,10 @@
       transform: translate3d(0, 0, 0) scale(1);
     }
 
+    .carousel-track,
+    .carousel-outer:hover .carousel-track,
     body.is-page-scrolling .carousel-track {
-      animation-play-state: paused !important;
+      animation-play-state: running !important;
     }
   `;
   document.head.appendChild(style);
@@ -123,6 +125,7 @@ if (track && carouselContainer) {
   const fragment = document.createDocumentFragment();
   [...videoData, ...videoData, ...videoData].forEach((video) => fragment.appendChild(createCardElement(video)));
   track.appendChild(fragment);
+  track.style.animationPlayState = 'running';
 }
 
 const prevBtn = document.getElementById('prevBtn');
@@ -188,8 +191,8 @@ if (sparkField) sparkField.textContent = '';
 
 if (track && 'IntersectionObserver' in window) {
   const carouselObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      track.style.animationPlayState = entry.isIntersecting ? '' : 'paused';
+    entries.forEach(() => {
+      track.style.animationPlayState = 'running';
     });
   }, { threshold: 0.05 });
   carouselObserver.observe(track);
@@ -199,9 +202,11 @@ if (track && 'IntersectionObserver' in window) {
   let scrollPauseTimer;
   const markScrolling = () => {
     document.body.classList.add('is-page-scrolling');
+    if (track) track.style.animationPlayState = 'running';
     window.clearTimeout(scrollPauseTimer);
     scrollPauseTimer = window.setTimeout(() => {
       document.body.classList.remove('is-page-scrolling');
+      if (track) track.style.animationPlayState = 'running';
     }, 120);
   };
   window.addEventListener('scroll', markScrolling, { passive: true });
