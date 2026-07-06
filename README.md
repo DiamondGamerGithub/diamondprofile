@@ -6,55 +6,66 @@ Personal portfolio website for DiamondGamer, built as a static GitHub Pages site
 
 This site showcases DiamondGamer's content creation, community management work, server staff experience, and web projects. It includes a profile section, YouTube video carousel, server/network highlights, project links, image previews, and a Discord contact button.
 
+## Live Site
+
+[diamondgamer.xyz](https://diamondgamer.xyz/)
+
+## Current Project Structure
+
+```text
+.
+|-- index.html                 # Main desktop entry used by GitHub Pages
+|-- mobileindex.html           # Legacy redirect to /mobile/
+|-- style.css                  # Legacy loader for /css/style.css
+|-- script.js                  # Legacy loader for /javascript/script.js
+|-- intro.js                   # Legacy loader for /javascript/intro.js
+|-- mobilestyle.css            # Legacy loader for /css/mobile.css
+|-- mobilescript.js            # Legacy loader for /javascript/mobile.js
+|-- mobile-jitter-fix.js       # Legacy loader for /javascript/mobile-jitter-fix.js
+|-- CNAME
+|-- assets/
+|   |-- branding/
+|   |-- experience/
+|   |-- misc/
+|   |-- projects/
+|   `-- thumbnails/
+|-- css/
+|   |-- style.css
+|   `-- mobile.css
+|-- javascript/
+|   |-- script.js
+|   |-- intro.js
+|   |-- mobile.js
+|   `-- mobile-jitter-fix.js
+|-- desktop/
+`-- mobile/
+    `-- index.html             # Real mobile entry
+```
+
+## Important Notes
+
+The root compatibility files are intentionally kept so older links, cached browsers, and GitHub Pages paths do not break. The real organized code lives inside `css/`, `javascript/`, `assets/`, `desktop/`, and `mobile/`.
+
+Avoid deleting the root compatibility loaders unless every HTML file has already been updated to use the organized folder paths directly.
+
 ## Features
 
 - Static HTML, CSS, and JavaScript
 - Custom domain through GitHub Pages
-- Responsive portfolio layout
+- Responsive desktop and mobile portfolio layouts
 - Animated profile card and background effects
-- Auto-scrolling YouTube showcase carousel
+- YouTube showcase carousel
 - Click-to-preview image lightbox
 - Clipboard contact button for Discord username
-- Contact section with email and Discord username copy button
 - Active community links for BlockRealms, Kuda, Adam's Army, and Adam/Amir's ban appeal server
 - Minecraft IP copy button for `play.blockrealms.net`
 - Highlight cards for staff support, community management, and Minecraft plugin configs
 - Cache versioning for easier public updates
 
-## Live Site
-
-[diamondgamer.xyz](https://diamondgamer.xyz/)
-
-## Project Structure
-
-```text
-.
-|-- index.html
-|-- style.css
-|-- script.js
-|-- CNAME
-`-- assets/
-```
-
-## Credits
-
-Created and maintained by DiamondGamer.
-
 ## Contact
 
 Email: [diamond@diamondgamer.xyz](mailto:diamond@diamondgamer.xyz)
 
+## Credits
 
-## Asset folders
-
-- `assets/branding/` - logos and site branding
-- `assets/experience/` - community/server experience images
-- `assets/projects/` - project screenshots
-- `assets/thumbnails/` - video thumbnails for the carousel
-- `assets/misc/` - unused or extra media
-
-
-V6 notes: replaced the old bottom-nav with a fresh mobile-dock component to avoid all previous left-shift CSS conflicts.
-
-
-V7: bumped mobile CSS/script cache versions and added a stronger visible mobile dock guarantee.
+Created and maintained by DiamondGamer.
