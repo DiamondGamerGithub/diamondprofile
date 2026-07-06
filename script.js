@@ -47,6 +47,95 @@
     .carousel-outer:hover .carousel-track {
       animation-play-state: paused;
     }
+
+    .video-embed-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(14px, 3vw, 38px);
+      background: rgba(6, 2, 14, 0.78);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+
+    .video-embed-modal.visible {
+      display: flex;
+    }
+
+    .video-embed-card {
+      position: relative;
+      width: min(1040px, 92vw);
+      border: 1px solid rgba(147, 197, 253, 0.28);
+      border-radius: 28px;
+      overflow: hidden;
+      background: #07040d;
+      box-shadow: 0 38px 130px rgba(0, 0, 0, 0.72), 0 0 90px rgba(56, 189, 248, 0.2);
+    }
+
+    .video-embed-frame-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .video-embed-frame-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-embed-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 3;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.62);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .video-embed-open {
+      position: absolute;
+      right: 18px;
+      bottom: 16px;
+      z-index: 3;
+      min-height: 38px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      background: rgba(0,0,0,.58);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: .88rem;
+      backdrop-filter: blur(12px);
+    }
+
+    body.video-modal-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 760px) {
+      .video-embed-card { width: 96vw; border-radius: 22px; }
+      .video-embed-close { width: 42px; height: 42px; top: 10px; right: 10px; }
+      .video-embed-open { right: 12px; bottom: 12px; font-size: .78rem; min-height: 34px; }
+    }
   `;
   document.head.appendChild(style);
 })();
@@ -99,19 +188,85 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
 });
 
 const videoData = [
-  { thumbnail: 'assets/thumbnails/showcase-01.jpg', url: 'https://www.youtube.com/watch?v=eVD_6Ba-6H0&t=19s' },
-  { thumbnail: 'assets/thumbnails/showcase-02.jpg', url: 'https://www.youtube.com/watch?v=9TbpAUYDlF0' },
-  { thumbnail: 'assets/thumbnails/showcase-03.jpg', url: 'https://www.youtube.com/watch?v=ilI5kEstT0U&t=74s' },
-  { thumbnail: 'assets/thumbnails/showcase-04.jpg', url: 'https://www.youtube.com/watch?v=annIbh_LzV8&t=79s' },
-  { thumbnail: 'assets/thumbnails/showcase-05.jpg', url: 'https://www.youtube.com/watch?v=fYvbSPDSkzU&t=1s' },
-  { thumbnail: 'assets/thumbnails/showcase-06.jpg', url: 'https://www.youtube.com/watch?v=Ifi3jRmmoBU&t=7s' },
-  { thumbnail: 'assets/thumbnails/showcase-07.jpg', url: 'https://www.youtube.com/watch?v=VYxT66QTyLs&t=16s' },
-  { thumbnail: 'assets/thumbnails/showcase-08.jpg', url: 'https://www.youtube.com/watch?v=Jecjk4XiRaM&t=65s' },
-  { thumbnail: 'assets/thumbnails/showcase-09.jpg', url: 'https://www.youtube.com/watch?v=pbGes3V8-Eo' }
+  { thumbnail: 'assets/thumbnails/showcase-01.jpg', url: 'https://www.youtube.com/watch?v=eVD_6Ba-6H0&t=19s', title: 'DiamondGamer Video' },
+  { thumbnail: 'assets/thumbnails/showcase-02.jpg', url: 'https://www.youtube.com/watch?v=9TbpAUYDlF0', title: 'DiamondGamer Video' },
+  { thumbnail: 'assets/thumbnails/showcase-03.jpg', url: 'https://www.youtube.com/watch?v=ilI5kEstT0U&t=74s', title: 'DiamondGamer Video' },
+  { thumbnail: 'assets/thumbnails/showcase-04.jpg', url: 'https://www.youtube.com/watch?v=annIbh_LzV8&t=79s', title: 'DiamondGamer Video' },
+  { thumbnail: 'assets/thumbnails/showcase-05.jpg', url: 'https://www.youtube.com/watch?v=fYvbSPDSkzU&t=1s', title: 'DiamondGamer Video' },
+  { thumbnail: 'assets/thumbnails/showcase-06.jpg', url: 'https://www.youtube.com/watch?v=Ifi3jRmmoBU&t=7s', title: 'DiamondGamer Video' },
+  { thumbnail: 'assets/thumbnails/showcase-07.jpg', url: 'https://www.youtube.com/watch?v=VYxT66QTyLs&t=16s', title: 'DiamondGamer Video' },
+  { thumbnail: 'assets/thumbnails/showcase-08.jpg', url: 'https://www.youtube.com/watch?v=Jecjk4XiRaM&t=65s', title: 'DiamondGamer Video' },
+  { thumbnail: 'assets/thumbnails/showcase-09.jpg', url: 'https://www.youtube.com/watch?v=pbGes3V8-Eo', title: 'DiamondGamer Video' }
 ];
 
 const track = document.getElementById('carouselTrack');
 const carouselContainer = document.getElementById('carouselContainer');
+
+function getYoutubeId(url) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes('youtu.be')) return parsed.pathname.replace('/', '');
+    if (parsed.searchParams.get('v')) return parsed.searchParams.get('v');
+    const embedMatch = parsed.pathname.match(/\/embed\/([^/?]+)/);
+    if (embedMatch) return embedMatch[1];
+  } catch (error) {
+    const fallback = String(url).match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{6,})/);
+    return fallback ? fallback[1] : '';
+  }
+  return '';
+}
+
+function ensureVideoModal() {
+  let modal = document.getElementById('videoEmbedModal');
+  if (modal) return modal;
+
+  modal = document.createElement('div');
+  modal.id = 'videoEmbedModal';
+  modal.className = 'video-embed-modal';
+  modal.innerHTML = `
+    <div class="video-embed-card" role="dialog" aria-modal="true" aria-label="Video player">
+      <div class="video-embed-frame-wrap">
+        <button type="button" class="video-embed-close" aria-label="Close video">×</button>
+        <iframe id="videoEmbedFrame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <a id="videoEmbedOpen" class="video-embed-open" href="#" target="_blank" rel="noopener">Open YouTube</a>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const closeVideo = () => {
+    modal.classList.remove('visible');
+    document.body.classList.remove('video-modal-open');
+    const frame = document.getElementById('videoEmbedFrame');
+    if (frame) frame.removeAttribute('src');
+  };
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeVideo();
+  });
+  modal.querySelector('.video-embed-close').addEventListener('click', closeVideo);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('visible')) closeVideo();
+  });
+
+  return modal;
+}
+
+function openVideoEmbed(video) {
+  const videoId = getYoutubeId(video.url);
+  if (!videoId) {
+    window.open(video.url, '_blank', 'noopener');
+    return;
+  }
+
+  const modal = ensureVideoModal();
+  const frame = modal.querySelector('#videoEmbedFrame');
+  const openLink = modal.querySelector('#videoEmbedOpen');
+  openLink.href = video.url;
+  frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+  document.body.classList.add('video-modal-open');
+  modal.classList.add('visible');
+}
 
 function createCardElement(video) {
   const card = document.createElement('a');
@@ -120,6 +275,10 @@ function createCardElement(video) {
   card.rel = 'noopener';
   card.className = 'video-card';
   card.innerHTML = `<div class="img-container"><img src="${video.thumbnail}" alt="Showcase video" loading="lazy" decoding="async"></div>`;
+  card.addEventListener('click', (event) => {
+    event.preventDefault();
+    openVideoEmbed(video);
+  });
   return card;
 }
 
