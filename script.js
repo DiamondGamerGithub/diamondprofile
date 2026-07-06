@@ -40,10 +40,12 @@
       transform: translate3d(0, 0, 0) scale(1);
     }
 
-    .carousel-track,
-    .carousel-outer:hover .carousel-track,
-    body.is-page-scrolling .carousel-track {
-      animation-play-state: running !important;
+    .carousel-track {
+      animation-play-state: running;
+    }
+
+    .carousel-outer:hover .carousel-track {
+      animation-play-state: paused;
     }
   `;
   document.head.appendChild(style);
@@ -125,7 +127,20 @@ if (track && carouselContainer) {
   const fragment = document.createDocumentFragment();
   [...videoData, ...videoData, ...videoData].forEach((video) => fragment.appendChild(createCardElement(video)));
   track.appendChild(fragment);
-  track.style.animationPlayState = 'running';
+
+  const runCarousel = () => {
+    track.style.animationPlayState = 'running';
+  };
+
+  const pauseCarousel = () => {
+    track.style.animationPlayState = 'paused';
+  };
+
+  runCarousel();
+  carouselContainer.addEventListener('mouseenter', pauseCarousel);
+  carouselContainer.addEventListener('mouseleave', runCarousel);
+  carouselContainer.addEventListener('focusin', pauseCarousel);
+  carouselContainer.addEventListener('focusout', runCarousel);
 }
 
 const prevBtn = document.getElementById('prevBtn');
@@ -191,22 +206,24 @@ if (sparkField) sparkField.textContent = '';
 
 if (track && 'IntersectionObserver' in window) {
   const carouselObserver = new IntersectionObserver((entries) => {
-    entries.forEach(() => {
-      track.style.animationPlayState = 'running';
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !carouselContainer.matches(':hover')) {
+        track.style.animationPlayState = 'running';
+      }
     });
   }, { threshold: 0.05 });
   carouselObserver.observe(track);
 }
 
 (() => {
-  let scrollPauseTimer;
   const markScrolling = () => {
     document.body.classList.add('is-page-scrolling');
-    if (track) track.style.animationPlayState = 'running';
-    window.clearTimeout(scrollPauseTimer);
-    scrollPauseTimer = window.setTimeout(() => {
+    window.clearTimeout(markScrolling.timer);
+    markScrolling.timer = window.setTimeout(() => {
       document.body.classList.remove('is-page-scrolling');
-      if (track) track.style.animationPlayState = 'running';
+      if (track && !carouselContainer.matches(':hover')) {
+        track.style.animationPlayState = 'running';
+      }
     }, 120);
   };
   window.addEventListener('scroll', markScrolling, { passive: true });
