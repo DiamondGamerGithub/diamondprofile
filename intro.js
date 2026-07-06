@@ -1,4 +1,14 @@
 (() => {
+  const href = 'design-refresh.css?v=20260706-ui-1';
+  if (!document.querySelector(`link[href="${href}"]`)) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+})();
+
+(() => {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const style = document.createElement('style');
