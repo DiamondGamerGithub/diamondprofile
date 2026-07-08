@@ -17,7 +17,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mobilestyle.css?v=app-mobile-8">
-    <meta name="site-version" content="app-mobile-8">
+    <style>
+        .contact-embed-container { display: grid; gap: 16px; }
+        .contact-frame-card { padding: 0 !important; min-height: 780px; overflow: hidden; }
+        .contact-embed-frame { width: 100%; min-height: 780px; height: 780px; display: block; border: 0; border-radius: inherit; background: #050b18; }
+    </style>
+    <meta name="site-version" content="app-mobile-9">
 </head>
 <body>
     <script src="intro.js?v=intro-mobile-1"></script>
@@ -45,28 +50,16 @@
                     </div>
                     <h1>DiamondGamer</h1>
                     <p class="subtitle">Content Creator & Community Manager</p>
-                    <p class="bio">
-                        I create content, manage online communities, and help servers stay organized. My work focuses on Discord staff teams, Minecraft server operations, community safety, and clean project setups that are easy for members and staff to use.
-                    </p>
+                    <p class="bio">I create content, manage online communities, and help servers stay organized. My work focuses on Discord staff teams, Minecraft server operations, community safety, and clean project setups that are easy for members and staff to use.</p>
                     <div class="hero-actions" aria-label="Quick actions">
                         <a href="#showcase" class="primary-action">Watch Videos</a>
                         <a href="#networks" class="secondary-action">View Servers</a>
                         <a href="#contact" class="secondary-action">Contact</a>
                     </div>
-
                     <div class="hero-stats" aria-label="Portfolio highlights">
-                        <div class="stat-pill">
-                            <strong>5+</strong>
-                            <span>Communities</span>
-                        </div>
-                        <div class="stat-pill">
-                            <strong>2</strong>
-                            <span>Web Projects</span>
-                        </div>
-                        <div class="stat-pill">
-                            <strong>24/7</strong>
-                            <span>Staff Mindset</span>
-                        </div>
+                        <div class="stat-pill"><strong>5+</strong><span>Communities</span></div>
+                        <div class="stat-pill"><strong>2</strong><span>Web Projects</span></div>
+                        <div class="stat-pill"><strong>24/7</strong><span>Staff Mindset</span></div>
                     </div>
                 </div>
             </div>
@@ -80,7 +73,6 @@
                 <h2>Recent Videos</h2>
                 <p>Swipe through my featured uploads. Drag left or right, then tap a thumbnail to open the video.</p>
             </div>
-
             <div class="carousel-outer" id="carouselContainer">
                 <button class="nav-btn prev-btn" id="prevBtn" aria-label="Previous videos">&#8249;</button>
                 <div class="carousel-track" id="carouselTrack" aria-label="Swipeable video list"></div>
@@ -92,9 +84,7 @@
     <div id="networks">
         <section class="section">
             <div class="split-container js-reveal accent-green">
-                <div class="split-img">
-                    <div class="media-shell logo-shell"><img src="assets/experience/blockrealms-logo.png" alt="BlockRealms operations" class="clickable-img transparent-logo" loading="lazy" decoding="async"></div>
-                </div>
+                <div class="split-img"><div class="media-shell logo-shell"><img src="assets/experience/blockrealms-logo.png" alt="BlockRealms operations" class="clickable-img transparent-logo" loading="lazy" decoding="async"></div></div>
                 <div class="split-text">
                     <span class="badge badge-green">Staff & Operations - Active</span>
                     <h2>BlockRealms Network</h2>
@@ -110,9 +100,7 @@
 
         <section class="section alt-row">
             <div class="split-container js-reveal accent-blue">
-                <div class="split-img">
-                    <div class="media-shell"><img src="assets/experience/kudas-kingdom.jpeg" alt="Kuda's Kingdom community" class="clickable-img" loading="lazy" decoding="async"></div>
-                </div>
+                <div class="split-img"><div class="media-shell"><img src="assets/experience/kudas-kingdom.jpeg" alt="Kuda's Kingdom community" class="clickable-img" loading="lazy" decoding="async"></div></div>
                 <div class="split-text">
                     <span class="badge badge-blue">Administrator</span>
                     <h2>Kuda's Kingdom</h2>
@@ -127,9 +115,7 @@
 
         <section class="section">
             <div class="split-container js-reveal accent-cyan">
-                <div class="split-img">
-                    <div class="media-shell"><img src="assets/experience/adams-army.jpeg" alt="Adam's Army Discord" class="clickable-img" loading="lazy" decoding="async"></div>
-                </div>
+                <div class="split-img"><div class="media-shell"><img src="assets/experience/adams-army.jpeg" alt="Adam's Army Discord" class="clickable-img" loading="lazy" decoding="async"></div></div>
                 <div class="split-text">
                     <span class="badge badge-cyan">Community Manager</span>
                     <h2>Adam's Army</h2>
@@ -144,25 +130,19 @@
 
         <section class="section alt-row">
             <div class="split-container js-reveal accent-blue">
-                <div class="split-img">
-                    <div class="media-shell"><img src="assets/experience/adam-amir-ban-appeal.jpeg" alt="Adam and Amir's ban appeal server" class="clickable-img" loading="lazy" decoding="async"></div>
-                </div>
+                <div class="split-img"><div class="media-shell"><img src="assets/experience/adam-amir-ban-appeal.jpeg" alt="Adam and Amir's ban appeal server" class="clickable-img" loading="lazy" decoding="async"></div></div>
                 <div class="split-text">
                     <span class="badge badge-blue">Community Manager</span>
                     <h2>Adam/Amir's Ban Appeal Server</h2>
                     <p>I help as a community manager by keeping the ban appeal community organized, assisting with communication, and helping make the appeal process clearer for everyone involved.</p>
-                    <div class="inline-link-row">
-                        <a href="https://discord.gg/EVJneAXAZR" target="_blank" class="badge badge-blue cta-button" rel="noopener">Appeal Discord</a>
-                    </div>
+                    <div class="inline-link-row"><a href="https://discord.gg/EVJneAXAZR" target="_blank" class="badge badge-blue cta-button" rel="noopener">Appeal Discord</a></div>
                 </div>
             </div>
         </section>
 
         <section class="section">
             <div class="split-container js-reveal accent-purple">
-                <div class="split-img">
-                    <div class="media-shell"><img src="assets/experience/powercraft-smp.jpeg" alt="PowerCraft SMP" class="clickable-img" loading="lazy" decoding="async"></div>
-                </div>
+                <div class="split-img"><div class="media-shell"><img src="assets/experience/powercraft-smp.jpeg" alt="PowerCraft SMP" class="clickable-img" loading="lazy" decoding="async"></div></div>
                 <div class="split-text">
                     <span class="badge badge-purple">Founder / Owner - Inactive</span>
                     <h2>PowerCraft SMP</h2>
@@ -173,9 +153,7 @@
 
         <section class="section alt-row">
             <div class="split-container js-reveal accent-orange">
-                <div class="split-img">
-                    <div class="media-shell"><img src="assets/experience/dimehosting-framework.webp" alt="DimeHosting framework" class="clickable-img" loading="lazy" decoding="async"></div>
-                </div>
+                <div class="split-img"><div class="media-shell"><img src="assets/experience/dimehosting-framework.webp" alt="DimeHosting framework" class="clickable-img" loading="lazy" decoding="async"></div></div>
                 <div class="split-text">
                     <span class="badge badge-orange">Founder / Owner - Inactive</span>
                     <h2>DimeHosting Framework</h2>
@@ -191,19 +169,10 @@
                 <span class="badge badge-green">3D Web Game</span>
                 <h2>Tung Tung Sahoor: Maze Hunt</h2>
                 <p class="mid-p">A browser-based 3D maze game with survival gameplay, enemy movement, weapon progression, and interactive map navigation.</p>
-                <div class="project-cta-wrap">
-                    <a href="https://tunggame.diamondgamer.xyz/" target="_blank" class="badge badge-cyan cta-button" rel="noopener">
-                        Play Game
-                    </a>
-                </div>
-
+                <div class="project-cta-wrap"><a href="https://tunggame.diamondgamer.xyz/" target="_blank" class="badge badge-cyan cta-button" rel="noopener">Play Game</a></div>
                 <div class="img-grid-dual">
-                    <div class="media-shell">
-                        <img src="assets/projects/tung-tung-sahoor-menu.png" alt="Tung Tung Sahoor main menu" class="clickable-img" loading="lazy" decoding="async">
-                    </div>
-                    <div class="media-shell">
-                        <img src="assets/projects/tung-tung-sahoor-gameplay.jpeg" alt="Tung Tung Sahoor gameplay" class="clickable-img" loading="lazy" decoding="async">
-                    </div>
+                    <div class="media-shell"><img src="assets/projects/tung-tung-sahoor-menu.png" alt="Tung Tung Sahoor main menu" class="clickable-img" loading="lazy" decoding="async"></div>
+                    <div class="media-shell"><img src="assets/projects/tung-tung-sahoor-gameplay.jpeg" alt="Tung Tung Sahoor gameplay" class="clickable-img" loading="lazy" decoding="async"></div>
                 </div>
             </div>
         </section>
@@ -213,17 +182,8 @@
                 <span class="badge badge-green">Utility Tool</span>
                 <h2>GuildReceipt Application</h2>
                 <p class="mid-p">A receipt generator that formats transactions into clean records and sends them through Discord webhooks for easier community and guild tracking.</p>
-                <div class="project-cta-wrap">
-                    <a href="https://receipt-generator.diamondgamer.xyz/" target="_blank" class="badge badge-cyan cta-button" rel="noopener">
-                        Launch Application
-                    </a>
-                </div>
-
-                <div class="img-block-single">
-                    <div class="media-shell">
-                        <img src="assets/projects/guildreceipt-dashboard.png" alt="GuildReceipt dashboard panel" class="clickable-img" loading="lazy" decoding="async">
-                    </div>
-                </div>
+                <div class="project-cta-wrap"><a href="https://receipt-generator.diamondgamer.xyz/" target="_blank" class="badge badge-cyan cta-button" rel="noopener">Launch Application</a></div>
+                <div class="img-block-single"><div class="media-shell"><img src="assets/projects/guildreceipt-dashboard.png" alt="GuildReceipt dashboard panel" class="clickable-img" loading="lazy" decoding="async"></div></div>
             </div>
         </section>
     </div>
@@ -236,44 +196,22 @@
                 <p>A quick look at the kind of work I usually do for creators, communities, and online projects.</p>
             </div>
             <div class="highlights-grid">
-                <article class="highlight-card">
-                    <span class="highlight-number">01</span>
-                    <h3>Staff Team Support</h3>
-                    <p>Helping organize staff roles, moderation expectations, logs, and review systems so teams can work clearly.</p>
-                </article>
-                <article class="highlight-card">
-                    <span class="highlight-number">02</span>
-                    <h3>Community Management</h3>
-                    <p>Keeping Discord communities easier to manage with better channels, rules, member flow, and support systems.</p>
-                </article>
-                <article class="highlight-card">
-                    <span class="highlight-number">03</span>
-                    <h3>Minecraft Plugin Configs</h3>
-                    <p>I edit plugin configs, permissions, rewards, menus, and server settings that are usually a hassle for Minecraft server owners to manage.</p>
-                </article>
+                <article class="highlight-card"><span class="highlight-number">01</span><h3>Staff Team Support</h3><p>Helping organize staff roles, moderation expectations, logs, and review systems so teams can work clearly.</p></article>
+                <article class="highlight-card"><span class="highlight-number">02</span><h3>Community Management</h3><p>Keeping Discord communities easier to manage with better channels, rules, member flow, and support systems.</p></article>
+                <article class="highlight-card"><span class="highlight-number">03</span><h3>Minecraft Plugin Configs</h3><p>I edit plugin configs, permissions, rewards, menus, and server settings that are usually a hassle for Minecraft server owners to manage.</p></article>
             </div>
         </div>
     </section>
 
     <section class="section contact-section" id="contact">
-        <div class="contact-container js-reveal">
+        <div class="contact-container contact-embed-container js-reveal">
             <div class="contact-copy">
                 <span class="badge badge-cyan">Contact</span>
                 <h2>Get In Touch</h2>
-                <p>Need staff help, community management, Minecraft plugin configs, or project support? Email me or copy my Discord username and message me directly.</p>
+                <p>Use the secure contact form here without leaving the portfolio. The contact page is embedded directly inside DiamondGamer.xyz instead of redirecting visitors away.</p>
             </div>
-            <div class="contact-card">
-                <div class="contact-method">
-                    <span class="contact-label">Email</span>
-                    <a href="mailto:diamond@diamondgamer.xyz" class="contact-value">diamond@diamondgamer.xyz</a>
-                </div>
-                <div class="contact-method">
-                    <span class="contact-label">Discord</span>
-                    <button class="contact-trigger-btn" id="contactBtn">
-                        <span class="btn-text">Copy Discord Username</span>
-                        <span class="btn-glow-effect"></span>
-                    </button>
-                </div>
+            <div class="contact-card contact-frame-card">
+                <iframe src="https://contact.diamondgamer.xyz/" title="DiamondGamer contact form" class="contact-embed-frame" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </div>
     </section>
