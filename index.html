@@ -36,10 +36,13 @@
         .contact-container { width: min(1160px, 100%); margin-left: auto; margin-right: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; justify-items: stretch; }
         .contact-copy, .contact-card, .contact-method { min-width: 0; }
         .contact-value { display: inline-block; max-width: 100%; white-space: normal; overflow-wrap: anywhere; word-break: normal; line-height: 1.35; }
-        @media (max-width: 1000px) { .contact-container { grid-template-columns: 1fr; } }
+        .contact-container.contact-embed-container { grid-template-columns: minmax(280px, .75fr) minmax(420px, 1.25fr); }
+        .contact-frame-card { min-height: 690px; padding: 0; overflow: hidden; }
+        .contact-embed-frame { width: 100%; height: 690px; display: block; border: 0; border-radius: inherit; background: #050b18; }
+        @media (max-width: 1000px) { .contact-container, .contact-container.contact-embed-container { grid-template-columns: 1fr; } .contact-frame-card, .contact-embed-frame { min-height: 760px; height: 760px; } }
         @media (max-width: 900px) { #software .img-grid-dual, .highlights-grid { grid-template-columns: 1fr; } }
     </style>
-    <meta name="site-version" content="16">
+    <meta name="site-version" content="17">
 </head>
 <body>
     <script src="intro.js?v=intro-1"></script>
@@ -78,7 +81,7 @@
 
     <section class="section highlights-section" id="highlights"><div class="container js-reveal"><div class="center-header"><span class="badge badge-cyan">Highlights</span><h2>What I Help With</h2><p>A quick look at the kind of work I usually do for creators, communities, and online projects.</p></div><div class="highlights-grid"><article class="highlight-card"><span class="highlight-number">01</span><h3>Staff Team Support</h3><p>Helping organize staff roles, moderation expectations, logs, and review systems so teams can work clearly.</p></article><article class="highlight-card"><span class="highlight-number">02</span><h3>Community Management</h3><p>Keeping Discord communities easier to manage with better channels, rules, member flow, and support systems.</p></article><article class="highlight-card"><span class="highlight-number">03</span><h3>Minecraft Plugin Configs</h3><p>I edit plugin configs, permissions, rewards, menus, and server settings that are usually a hassle for Minecraft server owners to manage.</p></article></div></div></section>
 
-    <section class="section contact-section" id="contact"><div class="contact-container js-reveal"><div class="contact-copy"><span class="badge badge-cyan">Contact</span><h2>Get In Touch</h2><p>Need staff help, community management, Minecraft plugin configs, or project support? Email me or copy my Discord username and message me directly.</p></div><div class="contact-card"><div class="contact-method"><span class="contact-label">Email</span><a href="mailto:diamond@diamondgamer.xyz" class="contact-value">diamond@diamondgamer.xyz</a></div><div class="contact-method"><span class="contact-label">Discord</span><button class="contact-trigger-btn" id="contactBtn"><span class="btn-text">Copy Discord Username</span><span class="btn-glow-effect"></span></button></div></div></div></section>
+    <section class="section contact-section" id="contact"><div class="contact-container contact-embed-container js-reveal"><div class="contact-copy"><span class="badge badge-cyan">Contact</span><h2>Get In Touch</h2><p>Use the secure contact form here without leaving the portfolio. The contact page is embedded directly inside DiamondGamer.xyz instead of redirecting visitors away.</p></div><div class="contact-card contact-frame-card"><iframe src="https://contact.diamondgamer.xyz/" title="DiamondGamer contact form" class="contact-embed-frame" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div></section>
 
     <footer class="footer"><div class="footer-inner"><p class="f-title">DiamondGamer Portfolio</p><p>&copy; 2026. All operations authenticated.</p></div></footer>
 
