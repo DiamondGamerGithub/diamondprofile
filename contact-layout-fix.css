@@ -1,0 +1,169 @@
+/* DiamondGamer contact embed layout only.
+   This does not include or copy the contact website code. It only styles the iframe wrapper. */
+
+.contact-section {
+  position: relative !important;
+  padding: clamp(80px, 8vw, 120px) 20px !important;
+  overflow-x: hidden !important;
+}
+
+.contact-section::before {
+  display: none !important;
+}
+
+.contact-container.contact-embed-container {
+  width: min(1280px, calc(100vw - 56px)) !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(300px, 0.42fr) minmax(620px, 0.58fr) !important;
+  gap: clamp(24px, 4vw, 44px) !important;
+  align-items: stretch !important;
+  padding: clamp(18px, 2.8vw, 30px) !important;
+  border: 1px solid rgba(125, 211, 252, 0.18) !important;
+  border-radius: 34px !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.032)),
+    rgba(6, 14, 28, 0.74) !important;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36), 0 0 54px rgba(56, 189, 248, 0.08) !important;
+  backdrop-filter: blur(14px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(130%) !important;
+  overflow: hidden !important;
+}
+
+.contact-embed-container .contact-copy {
+  min-height: 760px !important;
+  height: 100% !important;
+  padding: clamp(30px, 4vw, 54px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  border-radius: 26px !important;
+  border: 1px solid rgba(125, 211, 252, 0.14) !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(56, 189, 248, 0.16), transparent 28rem),
+    linear-gradient(180deg, rgba(10, 24, 46, 0.76), rgba(4, 13, 25, 0.66)) !important;
+  box-shadow: none !important;
+}
+
+.contact-embed-container .contact-copy .badge {
+  margin-bottom: 18px !important;
+}
+
+.contact-embed-container .contact-copy h2 {
+  max-width: 420px !important;
+  margin: 0 0 18px !important;
+  text-align: left !important;
+  font-size: clamp(3rem, 5vw, 5.6rem) !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.075em !important;
+}
+
+.contact-embed-container .contact-copy p {
+  max-width: 430px !important;
+  margin: 0 !important;
+  text-align: left !important;
+  color: rgba(219, 234, 254, 0.76) !important;
+  font-size: clamp(1rem, 1.35vw, 1.12rem) !important;
+  line-height: 1.75 !important;
+}
+
+.contact-embed-container .contact-copy::after {
+  content: "Private request form • Secure backend • No redirect";
+  display: inline-flex;
+  margin-top: 28px;
+  padding: 12px 15px;
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  color: rgba(226, 240, 255, 0.82);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.contact-frame-card {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 760px !important;
+  min-height: 760px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 26px !important;
+  border: 1px solid rgba(125, 211, 252, 0.16) !important;
+  background: #06111f !important;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.30) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.contact-frame-card::before {
+  display: none !important;
+}
+
+.contact-embed-frame {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 760px !important;
+  display: block !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #06111f !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 1000px) {
+  .contact-container.contact-embed-container {
+    grid-template-columns: 1fr !important;
+    width: min(100%, 720px) !important;
+    padding: 16px !important;
+  }
+
+  .contact-embed-container .contact-copy {
+    min-height: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 28px 20px !important;
+  }
+
+  .contact-embed-container .contact-copy h2,
+  .contact-embed-container .contact-copy p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .contact-frame-card,
+  .contact-embed-frame {
+    height: 820px !important;
+    min-height: 820px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .contact-container.contact-embed-container {
+    width: 100% !important;
+    border-radius: 26px !important;
+  }
+
+  .contact-embed-container .contact-copy::after {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .contact-frame-card,
+  .contact-embed-frame {
+    height: 880px !important;
+    min-height: 880px !important;
+  }
+}
