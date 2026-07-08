@@ -434,3 +434,154 @@ h2 {
         grid-template-columns: 1fr !important;
     }
 }
+
+/* Contact embed polish. This only styles the iframe wrapper on diamondgamer.xyz.
+   The actual contact website/app stays separate on contact.diamondgamer.xyz. */
+.contact-section {
+    position: relative !important;
+    padding-top: clamp(82px, 9vw, 120px) !important;
+    padding-bottom: clamp(74px, 9vw, 118px) !important;
+    overflow-x: clip !important;
+}
+
+.contact-section::before {
+    content: "";
+    position: absolute;
+    inset: 3% max(-18vw, -180px) 4%;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 12%, rgba(63, 182, 255, 0.22), transparent 34rem),
+        radial-gradient(circle at 88% 22%, rgba(89, 217, 155, 0.10), transparent 24rem),
+        linear-gradient(135deg, rgba(6, 17, 31, 0.30), rgba(7, 24, 43, 0.10));
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+.contact-container.contact-embed-container {
+    width: min(860px, calc(100vw - 34px)) !important;
+    max-width: 860px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    overflow: visible !important;
+}
+
+.contact-embed-container .contact-copy {
+    min-height: 0 !important;
+    padding: clamp(24px, 4vw, 34px) clamp(20px, 4vw, 34px) !important;
+    display: grid !important;
+    justify-items: center !important;
+    text-align: center !important;
+    border-radius: 24px !important;
+    background:
+        radial-gradient(circle at 18% 0%, rgba(63, 182, 255, 0.18), transparent 34rem),
+        linear-gradient(180deg, rgba(16, 40, 66, 0.62), rgba(12, 26, 44, 0.54)) !important;
+}
+
+.contact-embed-container .contact-copy .badge {
+    margin-bottom: 4px !important;
+    color: #bdeaff !important;
+    background: rgba(63, 182, 255, 0.11) !important;
+    border-color: rgba(115, 209, 255, 0.26) !important;
+}
+
+.contact-embed-container .contact-copy h2,
+.contact-embed-container .contact-copy p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.contact-embed-container .contact-copy p {
+    max-width: 680px !important;
+    color: rgba(213, 230, 247, 0.78) !important;
+}
+
+.contact-frame-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 970px !important;
+    padding: 12px !important;
+    overflow: hidden !important;
+    border-radius: 26px !important;
+    border: 1px solid rgba(164, 195, 230, 0.18) !important;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(63, 182, 255, 0.16), transparent 32rem),
+        linear-gradient(180deg, rgba(12, 26, 44, 0.72), rgba(4, 16, 29, 0.62)) !important;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42), 0 0 46px rgba(63, 182, 255, 0.10) !important;
+    backdrop-filter: blur(18px) saturate(135%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(135%) !important;
+}
+
+.contact-frame-card::before {
+    content: "Secure request form" !important;
+    position: absolute !important;
+    top: 20px !important;
+    left: 22px !important;
+    z-index: 2 !important;
+    padding: 8px 12px !important;
+    border: 1px solid rgba(115, 209, 255, 0.28) !important;
+    border-radius: 999px !important;
+    background: rgba(6, 17, 31, 0.74) !important;
+    color: #73d1ff !important;
+    font-size: 0.72rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    pointer-events: none !important;
+}
+
+.contact-embed-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 946px !important;
+    min-height: 946px !important;
+    display: block !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+    background: #06111f !important;
+    overflow: hidden !important;
+}
+
+@media (max-width: 900px) {
+    .contact-section {
+        padding-top: 64px !important;
+        padding-bottom: calc(48px + env(safe-area-inset-bottom)) !important;
+    }
+
+    .contact-container.contact-embed-container {
+        width: min(100%, 540px) !important;
+        gap: 14px !important;
+    }
+
+    .contact-embed-container .contact-copy {
+        padding: 22px 18px !important;
+        border-radius: 22px !important;
+    }
+
+    .contact-frame-card {
+        min-height: 990px !important;
+        padding: 8px !important;
+        border-radius: 24px !important;
+    }
+
+    .contact-frame-card::before {
+        top: 15px !important;
+        left: 15px !important;
+        font-size: 0.62rem !important;
+        padding: 7px 10px !important;
+    }
+
+    .contact-embed-frame {
+        height: 974px !important;
+        min-height: 974px !important;
+        border-radius: 18px !important;
+    }
+}
