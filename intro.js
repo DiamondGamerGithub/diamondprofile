@@ -1,146 +1,20 @@
 (() => {
-  const href = 'design-refresh.css?v=20260706-ui-1';
-  if (!document.querySelector(`link[href="${href}"]`)) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    document.head.appendChild(link);
-  }
+  const stylesheets = [
+    'design-refresh.css?v=20260706-ui-1',
+    'contact-layout-fix.css?v=contact-two-column-1'
+  ];
+
+  stylesheets.forEach((href) => {
+    if (!document.querySelector(`link[href="${href}"]`)) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  });
 })();
 
 (() => {
-  const style = document.createElement('style');
-  style.textContent = `
-    .contact-section {
-      overflow-x: hidden !important;
-      padding-top: clamp(54px, 7vw, 88px) !important;
-      padding-bottom: clamp(54px, 7vw, 88px) !important;
-    }
-
-    .contact-container.contact-embed-container {
-      width: min(1180px, calc(100vw - 36px)) !important;
-      max-width: 1180px !important;
-      display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 18px !important;
-      align-items: stretch !important;
-      justify-items: stretch !important;
-      overflow: visible !important;
-    }
-
-    .contact-embed-container .contact-copy {
-      min-height: 0 !important;
-      padding: clamp(24px, 4vw, 38px) !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      text-align: center !important;
-      border-radius: 34px 22px 34px 22px !important;
-    }
-
-    .contact-embed-container .contact-copy h2,
-    .contact-embed-container .contact-copy p {
-      text-align: center !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-
-    .contact-embed-container .contact-copy p {
-      max-width: 760px !important;
-    }
-
-    .contact-frame-card {
-      position: relative !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      min-width: 0 !important;
-      min-height: 880px !important;
-      padding: 10px !important;
-      overflow: hidden !important;
-      border-radius: 40px 24px 40px 24px !important;
-      background:
-        radial-gradient(circle at 12% 0%, rgba(56, 189, 248, 0.18), transparent 42%),
-        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04)) !important;
-      box-shadow: 0 28px 90px rgba(0,0,0,.32), 0 0 50px rgba(56,189,248,.10) !important;
-    }
-
-    .contact-frame-card::before {
-      content: "Secure Contact Portal";
-      position: absolute;
-      top: 18px;
-      left: 22px;
-      z-index: 2;
-      padding: 8px 12px;
-      border: 1px solid rgba(147, 197, 253, .22);
-      border-radius: 999px;
-      background: rgba(3, 8, 20, .72);
-      color: #dbeafe;
-      font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: .72rem;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      backdrop-filter: blur(12px);
-      pointer-events: none;
-    }
-
-    .contact-embed-frame {
-      width: 100% !important;
-      max-width: 100% !important;
-      min-width: 0 !important;
-      height: 860px !important;
-      min-height: 860px !important;
-      display: block !important;
-      border: 0 !important;
-      border-radius: 30px 18px 30px 18px !important;
-      overflow: hidden !important;
-      background: #050b18 !important;
-    }
-
-    @media (max-width: 760px) {
-      .contact-section {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-        padding-bottom: calc(36px + env(safe-area-inset-bottom)) !important;
-      }
-
-      .contact-container.contact-embed-container {
-        width: min(100%, 540px) !important;
-        gap: 14px !important;
-        padding: 0 !important;
-        background: transparent !important;
-        border: 0 !important;
-        box-shadow: none !important;
-      }
-
-      .contact-embed-container .contact-copy {
-        padding: 22px 18px !important;
-        border-radius: 28px !important;
-      }
-
-      .contact-frame-card {
-        min-height: 850px !important;
-        padding: 7px !important;
-        border-radius: 28px !important;
-      }
-
-      .contact-frame-card::before {
-        top: 13px;
-        left: 14px;
-        font-size: .62rem;
-        padding: 7px 10px;
-      }
-
-      .contact-embed-frame {
-        height: 835px !important;
-        min-height: 835px !important;
-        border-radius: 22px !important;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-
   const applyContactFrameFixes = () => {
     document.querySelectorAll('.contact-embed-frame').forEach((frame) => {
       frame.setAttribute('scrolling', 'no');
@@ -154,6 +28,30 @@
   } else {
     applyContactFrameFixes();
   }
+})();
+
+(() => {
+  const blockedKeys = new Set(['F12']);
+
+  document.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const key = String(event.key || '').toLowerCase();
+    const blocksDevTools =
+      blockedKeys.has(event.key) ||
+      (event.ctrlKey && event.shiftKey && ['i', 'j', 'c'].includes(key)) ||
+      (event.ctrlKey && ['u', 's'].includes(key)) ||
+      (event.metaKey && event.altKey && ['i', 'j', 'c'].includes(key)) ||
+      (event.metaKey && ['u', 's'].includes(key));
+
+    if (blocksDevTools) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }
+  }, true);
 })();
 
 (() => {
@@ -294,40 +192,14 @@
       animation: dgIntroOut .62s cubic-bezier(.7, 0, .84, 0) forwards;
     }
 
-    @keyframes dgIntroCard {
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes dgLetterIn {
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes dgFadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes dgLoad {
-      to { transform: scaleX(1); }
-    }
-
-    @keyframes dgGridIn {
-      from { opacity: 0; transform: perspective(700px) rotateX(64deg) translateY(22%); }
-      to { opacity: .22; transform: perspective(700px) rotateX(58deg) translateY(10%); }
-    }
-
-    @keyframes dgSweep {
-      to { transform: translateX(120%); }
-    }
-
-    @keyframes dgMarkPulse {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-4px) scale(1.035); }
-    }
-
-    @keyframes dgIntroOut {
-      to { opacity: 0; filter: blur(10px); transform: scale(1.04); visibility: hidden; }
-    }
+    @keyframes dgIntroCard { to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes dgLetterIn { to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes dgFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes dgLoad { to { transform: scaleX(1); } }
+    @keyframes dgGridIn { from { opacity: 0; transform: perspective(700px) rotateX(64deg) translateY(22%); } to { opacity: .22; transform: perspective(700px) rotateX(58deg) translateY(10%); } }
+    @keyframes dgSweep { to { transform: translateX(120%); } }
+    @keyframes dgMarkPulse { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-4px) scale(1.035); } }
+    @keyframes dgIntroOut { to { opacity: 0; filter: blur(10px); transform: scale(1.04); visibility: hidden; } }
   `;
   document.head.appendChild(style);
 
