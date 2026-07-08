@@ -3,7 +3,7 @@
 
 .contact-section {
   position: relative !important;
-  padding: clamp(80px, 8vw, 120px) 20px !important;
+  padding: clamp(70px, 7vw, 105px) 20px !important;
   overflow-x: hidden !important;
 }
 
@@ -16,7 +16,7 @@
   max-width: 1280px !important;
   margin: 0 auto !important;
   display: grid !important;
-  grid-template-columns: minmax(300px, 0.42fr) minmax(620px, 0.58fr) !important;
+  grid-template-columns: minmax(300px, 0.42fr) minmax(640px, 0.58fr) !important;
   gap: clamp(24px, 4vw, 44px) !important;
   align-items: stretch !important;
   padding: clamp(18px, 2.8vw, 30px) !important;
@@ -28,11 +28,11 @@
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36), 0 0 54px rgba(56, 189, 248, 0.08) !important;
   backdrop-filter: blur(14px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(14px) saturate(130%) !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 .contact-embed-container .contact-copy {
-  min-height: 760px !important;
+  min-height: 1040px !important;
   height: 100% !important;
   padding: clamp(30px, 4vw, 54px) !important;
   display: flex !important;
@@ -88,8 +88,8 @@
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
-  height: 760px !important;
-  min-height: 760px !important;
+  height: 1040px !important;
+  min-height: 1040px !important;
   padding: 0 !important;
   overflow: hidden !important;
   border-radius: 26px !important;
@@ -106,8 +106,8 @@
 
 .contact-embed-frame {
   width: 100% !important;
-  height: 100% !important;
-  min-height: 760px !important;
+  height: 1040px !important;
+  min-height: 1040px !important;
   display: block !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -138,8 +138,8 @@
 
   .contact-frame-card,
   .contact-embed-frame {
-    height: 820px !important;
-    min-height: 820px !important;
+    height: 1080px !important;
+    min-height: 1080px !important;
   }
 }
 
@@ -163,7 +163,7 @@
 
   .contact-frame-card,
   .contact-embed-frame {
-    height: 880px !important;
-    min-height: 880px !important;
+    height: 1120px !important;
+    min-height: 1120px !important;
   }
 }
