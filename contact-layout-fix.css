@@ -3,7 +3,7 @@
 
 .contact-section {
   position: relative !important;
-  padding: clamp(70px, 7vw, 105px) 20px !important;
+  padding: clamp(56px, 6vw, 82px) 20px !important;
   overflow-x: hidden !important;
 }
 
@@ -16,10 +16,10 @@
   max-width: 1280px !important;
   margin: 0 auto !important;
   display: grid !important;
-  grid-template-columns: minmax(300px, 0.42fr) minmax(640px, 0.58fr) !important;
-  gap: clamp(24px, 4vw, 44px) !important;
+  grid-template-columns: minmax(300px, 0.38fr) minmax(640px, 0.62fr) !important;
+  gap: clamp(22px, 3vw, 36px) !important;
   align-items: stretch !important;
-  padding: clamp(18px, 2.8vw, 30px) !important;
+  padding: clamp(16px, 2.4vw, 24px) !important;
   border: 1px solid rgba(125, 211, 252, 0.18) !important;
   border-radius: 34px !important;
   background:
@@ -32,9 +32,9 @@
 }
 
 .contact-embed-container .contact-copy {
-  min-height: 1040px !important;
+  min-height: 700px !important;
   height: 100% !important;
-  padding: clamp(30px, 4vw, 54px) !important;
+  padding: clamp(30px, 4vw, 52px) !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
@@ -56,7 +56,7 @@
   max-width: 420px !important;
   margin: 0 0 18px !important;
   text-align: left !important;
-  font-size: clamp(3rem, 5vw, 5.6rem) !important;
+  font-size: clamp(3rem, 5vw, 5.4rem) !important;
   line-height: 0.9 !important;
   letter-spacing: -0.075em !important;
 }
@@ -88,8 +88,8 @@
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
-  height: 1040px !important;
-  min-height: 1040px !important;
+  height: 700px !important;
+  min-height: 700px !important;
   padding: 0 !important;
   overflow: hidden !important;
   border-radius: 26px !important;
@@ -105,14 +105,17 @@
 }
 
 .contact-embed-frame {
-  width: 100% !important;
-  height: 1040px !important;
-  min-height: 1040px !important;
+  --contact-scale: 0.70;
+  width: calc(100% / var(--contact-scale)) !important;
+  height: calc(100% / var(--contact-scale)) !important;
+  min-height: calc(700px / var(--contact-scale)) !important;
   display: block !important;
   border: 0 !important;
   border-radius: 0 !important;
   background: #06111f !important;
   overflow: hidden !important;
+  transform: scale(var(--contact-scale)) !important;
+  transform-origin: top left !important;
 }
 
 @media (max-width: 1000px) {
@@ -136,10 +139,14 @@
     margin-right: auto !important;
   }
 
-  .contact-frame-card,
+  .contact-frame-card {
+    height: 760px !important;
+    min-height: 760px !important;
+  }
+
   .contact-embed-frame {
-    height: 1080px !important;
-    min-height: 1080px !important;
+    --contact-scale: 0.78;
+    min-height: calc(760px / var(--contact-scale)) !important;
   }
 }
 
@@ -161,9 +168,13 @@
     white-space: normal;
   }
 
-  .contact-frame-card,
+  .contact-frame-card {
+    height: 820px !important;
+    min-height: 820px !important;
+  }
+
   .contact-embed-frame {
-    height: 1120px !important;
-    min-height: 1120px !important;
+    --contact-scale: 0.90;
+    min-height: calc(820px / var(--contact-scale)) !important;
   }
 }
