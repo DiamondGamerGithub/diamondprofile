@@ -7,9 +7,7 @@
   overflow-x: hidden !important;
 }
 
-.contact-section::before {
-  display: none !important;
-}
+.contact-section::before { display: none !important; }
 
 .contact-container.contact-embed-container {
   width: min(1280px, calc(100vw - 56px)) !important;
@@ -22,10 +20,8 @@
   padding: clamp(16px, 2.4vw, 24px) !important;
   border: 1px solid rgba(125, 211, 252, 0.18) !important;
   border-radius: 34px !important;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.032)),
-    rgba(6, 14, 28, 0.74) !important;
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36), 0 0 54px rgba(56, 189, 248, 0.08) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.032)), rgba(6,14,28,.74) !important;
+  box-shadow: 0 28px 90px rgba(0,0,0,.36), 0 0 54px rgba(56,189,248,.08) !important;
   backdrop-filter: blur(14px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(14px) saturate(130%) !important;
   overflow: visible !important;
@@ -33,8 +29,8 @@
 
 .contact-embed-container .contact-copy,
 .contact-frame-card {
-  height: 680px !important;
-  min-height: 680px !important;
+  height: 760px !important;
+  min-height: 760px !important;
 }
 
 .contact-embed-container .contact-copy {
@@ -46,129 +42,127 @@
   text-align: left !important;
   border-radius: 26px !important;
   border: 1px solid rgba(125, 211, 252, 0.14) !important;
-  background:
-    radial-gradient(circle at 12% 0%, rgba(56, 189, 248, 0.16), transparent 28rem),
-    linear-gradient(180deg, rgba(10, 24, 46, 0.76), rgba(4, 13, 25, 0.66)) !important;
+  background: radial-gradient(circle at 12% 0%, rgba(56,189,248,.16), transparent 28rem), linear-gradient(180deg, rgba(10,24,46,.76), rgba(4,13,25,.66)) !important;
   box-shadow: none !important;
 }
 
-.contact-embed-container .contact-copy .badge {
-  margin-bottom: 18px !important;
-}
+.contact-embed-container .contact-copy .badge { margin-bottom: 18px !important; }
 
 .contact-embed-container .contact-copy h2 {
   max-width: 420px !important;
   margin: 0 0 18px !important;
   text-align: left !important;
   font-size: clamp(3rem, 5vw, 5.4rem) !important;
-  line-height: 0.9 !important;
-  letter-spacing: -0.075em !important;
+  line-height: .9 !important;
+  letter-spacing: -.075em !important;
 }
 
 .contact-embed-container .contact-copy p {
   max-width: 430px !important;
   margin: 0 0 22px !important;
   text-align: left !important;
-  color: rgba(219, 234, 254, 0.76) !important;
+  color: rgba(219,234,254,.76) !important;
   font-size: clamp(1rem, 1.35vw, 1.12rem) !important;
   line-height: 1.75 !important;
 }
 
-.contact-embed-container .contact-copy::after {
-  display: none !important;
-}
-
 .contact-methods-panel {
-  width: 100%;
-  display: grid;
-  gap: 12px;
-  margin-top: 6px;
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+  margin-top: 12px !important;
 }
 
-.contact-method-row {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 14px;
-  align-items: center;
-  padding: 16px;
-  border: 1px solid rgba(125, 211, 252, 0.16);
-  border-radius: 20px;
-  background: rgba(2, 8, 20, 0.34);
-  text-decoration: none;
-  color: rgba(226, 240, 255, 0.92);
+.contact-method-row,
+a.contact-method-row,
+button.contact-method-row {
+  width: 100% !important;
+  min-height: 72px !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 14px !important;
+  align-items: center !important;
+  padding: 16px !important;
+  border: 1px solid rgba(125,211,252,.18) !important;
+  border-radius: 20px !important;
+  background: rgba(2,8,20,.46) !important;
+  color: rgba(226,240,255,.94) !important;
+  text-decoration: none !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  font: inherit !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.025) !important;
 }
 
 .contact-method-row:hover {
-  border-color: rgba(125, 211, 252, 0.30);
-  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(125,211,252,.34) !important;
+  background: rgba(56,189,248,.10) !important;
 }
 
 .contact-method-label {
-  display: block;
-  color: rgba(219, 234, 254, 0.62);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
+  display: block !important;
+  color: rgba(219,234,254,.62) !important;
+  font-size: .72rem !important;
+  font-weight: 900 !important;
+  letter-spacing: .10em !important;
+  text-transform: uppercase !important;
 }
 
 .contact-method-value {
-  display: block;
-  margin-top: 4px;
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 900;
-  overflow-wrap: anywhere;
+  display: block !important;
+  margin-top: 4px !important;
+  color: #fff !important;
+  font-size: .95rem !important;
+  font-weight: 900 !important;
+  overflow-wrap: anywhere !important;
 }
 
 .contact-method-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 76px;
-  padding: 10px 12px;
-  border: 0;
-  border-radius: 999px;
-  color: #00111f;
-  background: linear-gradient(135deg, #e0f7ff, #38bdf8 50%, #60e0ac);
-  font: inherit;
-  font-size: 0.78rem;
-  font-weight: 950;
-  cursor: pointer;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 86px !important;
+  min-height: 40px !important;
+  padding: 10px 14px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  color: #00111f !important;
+  background: linear-gradient(135deg, #e0f7ff, #38bdf8 50%, #60e0ac) !important;
+  font-size: .78rem !important;
+  font-weight: 950 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
 }
 
 .contact-frame-card {
-  position: relative !important;
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
   border-radius: 26px !important;
-  border: 1px solid rgba(125, 211, 252, 0.16) !important;
+  border: 1px solid rgba(125,211,252,.16) !important;
   background: #06111f !important;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.30) !important;
+  box-shadow: 0 24px 80px rgba(0,0,0,.30) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
 
-.contact-frame-card::before {
-  display: none !important;
-}
+.contact-frame-card::before { display: none !important; }
 
 .contact-embed-frame {
-  --contact-scale: 0.70;
-  width: calc(100% / var(--contact-scale)) !important;
-  height: calc(100% / var(--contact-scale)) !important;
-  min-height: calc(680px / var(--contact-scale)) !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 760px !important;
   display: block !important;
   border: 0 !important;
   border-radius: 0 !important;
   background: #06111f !important;
-  overflow: hidden !important;
-  transform: scale(var(--contact-scale)) !important;
-  transform-origin: top left !important;
+  overflow: auto !important;
+  transform: none !important;
 }
 
 @media (max-width: 1000px) {
@@ -193,14 +187,10 @@
     margin-right: auto !important;
   }
 
-  .contact-frame-card {
-    height: 760px !important;
-    min-height: 760px !important;
-  }
-
+  .contact-frame-card,
   .contact-embed-frame {
-    --contact-scale: 0.78;
-    min-height: calc(760px / var(--contact-scale)) !important;
+    height: 900px !important;
+    min-height: 900px !important;
   }
 }
 
@@ -215,21 +205,18 @@
     border-radius: 26px !important;
   }
 
-  .contact-method-row {
-    grid-template-columns: 1fr;
+  .contact-method-row,
+  a.contact-method-row,
+  button.contact-method-row {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
   }
 
-  .contact-method-action {
-    width: 100%;
-  }
+  .contact-method-action { width: 100% !important; }
 
-  .contact-frame-card {
-    height: 820px !important;
-    min-height: 820px !important;
-  }
-
+  .contact-frame-card,
   .contact-embed-frame {
-    --contact-scale: 0.90;
-    min-height: calc(820px / var(--contact-scale)) !important;
+    height: 980px !important;
+    min-height: 980px !important;
   }
 }
