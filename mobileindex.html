@@ -16,16 +16,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="mobilestyle.css?v=app-mobile-8">
+    <link rel="stylesheet" href="mobilestyle.css?v=app-mobile-9">
+    <link rel="stylesheet" href="contact-layout-fix.css?v=contact-noscale-1">
     <style>
-        .contact-embed-container { display: grid; gap: 16px; }
-        .contact-frame-card { padding: 0 !important; min-height: 780px; overflow: hidden; }
-        .contact-embed-frame { width: 100%; min-height: 780px; height: 780px; display: block; border: 0; border-radius: inherit; background: #050b18; }
+        .contact-embed-container { display: grid !important; gap: 16px !important; }
+        .contact-copy { text-align: center !important; }
+        .contact-copy p { max-width: 390px !important; margin-left: auto !important; margin-right: auto !important; }
+        .contact-methods-panel { width: 100% !important; display: grid !important; gap: 12px !important; margin-top: 18px !important; }
+        .contact-method-row, a.contact-method-row, button.contact-method-row { width: 100% !important; min-height: 74px !important; display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; align-items: center !important; justify-items: center !important; padding: 16px !important; border: 1px solid rgba(125,211,252,.20) !important; border-radius: 20px !important; background: rgba(2,8,20,.46) !important; color: rgba(226,240,255,.94) !important; text-decoration: none !important; text-align: center !important; cursor: pointer !important; appearance: none !important; -webkit-appearance: none !important; font: inherit !important; }
+        .contact-method-label { display: block !important; color: rgba(219,234,254,.62) !important; font-size: .72rem !important; font-weight: 900 !important; letter-spacing: .10em !important; text-transform: uppercase !important; }
+        .contact-method-value { display: block !important; margin-top: 4px !important; color: #fff !important; font-size: .92rem !important; font-weight: 900 !important; overflow-wrap: anywhere !important; }
+        .contact-method-action { width: 100% !important; min-height: 40px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; padding: 10px 14px !important; border-radius: 999px !important; color: #00111f !important; background: linear-gradient(135deg, #e0f7ff, #38bdf8 50%, #60e0ac) !important; font-size: .78rem !important; font-weight: 950 !important; }
+        .contact-frame-card { padding: 0 !important; min-height: 980px !important; height: 980px !important; overflow: hidden !important; }
+        .contact-embed-frame { width: 100% !important; min-height: 980px !important; height: 980px !important; display: block !important; border: 0 !important; border-radius: inherit !important; background: #050b18 !important; transform: none !important; }
     </style>
-    <meta name="site-version" content="app-mobile-9">
+    <meta name="site-version" content="app-mobile-10">
 </head>
 <body>
-    <script src="intro.js?v=intro-mobile-1"></script>
+    <script src="intro.js?v=contact-mobile-1"></script>
     <div id="notificationToast" class="toast-notification">Copied Diamond's Discord username</div>
 
     <div id="lightboxModal" class="lightbox">
@@ -208,10 +216,14 @@
             <div class="contact-copy">
                 <span class="badge badge-cyan">Contact</span>
                 <h2>Get In Touch</h2>
-                <p>Use the secure contact form here without leaving the portfolio. The contact page is embedded directly inside DiamondGamer.xyz instead of redirecting visitors away.</p>
+                <p>Contact Diamond for inquiries, business proposals, collaborations, server work, or community management requests.</p>
+                <div class="contact-methods-panel">
+                    <a class="contact-method-row" href="mailto:diamond@diamondgamer.xyz"><span><span class="contact-method-label">Email</span><span class="contact-method-value">diamond@diamondgamer.xyz</span></span><span class="contact-method-action">Email Me</span></a>
+                    <button class="contact-method-row" type="button" data-copy-contact="therealdiamondgamer"><span><span class="contact-method-label">Discord</span><span class="contact-method-value">therealdiamondgamer</span></span><span class="contact-method-action">Copy</span></button>
+                </div>
             </div>
             <div class="contact-card contact-frame-card">
-                <iframe src="https://contact.diamondgamer.xyz/" title="DiamondGamer contact form" class="contact-embed-frame" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe src="https://contact.diamondgamer.xyz/?embed=1" title="DiamondGamer contact form" class="contact-embed-frame" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </div>
     </section>
@@ -233,6 +245,6 @@
         </div>
     </nav>
 
-    <script src="mobilescript.js?v=app-mobile-8" defer></script>
+    <script src="mobilescript.js?v=app-mobile-9" defer></script>
 </body>
 </html>
