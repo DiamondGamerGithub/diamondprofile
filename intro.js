@@ -1,7 +1,7 @@
 (() => {
   const stylesheets = [
     'design-refresh.css?v=20260706-ui-1',
-    'contact-layout-fix.css?v=contact-methods-1'
+    'contact-layout-fix.css?v=contact-methods-3'
   ];
 
   stylesheets.forEach((href) => {
@@ -12,6 +12,96 @@
       document.head.appendChild(link);
     }
   });
+})();
+
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    .contact-methods-panel {
+      width: 100% !important;
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+      margin-top: 22px !important;
+    }
+
+    .contact-method-row,
+    button.contact-method-row,
+    a.contact-method-row {
+      width: 100% !important;
+      min-height: 70px !important;
+      display: grid !important;
+      grid-template-columns: 1fr auto !important;
+      gap: 14px !important;
+      align-items: center !important;
+      padding: 16px !important;
+      border: 1px solid rgba(125, 211, 252, 0.18) !important;
+      border-radius: 20px !important;
+      background: rgba(2, 8, 20, 0.46) !important;
+      color: rgba(226, 240, 255, 0.94) !important;
+      text-decoration: none !important;
+      text-align: left !important;
+      cursor: pointer !important;
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      font: inherit !important;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.025) !important;
+    }
+
+    .contact-method-row:hover {
+      border-color: rgba(125, 211, 252, 0.34) !important;
+      background: rgba(56, 189, 248, 0.10) !important;
+    }
+
+    .contact-method-label {
+      display: block !important;
+      color: rgba(219, 234, 254, 0.62) !important;
+      font-size: 0.72rem !important;
+      font-weight: 900 !important;
+      letter-spacing: 0.10em !important;
+      text-transform: uppercase !important;
+    }
+
+    .contact-method-value {
+      display: block !important;
+      margin-top: 4px !important;
+      color: #ffffff !important;
+      font-size: 0.95rem !important;
+      font-weight: 900 !important;
+      overflow-wrap: anywhere !important;
+    }
+
+    .contact-method-action {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-width: 82px !important;
+      min-height: 40px !important;
+      padding: 10px 14px !important;
+      border: 0 !important;
+      border-radius: 999px !important;
+      color: #00111f !important;
+      background: linear-gradient(135deg, #e0f7ff, #38bdf8 50%, #60e0ac) !important;
+      font-size: 0.78rem !important;
+      font-weight: 950 !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+    }
+
+    @media (max-width: 560px) {
+      .contact-method-row,
+      button.contact-method-row,
+      a.contact-method-row {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+      }
+
+      .contact-method-action {
+        width: 100% !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 })();
 
 (() => {
@@ -29,12 +119,22 @@
       frame.setAttribute('scrolling', 'no');
       frame.setAttribute('allowtransparency', 'true');
       frame.style.overflow = 'hidden';
+      if (!frame.src.includes('embed=1')) {
+        frame.src = 'https://contact.diamondgamer.xyz/?embed=1';
+      }
     });
   };
 
-  const addContactMethods = () => {
+  const updateContactCopy = () => {
     const copy = document.querySelector('.contact-embed-container .contact-copy');
-    if (!copy || copy.querySelector('.contact-methods-panel')) return;
+    if (!copy) return;
+
+    const paragraph = copy.querySelector('p');
+    if (paragraph) {
+      paragraph.textContent = 'Contact Diamond for inquiries, business proposals, collaborations, server work, or community management requests.';
+    }
+
+    copy.querySelectorAll('.contact-methods-panel').forEach((panel) => panel.remove());
 
     const panel = document.createElement('div');
     panel.className = 'contact-methods-panel';
@@ -44,12 +144,12 @@
           <span class="contact-method-label">Email</span>
           <span class="contact-method-value">diamond@diamondgamer.xyz</span>
         </span>
-        <span class="contact-method-action">Email</span>
+        <span class="contact-method-action">Email Me</span>
       </a>
-      <button class="contact-method-row" type="button" data-copy-contact="diamondgamer">
+      <button class="contact-method-row" type="button" data-copy-contact="therealdiamondgamer">
         <span>
           <span class="contact-method-label">Discord</span>
-          <span class="contact-method-value">diamondgamer</span>
+          <span class="contact-method-value">therealdiamondgamer</span>
         </span>
         <span class="contact-method-action">Copy</span>
       </button>
@@ -59,6 +159,8 @@
   };
 
   const enableContactCopy = () => {
+    if (window.__diamondContactCopyReady) return;
+    window.__diamondContactCopyReady = true;
     document.addEventListener('click', async (event) => {
       const button = event.target.closest('[data-copy-contact]');
       if (!button) return;
@@ -83,7 +185,7 @@
 
   const init = () => {
     applyContactFrameFixes();
-    addContactMethods();
+    updateContactCopy();
     enableContactCopy();
   };
 
@@ -124,11 +226,7 @@
   const style = document.createElement('style');
   style.textContent = `
     .dg-intro-lock { overflow: hidden !important; }
-    .dg-intro-screen {
-      position: fixed; inset: 0; z-index: 2147483646; display: grid; place-items: center; overflow: hidden;
-      background: radial-gradient(circle at 50% 42%, rgba(56, 189, 248, 0.18), transparent 30%), radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.22), transparent 32%), linear-gradient(135deg, #030711, #07040d 52%, #02040a);
-      color: #f8fbff; font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
+    .dg-intro-screen { position: fixed; inset: 0; z-index: 2147483646; display: grid; place-items: center; overflow: hidden; background: radial-gradient(circle at 50% 42%, rgba(56, 189, 248, 0.18), transparent 30%), radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.22), transparent 32%), linear-gradient(135deg, #030711, #07040d 52%, #02040a); color: #f8fbff; font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .dg-intro-screen::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 74px 74px; opacity: .22; transform: perspective(700px) rotateX(58deg) translateY(10%); transform-origin: center bottom; animation: dgGridIn 1.35s cubic-bezier(.16, 1, .3, 1) both; }
     .dg-intro-screen::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(56,189,248,.18), transparent); transform: translateX(-120%); animation: dgSweep 1.15s cubic-bezier(.16, 1, .3, 1) .25s both; }
     .dg-intro-card { position: relative; z-index: 2; width: min(620px, calc(100vw - 40px)); display: grid; justify-items: center; gap: 18px; text-align: center; transform: translateY(18px) scale(.96); opacity: 0; animation: dgIntroCard 1.05s cubic-bezier(.16, 1, .3, 1) .12s both; }
