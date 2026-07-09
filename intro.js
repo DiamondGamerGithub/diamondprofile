@@ -1,7 +1,7 @@
 (() => {
   const stylesheets = [
     'design-refresh.css?v=20260706-ui-1',
-    'contact-layout-fix.css?v=contact-methods-3'
+    'contact-layout-fix.css?v=alignfix-final-1'
   ];
 
   stylesheets.forEach((href) => {
@@ -102,6 +102,70 @@
     }
   `;
   document.head.appendChild(style);
+})();
+
+(() => {
+  const injectFinalContactLayout = () => {
+    if (document.getElementById('dg-final-contact-layout')) return;
+    const style = document.createElement('style');
+    style.id = 'dg-final-contact-layout';
+    style.textContent = `
+      .contact-container.contact-embed-container {
+        align-items: start !important;
+      }
+
+      @media (min-width: 1001px) {
+        .contact-container.contact-embed-container .contact-copy,
+        .contact-container.contact-embed-container .contact-frame-card {
+          height: 490px !important;
+          min-height: 490px !important;
+          margin-top: 0 !important;
+          align-self: start !important;
+        }
+
+        .contact-container.contact-embed-container .contact-embed-frame {
+          height: 490px !important;
+          min-height: 490px !important;
+          overflow: hidden !important;
+          transform: none !important;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .contact-container.contact-embed-container {
+          grid-template-columns: 1fr !important;
+          gap: 16px !important;
+        }
+
+        .contact-container.contact-embed-container .contact-copy {
+          height: auto !important;
+          min-height: 0 !important;
+          padding: 28px 20px !important;
+        }
+
+        .contact-container.contact-embed-container .contact-frame-card,
+        .contact-container.contact-embed-container .contact-embed-frame {
+          height: 740px !important;
+          min-height: 740px !important;
+          overflow: hidden !important;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .contact-container.contact-embed-container .contact-frame-card,
+        .contact-container.contact-embed-container .contact-embed-frame {
+          height: 780px !important;
+          min-height: 780px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  injectFinalContactLayout();
+  document.addEventListener('DOMContentLoaded', injectFinalContactLayout, { once: true });
+  window.addEventListener('load', injectFinalContactLayout, { once: true });
+  window.setTimeout(injectFinalContactLayout, 750);
 })();
 
 (() => {
