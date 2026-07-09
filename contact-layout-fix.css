@@ -29,8 +29,8 @@
 
 .contact-embed-container .contact-copy,
 .contact-frame-card {
-  height: 760px !important;
-  min-height: 760px !important;
+  height: 690px !important;
+  min-height: 690px !important;
 }
 
 .contact-embed-container .contact-copy {
@@ -156,7 +156,7 @@ button.contact-method-row {
 .contact-embed-frame {
   width: 100% !important;
   height: 100% !important;
-  min-height: 760px !important;
+  min-height: 690px !important;
   display: block !important;
   border: 0 !important;
   border-radius: 0 !important;
