@@ -434,3 +434,23 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     history.pushState(null, '', id);
   });
 });
+
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (min-width: 1001px) {
+      .contact-container.contact-embed-container .contact-copy,
+      .contact-container.contact-embed-container .contact-frame-card {
+        height: 620px !important;
+        min-height: 620px !important;
+      }
+
+      .contact-container.contact-embed-container .contact-embed-frame {
+        height: 620px !important;
+        min-height: 620px !important;
+        transform: none !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
