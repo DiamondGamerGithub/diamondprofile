@@ -16,7 +16,7 @@
   display: grid !important;
   grid-template-columns: minmax(320px, 0.38fr) minmax(640px, 0.62fr) !important;
   gap: clamp(22px, 3vw, 36px) !important;
-  align-items: stretch !important;
+  align-items: start !important;
   padding: clamp(16px, 2.4vw, 24px) !important;
   border: 1px solid rgba(125, 211, 252, 0.18) !important;
   border-radius: 34px !important;
@@ -29,8 +29,8 @@
 
 .contact-embed-container .contact-copy,
 .contact-frame-card {
-  height: 640px !important;
-  min-height: 640px !important;
+  height: 490px !important;
+  min-height: 490px !important;
 }
 
 .contact-embed-container .contact-copy {
@@ -44,6 +44,7 @@
   border: 1px solid rgba(125, 211, 252, 0.14) !important;
   background: radial-gradient(circle at 12% 0%, rgba(56,189,248,.16), transparent 28rem), linear-gradient(180deg, rgba(10,24,46,.76), rgba(4,13,25,.66)) !important;
   box-shadow: none !important;
+  margin: 0 !important;
 }
 
 .contact-embed-container .contact-copy .badge { margin-bottom: 18px !important; }
@@ -149,14 +150,15 @@ button.contact-method-row {
   box-shadow: 0 24px 80px rgba(0,0,0,.30) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  margin: 0 !important;
 }
 
 .contact-frame-card::before { display: none !important; }
 
 .contact-embed-frame {
   width: 100% !important;
-  height: 640px !important;
-  min-height: 640px !important;
+  height: 490px !important;
+  min-height: 490px !important;
   display: block !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -170,6 +172,7 @@ button.contact-method-row {
     grid-template-columns: 1fr !important;
     width: min(100%, 720px) !important;
     padding: 16px !important;
+    gap: 16px !important;
   }
 
   .contact-embed-container .contact-copy {
@@ -189,8 +192,8 @@ button.contact-method-row {
 
   .contact-frame-card,
   .contact-embed-frame {
-    height: 720px !important;
-    min-height: 720px !important;
+    height: 740px !important;
+    min-height: 740px !important;
   }
 }
 
@@ -203,6 +206,7 @@ button.contact-method-row {
   .contact-container.contact-embed-container {
     width: 100% !important;
     border-radius: 26px !important;
+    padding: 14px !important;
   }
 
   .contact-method-row,
@@ -216,7 +220,7 @@ button.contact-method-row {
 
   .contact-frame-card,
   .contact-embed-frame {
-    height: 760px !important;
-    min-height: 760px !important;
+    height: 780px !important;
+    min-height: 780px !important;
   }
 }
