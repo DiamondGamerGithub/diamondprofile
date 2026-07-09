@@ -29,8 +29,8 @@
 
 .contact-embed-container .contact-copy,
 .contact-frame-card {
-  height: 620px !important;
-  min-height: 620px !important;
+  height: 640px !important;
+  min-height: 640px !important;
 }
 
 .contact-embed-container .contact-copy {
@@ -155,13 +155,13 @@ button.contact-method-row {
 
 .contact-embed-frame {
   width: 100% !important;
-  height: 100% !important;
-  min-height: 620px !important;
+  height: 640px !important;
+  min-height: 640px !important;
   display: block !important;
   border: 0 !important;
   border-radius: 0 !important;
   background: #06111f !important;
-  overflow: auto !important;
+  overflow: hidden !important;
   transform: none !important;
 }
 
@@ -189,8 +189,8 @@ button.contact-method-row {
 
   .contact-frame-card,
   .contact-embed-frame {
-    height: 900px !important;
-    min-height: 900px !important;
+    height: 720px !important;
+    min-height: 720px !important;
   }
 }
 
@@ -216,7 +216,7 @@ button.contact-method-row {
 
   .contact-frame-card,
   .contact-embed-frame {
-    height: 980px !important;
-    min-height: 980px !important;
+    height: 760px !important;
+    min-height: 760px !important;
   }
 }
