@@ -13,7 +13,9 @@ function setFilter(value,updateUrl=false){
  for(const button of filters)button.setAttribute('aria-pressed',String(button.dataset.filter===value));
  for(const project of projects)project.hidden=value!=='all'&&project.dataset.category!==value;
  document.querySelector('#focus-description').textContent=workCopy[value];
- const count=projects.filter(project=>!project.hidden).length;
+ const visibleProjects=projects.filter(project=>!project.hidden);
+ const count=visibleProjects.length;
+ for(const project of projects)project.classList.toggle('project-last-visible',count%2===1&&project===visibleProjects[count-1]);
  document.querySelector('#filter-status').textContent=count+' showcase'+(count===1?'':'s');
  document.dispatchEvent(new CustomEvent('workfilterchange',{detail:{value,animate:updateUrl}}));
  if(updateUrl){const url=new URL(location.href);value==='all'?url.searchParams.delete('work'):url.searchParams.set('work',value);history.replaceState(null,'',url);}
@@ -96,6 +98,7 @@ if(window.gsap){
     removers.push(()=>{hover.kill();gsap.set(art,{clearProps:'transform,willChange'});});
    }
   }
+  if(context.conditions.fine){for(const img of document.querySelectorAll('img')){if(img.closest('.demo-launch,.video,.promo-short,.collaborator-card,.community-card,.past-grid article'))continue;listen(img,'pointerenter',()=>gsap.to(img,{scale:1.035,duration:.3,overwrite:true}));listen(img,'pointerleave',()=>gsap.to(img,{scale:1,duration:.3,overwrite:true,clearProps:'transform'}));}}
   const finishRunning=()=>{for(const tween of [...running])tween.progress(1);};
   listen(document,'visibilitychange',()=>{if(document.hidden)finishRunning();});
   return()=>{
@@ -131,3 +134,30 @@ document.querySelectorAll('details').forEach(details=>{
     }});
   });
 });
+
+// Progressive enhancement: final totals remain readable without animation or JavaScript.
+(function animateExperienceCounters(){
+ const elements=[...document.querySelectorAll('[data-count-to]')];
+ if(!elements.length)return;
+ const preference=matchMedia('(prefers-reduced-motion: reduce)');
+ const models=elements.map(element=>({element,target:Number(element.dataset.countTo),value:0}));
+ if(!window.gsap||preference.matches||!('IntersectionObserver' in window))return;
+ let started=false,finished=false,tween;
+ const render=()=>models.forEach(model=>model.element.textContent=String(Math.round(model.value)));
+ const finish=()=>{
+  if(finished)return;finished=true;
+  tween?.kill();models.forEach(model=>{model.value=model.target;});render();
+  observer.disconnect();preference.removeEventListener('change',onPreference);
+  document.removeEventListener('visibilitychange',onVisibility);
+ };
+ const onPreference=()=>{if(preference.matches)finish();};
+ const onVisibility=()=>{if(document.hidden&&started)finish();};
+ const observer=new IntersectionObserver(entries=>{
+  if(started||finished||!entries.some(entry=>entry.isIntersecting))return;
+  started=true;observer.disconnect();render();
+  tween=gsap.to(models,{value:(_,model)=>model.target,duration:1.8,stagger:.08,ease:'power2.out',snap:{value:1},onUpdate:render,onComplete:finish});
+ },{threshold:.25});
+ observer.observe(document.querySelector('.profile-stats'));
+ preference.addEventListener('change',onPreference);
+ document.addEventListener('visibilitychange',onVisibility);
+})();
