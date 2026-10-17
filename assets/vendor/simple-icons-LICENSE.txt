@@ -1,0 +1,5 @@
+Simple Icons — CC0 1.0 Universal
+Source: https://github.com/simple-icons/simple-icons
+Icon data: @iconify-json/simple-icons via jsDelivr.
+https://creativecommons.org/publicdomain/zero/1.0/
+Brand names and logos remain trademarks of their respective owners.
