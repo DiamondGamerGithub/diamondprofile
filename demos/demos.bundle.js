@@ -1,5 +1,5 @@
 (() => {
-  // ../../../../../Downloads/DiamondGamer-Interactive-Website/demos/landmarks.js?v=20261016-final5
+  // demos/landmarks.js?v=20261122-refresh
   var landmarks = [
     { id: "liberty", name: "Statue of Liberty", city: "New York City", short: "Liberty Island", year: "1886", shape: "liberty", summary: "A copper figure holding a torch above New York Harbor, the Statue of Liberty was dedicated on October 28, 1886. A gift from the people of France, it became a powerful symbol of liberty and welcome. Its metal surface and internal framework made a monumental sculpture possible without making it a solid block of metal.", facts: ["Dedicated on October 28, 1886.", "The outer skin is copper; the torch flame is covered in gold leaf.", "It stands on Liberty Island in New York Harbor."], source: "https://www.nps.gov/stli/learn/statue-of-liberty-facts.htm", sourceName: "National Park Service" },
     { id: "empire", name: "Empire State Building", city: "New York City", short: "Midtown Manhattan", year: "1931", shape: "empire", summary: "The Empire State Building opened on May 1, 1931, bringing a striking Art Deco silhouette to Midtown Manhattan. Its stepped form and soaring mast made it a defining part of New York’s skyline. Built during an ambitious construction campaign, its history connects engineering, architecture and the changing city below.", facts: ["Opened on May 1, 1931.", "Construction took one year and 45 days.", "The design includes a restored Art Deco lobby."], source: "https://www.esbnyc.com/about/history", sourceName: "Empire State Building" },
@@ -10,7 +10,7 @@
     return `<svg viewBox="0 0 400 300" role="img" aria-label="Illustration of ${id === "liberty" ? "the Statue of Liberty" : id === "empire" ? "the Empire State Building" : "the CN Tower"}"><defs><linearGradient id="sky-${id}" x2="0" y2="1"><stop stop-color="#a8d9ef"/><stop offset="1" stop-color="#fff1ce"/></linearGradient></defs><path fill="url(#sky-${id})" d="M0 0h400v300H0z"/><circle cx="310" cy="67" r="32" fill="#fff2c1"/><path d="M0 260h55v-35h23v22h40v-45h30v50h120v-30h33v22h40v-38h30v42h29v52H0z" fill="#b8c9b6" opacity=".6"/>${shape}<path d="M0 294h400v6H0z" fill="#7caa91"/></svg>`;
   }
 
-  // ../../../../../Downloads/DiamondGamer-Interactive-Website/demos/shared.js?v=20261016-final5
+  // demos/shared.js?v=20261122-refresh
   var escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   function money(value, currency = "USD") {
     if (currency === "Robux") return "R$ " + Number(value).toFixed(2);
@@ -31,60 +31,135 @@
   }
   var field = (label, name, value, type = "text", extra = "") => `<label>${label}<input name="${name}" type="${type}" value="${escapeHTML(value)}" ${extra}></label>`;
 
-  // ../../../../../Downloads/DiamondGamer-Interactive-Website/demos/icons.js?v=20261016-final5
+  // demos/icons.js?v=20261122-refresh
   var paths = { "camera": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"/><circle cx="12" cy="13" r="3"/></g>', "scan-line": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7V5a2 2 0 0 1 2-2h2m10 0h2a2 2 0 0 1 2 2v2m0 10v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2m4-5h10"/>', "map": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0zm.894.211v15M9 3.236v15"/>', "bookmark": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"/>', "house": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></g>', "user-round": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></g>', "sparkles": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594zM20 2v4m2-2h-4"/><circle cx="4" cy="20" r="2"/></g>', "chevron-right": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"/>', "arrow-up-right": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10v10M7 17L17 7"/>', "send": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"/>', "hash": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 9h16M4 15h16M10 3L8 21m8-18l-2 18"/>', "plus": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/>', "x": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"/>', "minus": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>', "maximize-2": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h6v6m0-6l-7 7M3 21l7-7m-1 7H3v-6"/>', "message-circle": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092a10 10 0 1 0-4.777-4.719"/>', "shield": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>', "flag": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/>', "backpack": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm4 0h8m-8 8h8"/><path d="M8 22v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></g>', "wrench": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/>', "credit-card": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20M6 14h2"/></g>', "receipt-text": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16H8m6-8H8m8 4H8M4 3a1 1 0 0 1 1-1a1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1a1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2a1 1 0 0 1-1-1z"/>', "check": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"/>', "arrow-left": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 19l-7-7l7-7m7 7H5"/>', "lock-keyhole": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="16" r="1"/><rect width="18" height="12" x="3" y="10" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></g>', "mic": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 19v3m7-12v2a7 7 0 0 1-14 0v-2"/><rect width="6" height="13" x="9" y="2" rx="3"/></g>', "headphones": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/>', "settings": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0a2.34 2.34 0 0 0 3.319 1.915a2.34 2.34 0 0 1 2.33 4.033a2.34 2.34 0 0 0 0 3.831a2.34 2.34 0 0 1-2.33 4.033a2.34 2.34 0 0 0-3.319 1.915a2.34 2.34 0 0 1-4.659 0a2.34 2.34 0 0 0-3.32-1.915a2.34 2.34 0 0 1-2.33-4.033a2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></g>', "chevron-down": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/>', "search": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m21 21l-4.34-4.34"/><circle cx="11" cy="11" r="8"/></g>', "ellipsis": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></g>', "clock": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g>', "image": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15l-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></g>', "signal": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 20h.01M7 20v-4m5 4v-8m5 8V8m5-4v16"/>', "wifi": '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h.01M2 8.82a15 15 0 0 1 20 0M5 12.859a10 10 0 0 1 14 0m-10.5 3.57a5 5 0 0 1 7 0"/>', "battery-full": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 10v4m4-4v4m8 0v-4M6 10v4"/><rect width="16" height="12" x="2" y="6" rx="2"/></g>', "map-pin": '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></g>' };
   function icon(name, cls = "") {
     return `<svg class="ui-icon ${cls}" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">${paths[name] || paths["sparkles"]}</svg>`;
   }
 
-  // ../../../../../Downloads/DiamondGamer-Interactive-Website/demos/souffle.js?v=20261016-final5
-  function createSouffle(root) {
-    let selected = null;
-    let loading = false;
-    let timer;
-    function render() {
-      const place = landmarks.find((item) => item.id === selected);
-      root.innerHTML = `<div class="sf-app sf-home-only">
-      <div class="sf-statusbar"><strong>9:41</strong><span class="sf-island"></span><span class="sf-status-icons">${icon("signal")}${icon("wifi")}${icon("battery-full")}</span></div><header class="sf-header"><div class="sf-logo"><img src="assets/souffle/logo.webp" width="38" height="38" alt=""><strong>soufflé</strong></div><span class="sf-sample-pill">${icon("map-pin")} New York, America ${icon("chevron-down")}</span></header>
-      <div class="sf-content">
-        <div class="sf-hero"><div><h2>Discover what’s<br>around you</h2><p>Landmarks, buildings, art, monuments, and more.</p></div><span class="sf-landmark-art" aria-hidden="true"><img src="assets/souffle/mockup-1.webp" width="941" height="1672" alt=""></span><img src="assets/souffle/celebrate.webp" width="180" height="180" alt="Soufflé’s smiling mascot"><button class="scan-circle" data-scan aria-label="Try a sample landmark scan">${icon("scan-line")}</button><small>SCAN SOMETHING</small></div>
-        <div class="sf-shortcuts" aria-label="Original app shortcuts, shown for reference"><div>${icon("scan-line")}<strong>Scan</strong><small>Use camera</small></div><div>${icon("map")}<strong>Nearby</strong><small>Explore places</small></div><div>${icon("bookmark")}<strong>Saved</strong><small>Your finds</small></div></div>
-        <div class="sf-section-title"><h3>Recent discoveries</h3><span>3 samples</span></div>
-        ${landmarks.map((item) => `<button class="place-row" data-place="${item.id}" aria-expanded="${selected === item.id}"><span class="place-thumb ${item.id !== "cn" ? "photo-thumb " + item.id : ""}">${item.id === "cn" ? scene(item.shape) : `<img src="assets/souffle/${item.id === "liberty" ? "mockup-1.webp" : "app-detail.jpg"}" alt="${item.name} from the original Soufflé mockup" width="720" height="1280">`}</span><span><strong>${item.name}</strong><small>${item.city}</small></span><span aria-hidden="true">${icon(selected === item.id ? "minus" : "chevron-right")}</span></button>${selected === item.id ? `<div class="sf-inline-story" role="status">${loading ? '<span class="scan-loader" aria-hidden="true"></span><p>Loading sample discovery…</p>' : `<p>${escapeHTML(place.summary)}</p><small>${escapeHTML(place.facts[0])}</small>`}</div>` : ""}`).join("")}
-        <p class="sf-preview-note">This isn’t the actual app — it’s a small web demo adapted from Soufflé. Premade discoveries, no live AI.</p>
-      </div><div class="sf-nav sf-reference-nav" aria-label="Original app navigation, homepage preview only"><span class="active">${icon("house")}<small>Home</small></span><span>${icon("map")}<small>Nearby</small></span><span>${icon("scan-line")}<small>Scan</small></span><span>${icon("bookmark")}<small>Saved</small></span><span>${icon("user-round")}<small>You</small></span></div>
-    </div>`;
+  // demos/souffle.js?v=20261122-refresh
+  var photo = (item) => item.id === "cn" ? `<span class="sf-photo cn">${scene(item.shape).replace("<svg ", '<svg preserveAspectRatio="xMidYMid slice" ')}</span>` : `<span class="sf-photo ${item.id}"><img src="assets/souffle/${item.id === "liberty" ? "mockup-1.webp" : "app-detail.jpg"}" alt="${escapeHTML(item.name)}" width="720" height="1280"></span>`;
+  function createSouffle(root, notify) {
+    const saved = /* @__PURE__ */ new Set();
+    const timers = /* @__PURE__ */ new Set();
+    let current = -1;
+    const later = (fn, ms) => {
+      const t = setTimeout(() => {
+        timers.delete(t);
+        fn();
+      }, ms);
+      timers.add(t);
+    };
+    const clearTimers = () => {
+      for (const t of timers) clearTimeout(t);
+      timers.clear();
+    };
+    const claimLayer = () => {
+      clearTimers();
+      if (window.gsap) {
+        gsap.killTweensOf(layer);
+        gsap.set(layer, { clearProps: "opacity,visibility" });
+      }
+    };
+    const motion = () => window.gsap && !reduced();
+    root.innerHTML = `<div class="sf-app sf-home-only">
+    <div class="sf-statusbar"><strong>9:41</strong><span class="sf-island"></span><span class="sf-status-icons">${icon("signal")}${icon("wifi")}${icon("battery-full")}</span></div><header class="sf-header"><div class="sf-logo"><img src="assets/souffle/logo.webp" width="38" height="38" alt=""><strong>soufflé</strong></div><span class="sf-sample-pill">${icon("map-pin")} New York, America ${icon("chevron-down")}</span></header>
+    <div class="sf-content">
+      <div class="sf-hero"><div><h2>Discover what’s<br>around you</h2><p>Landmarks, buildings, art, monuments and more.</p></div><span class="sf-landmark-art" aria-hidden="true"><img src="assets/souffle/mockup-1.webp" width="941" height="1672" alt=""></span><img src="assets/souffle/celebrate.webp" width="180" height="180" alt="Soufflé’s smiling mascot"><button class="scan-circle" data-scan aria-label="Scan a sample landmark">${icon("scan-line")}</button><small>TAP TO SCAN</small></div>
+      <div class="sf-shortcuts" aria-label="App shortcuts, shown for reference"><div>${icon("scan-line")}<strong>Scan</strong><small>Use camera</small></div><div>${icon("map")}<strong>Nearby</strong><small>Explore places</small></div><div>${icon("bookmark")}<strong>Saved</strong><small data-saved-count>0 places</small></div></div>
+      <div class="sf-section-title"><h3>Recent discoveries</h3><span>Tap to open</span></div>
+      ${landmarks.map((item, i) => `<button class="place-row" data-place="${i}"><span class="place-thumb">${photo(item)}</span><span><strong>${escapeHTML(item.name)}</strong><small>${escapeHTML(item.city)} · ${item.year}</small></span><span aria-hidden="true">${icon("chevron-right")}</span></button>`).join("")}
+      <p class="sf-preview-note">A small web demo based on Soufflé, with sample discoveries and no live AI. The real app is coming soon to iPhone at <a href="https://souffle.ink/en/ca/" target="_blank" rel="noopener noreferrer">souffle.ink</a>.</p>
+    </div><div class="sf-nav sf-reference-nav" aria-label="App navigation, shown for reference"><span class="active">${icon("house")}<small>Home</small></span><span>${icon("map")}<small>Nearby</small></span><span>${icon("scan-line")}<small>Scan</small></span><span>${icon("bookmark")}<small>Saved</small></span><span>${icon("user-round")}<small>You</small></span></div>
+    <div class="sf-layer" hidden></div>
+  </div>`;
+    const layer = root.querySelector(".sf-layer");
+    function closeLayer() {
+      clearTimers();
+      if (layer.hidden) return;
+      const done = () => {
+        layer.hidden = true;
+        layer.replaceChildren();
+        root.querySelector(`[data-place="${current}"]`)?.focus();
+      };
+      if (!motion()) return done();
+      gsap.to(layer.querySelector(".sf-sheet,.sf-camera"), { yPercent: 100, duration: 0.28, ease: "power2.in", overwrite: true });
+      gsap.to(layer, { autoAlpha: 0, duration: 0.28, overwrite: true, onComplete: () => {
+        gsap.set(layer, { clearProps: "opacity,visibility" });
+        done();
+      } });
     }
-    function select(id) {
-      clearTimeout(timer);
-      selected = id;
-      loading = true;
-      render();
-      timer = setTimeout(() => {
-        loading = false;
-        render();
-      }, 650);
+    function scan(index) {
+      claimLayer();
+      current = index;
+      const item = landmarks[index];
+      layer.innerHTML = `<div class="sf-camera" role="status" aria-live="polite">${photo(item)}<span class="sf-viewfinder" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="sf-sweep"></span></span><p class="sf-camera-label"><span class="scan-loader" aria-hidden="true"></span><span data-label>Hold steady…</span></p><button class="sf-camera-close" data-close aria-label="Cancel scan">${icon("x")}</button></div>`;
+      layer.hidden = false;
+      if (motion()) gsap.fromTo(layer.firstElementChild, { autoAlpha: 0, scale: 1.04 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power2.out", clearProps: "transform,opacity,visibility" });
+      layer.querySelector("[data-close]").focus();
+      later(() => {
+        layer.querySelector("[data-label]").textContent = "Identifying landmark…";
+      }, 700);
+      later(() => {
+        layer.querySelector(".sf-camera").classList.add("found");
+        layer.querySelector(".sf-camera-label").innerHTML = `${icon("check")}<span>Found it: <strong>${escapeHTML(item.name)}</strong></span>`;
+      }, 1600);
+      later(() => detail(index), 2300);
+    }
+    function detail(index) {
+      claimLayer();
+      current = index;
+      const item = landmarks[index], isSaved = saved.has(item.id);
+      const maps = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(item.name + " " + item.city);
+      layer.innerHTML = `<div class="sf-shade" data-close></div><section class="sf-sheet" role="dialog" aria-modal="true" aria-label="${escapeHTML(item.name)} details">
+      <span class="sf-grabber" aria-hidden="true"></span>
+      <div class="sf-sheet-photo">${photo(item)}<button class="sf-sheet-close" data-close aria-label="Close details">${icon("x")}</button></div>
+      <div class="sf-sheet-body">
+        <h2>${escapeHTML(item.name)}</h2>
+        <p class="sf-meta">${icon("map-pin")} ${escapeHTML(item.short)}, ${escapeHTML(item.city)} · ${item.year}</p>
+        <p class="sf-summary">${escapeHTML(item.summary)}</p>
+        <h3>Worth knowing</h3>
+        <ul>${item.facts.map((fact) => `<li>${escapeHTML(fact)}</li>`).join("")}</ul>
+        <div class="sf-actions"><button data-save aria-pressed="${isSaved}">${icon("bookmark")}<span>${isSaved ? "Saved" : "Save"}</span></button><a href="${maps}" target="_blank" rel="noopener noreferrer">${icon("map")}<span>Directions</span></a><button data-next class="sf-primary">${icon("scan-line")}<span>Scan another</span></button></div>
+        <a class="sf-source" href="${item.source}" target="_blank" rel="noopener noreferrer">Source: ${escapeHTML(item.sourceName)} ${icon("arrow-up-right")}</a>
+      </div></section>`;
+      layer.hidden = false;
+      const sheet = layer.querySelector(".sf-sheet");
+      if (motion()) {
+        gsap.fromTo(layer.querySelector(".sf-shade"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, clearProps: "opacity,visibility" });
+        gsap.fromTo(sheet, { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: "power3.out", clearProps: "transform" });
+        gsap.fromTo(sheet.querySelectorAll(".sf-sheet-body > *"), { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, stagger: 0.04, delay: 0.18, ease: "power2.out", clearProps: "transform,opacity,visibility" });
+      }
+      sheet.querySelector("[data-close]").focus({ preventScroll: true });
     }
     root.addEventListener("click", (event) => {
-      const button = event.target.closest("button");
-      if (!button) return;
-      if (button.dataset.place) {
-        if (selected === button.dataset.place) {
-          clearTimeout(timer);
-          selected = null;
-          loading = false;
-          render();
-        } else select(button.dataset.place);
+      const target = event.target.closest("button,[data-close]");
+      if (!target) return;
+      if (target.hasAttribute("data-scan")) scan((current + 1) % landmarks.length);
+      else if (target.dataset.place) detail(Number(target.dataset.place));
+      else if (target.hasAttribute("data-close")) closeLayer();
+      else if (target.hasAttribute("data-next")) scan((current + 1) % landmarks.length);
+      else if (target.hasAttribute("data-save")) {
+        const item = landmarks[current], on = !saved.has(item.id);
+        on ? saved.add(item.id) : saved.delete(item.id);
+        target.setAttribute("aria-pressed", String(on));
+        target.querySelector("span").textContent = on ? "Saved" : "Save";
+        root.querySelector("[data-saved-count]").textContent = saved.size + (saved.size === 1 ? " place" : " places");
+        if (on && motion()) gsap.fromTo(target.querySelector("svg"), { scale: 0.6 }, { scale: 1, duration: 0.45, ease: "back.out(3)", clearProps: "transform" });
+        notify?.(on ? `${item.name} saved` : `${item.name} removed from saved`);
       }
-      if (button.hasAttribute("data-scan")) select(landmarks[(landmarks.findIndex((item) => item.id === selected) + 1) % landmarks.length].id);
     });
-    render();
-    return { destroy() {
-      clearTimeout(timer);
-    } };
+    root.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !layer.hidden) {
+        event.preventDefault();
+        event.stopPropagation();
+        closeLayer();
+      }
+    });
+    return { destroy: clearTimers };
   }
 
-  // ../../../../../Downloads/DiamondGamer-Interactive-Website/demos/fern-knowledge.js?v=20261016-final5
+  // demos/fern-knowledge.js?v=20261122-refresh
   var examples = [
     {
       "id": 1,
@@ -214,7 +289,7 @@
     return examples.find((item) => item.id === id) || null;
   }
 
-  // ../../../../../Downloads/DiamondGamer-Interactive-Website/demos/fern.js?v=20261016-final5
+  // demos/fern.js?v=20261122-refresh
   var ticketCategories = ["General", "Reports", "Admin", "Items & Inventory", "Technical", "Billing"];
   function normalizeUsername(username, platform) {
     const clean = username.trim();
@@ -223,11 +298,11 @@
   function createFern(root) {
     let channel = "questions", category = "", ticket = null, form = false, messages = [];
     const first = examples.find((item) => item.id === 5);
-    let questionMessages = [{ text: first.question }, { answer: first }], selectedExample = 5, pending = null, unmatched = false;
+    let questionMessages = [{ text: first.question }, { answer: first }], selectedExample = 5, pending = null, unmatched = false, animateLast = false, animateModal = false;
     const timers = /* @__PURE__ */ new Set();
     const markdown = (text) => escapeHTML(text).replace(/`([^`]+)`/g, "<code>$1</code>");
     function conversation(list) {
-      return list.map((message) => message.answer ? botMessage(`<p><span class="dc-mention">@SamplePlayer</span></p><div class="dc-ai-answer"><p>${markdown(message.answer.answer)}</p><p class="dc-ai-disclaimer">This answer is from our knowledge base and may be wrong, if it is, open a ticket!</p><small>${icon("sparkles")} Approved knowledge · #${message.answer.id}</small></div>`) : `<article class="dc-message"><span class="dc-avatar dc-player-avatar">S</span><div class="dc-message-body"><div class="dc-author">SamplePlayer <time>Just now</time></div><p>${escapeHTML(message.text)}</p></div></article>`).join("");
+      return list.map((message) => message.answer ? botMessage(`<p><span class="dc-mention">@SamplePlayer</span></p><div class="dc-ai-answer"><p>${markdown(message.answer.answer)}</p><p class="dc-ai-disclaimer">This answer comes from our knowledge base and might be wrong. If it is, open a ticket!</p><small>${icon("sparkles")} Approved knowledge · #${message.answer.id}</small></div>`) : `<article class="dc-message"><span class="dc-avatar dc-player-avatar">S</span><div class="dc-message-body"><div class="dc-author">SamplePlayer <time>Just now</time></div><p>${escapeHTML(message.text)}</p></div></article>`).join("");
     }
     function questions() {
       return `<div class="dc-question-intro"><div>${icon("message-circle")}<strong>Ask FernSMP</strong></div><p>Try one of 20 questions from the bot’s approved knowledge. Responses are simulated locally.</p><label for="sample-question">Explore a sample question</label><select id="sample-question" name="example"><option value="" ${selectedExample === null ? "selected" : ""}>Choose a sample question</option>${examples.map((item) => `<option value="${item.id}" ${selectedExample === item.id ? "selected" : ""}>${escapeHTML(item.question)}</option>`).join("")}</select></div><div class="dc-thread-label">${icon("message-circle")} Question thread · ${escapeHTML(questionMessages[0]?.text || "Your question")}</div>${conversation(questionMessages)}`;
@@ -241,6 +316,7 @@
       const list = destination === "questions" ? questionMessages : messages;
       list.push({ text });
       unmatched = false;
+      animateLast = true;
       const answer = matchSampleAnswer(text);
       if (destination === "questions") selectedExample = answer?.id ?? null;
       if (!answer) {
@@ -253,9 +329,10 @@
       const timer = setTimeout(() => {
         timers.delete(timer);
         list.push({ answer });
+        animateLast = true;
         if (pending === destination) pending = null;
         render();
-      }, 850);
+      }, Math.min(1700, 600 + answer.answer.length * 4));
       timers.add(timer);
     }
     function botMessage(content) {
@@ -275,6 +352,18 @@
       }).join("")}</div><form class="dc-compose"><span aria-hidden="true">${icon("plus")}</span><label class="sr-only" for="dc-message">Message</label><input id="dc-message" name="message" maxlength="1000" placeholder="${channel === "questions" ? "Ask a sample question…" : "Message #" + ticket.channel}" required autocomplete="off"><button aria-label="Send message" title="Send message">${icon("send")}</button></form>` : '<p class="dc-readonly">Choose a category above to open a sample ticket.</p>'}</section>${form ? `<div class="dc-modal-shade"><form class="dc-ticket-modal" role="dialog" aria-modal="true" aria-label="Open a support ticket"><h2>${escapeHTML(category)} Support</h2><p>Tell us a little about your issue.</p><label>Minecraft username<input name="username" value="SamplePlayer" maxlength="32" required></label><label>Platform<select name="platform">${["Minecraft Java", "Minecraft Bedrock (Mobile)", "Minecraft Bedrock (Computer)", "Minecraft Console (PS5/XBOX)", "Minecraft Nintendo"].map((name) => `<option>${name}</option>`).join("")}</select></label><label>What can we help with?<textarea name="reason" rows="3" maxlength="1000" required placeholder="Explain what happened…"></textarea></label><small>Demo only. Please use fictional details.</small><footer><button type="button" data-cancel>Cancel</button><button type="submit" class="dc-blue">Submit</button></footer></form></div>` : ""}</div>`;
       const log = root.querySelector(".dc-chat-scroll");
       if (channel === "ticket" || channel === "questions") log.scrollTop = log.scrollHeight;
+      if (window.gsap && !reduced()) {
+        if (animateLast) {
+          const last = [...log.querySelectorAll(".dc-message")].at(-1);
+          if (last) gsap.fromTo(last, { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.34, ease: "power2.out", clearProps: "transform,opacity,visibility" });
+        }
+        if (animateModal && form) {
+          gsap.fromTo(root.querySelector(".dc-modal-shade"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, clearProps: "opacity,visibility" });
+          gsap.fromTo(root.querySelector(".dc-ticket-modal"), { scale: 0.94, y: 10, autoAlpha: 0 }, { scale: 1, y: 0, autoAlpha: 1, duration: 0.3, ease: "back.out(1.6)", clearProps: "transform,opacity,visibility" });
+        }
+      }
+      animateLast = false;
+      animateModal = false;
       if (form) root.querySelector('[name="username"]').focus();
       else {
         const input = root.querySelector('[name="message"]');
@@ -297,6 +386,7 @@
       if (event.target.name === "category" && event.target.value) {
         category = event.target.value;
         form = true;
+        animateModal = true;
         render();
       }
     });
@@ -371,18 +461,42 @@
     } };
   }
 
-  // ../../../../../Downloads/DiamondGamer-Interactive-Website/demos/receipt.js?v=20261016-final5
+  // demos/receipt.js?v=20261122-refresh
   function freshReceipt() {
     return { merchant: "Pixel Workshop", customer: "SamplePlayer", items: [{ name: "Custom bot setup", qty: 1, price: 20 }] };
   }
+  var presets = [["Custom bot setup", 1, 20], ["Server configuration", 1, 35], ["Thumbnail pack", 3, 8], ["Video edit", 1, 45]];
   function createReceipt(root) {
-    let state = freshReceipt();
+    let state = freshReceipt(), shownTotal = calculate(state.items).total;
+    const motion = () => window.gsap && !reduced();
     function preview() {
       const item = state.items[0], total = calculate(state.items).total;
-      return `<div class="receipt-paper"><h2>${escapeHTML(state.merchant)}</h2><p class="receipt-subtitle">COMMISSION SLIP · SAMPLE</p><dl><div><dt>Customer</dt><dd>${escapeHTML(state.customer)}</dd></div><div><dt>Order</dt><dd>DEMO-1042</dd></div></dl><table><caption>Commission items</caption><thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead><tbody><tr><td>${escapeHTML(item.name)}</td><td>${item.qty}</td><td>${money(total)}</td></tr></tbody></table><dl class="receipt-totals"><div class="receipt-grand"><dt>Total</dt><dd>${money(total)}</dd></div></dl><p class="receipt-thanks">Thank you for your patronage.</p><small>Sample receipt · no transaction</small></div>`;
+      return `<div class="receipt-paper"><h2>${escapeHTML(state.merchant)}</h2><p class="receipt-subtitle">COMMISSION SLIP · SAMPLE</p><dl><div><dt>Customer</dt><dd>${escapeHTML(state.customer)}</dd></div><div><dt>Order</dt><dd>DEMO-1042</dd></div></dl><table><caption>Commission items</caption><thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead><tbody><tr><td>${escapeHTML(item.name)}</td><td>${item.qty}</td><td>${money(total)}</td></tr></tbody></table><dl class="receipt-totals"><div class="receipt-grand"><dt>Total</dt><dd data-total>${money(shownTotal)}</dd></div></dl><p class="receipt-thanks">Thank you for your patronage.</p><small>Sample receipt · no transaction</small></div>`;
+    }
+    function print() {
+      if (!motion()) return;
+      gsap.fromTo(root.querySelector(".receipt-paper"), { yPercent: -104 }, { yPercent: 0, duration: 0.85, ease: "power2.out", clearProps: "transform" });
+    }
+    function tweenTotal() {
+      const target = calculate(state.items).total, el = root.querySelector("[data-total]");
+      if (!motion()) {
+        shownTotal = target;
+        el.textContent = money(target);
+        return;
+      }
+      const counter = { value: shownTotal };
+      gsap.to(counter, { value: target, duration: 0.45, ease: "power2.out", overwrite: true, onUpdate: () => {
+        shownTotal = counter.value;
+        el.textContent = money(counter.value);
+      }, onComplete: () => {
+        shownTotal = target;
+        el.textContent = money(target);
+      } });
     }
     function render() {
-      root.innerHTML = `<div class="gr-app gr-simple"><header><div><h2>GuildReceipt</h2><p>A receipt, made simple.</p></div><button data-reset>Reset</button></header><div class="gr-layout"><section class="gr-wizard" aria-label="Receipt details"><h3>Make it yours</h3><p>Edit the details. Your receipt updates as you type.</p><div class="gr-fields">${field("Studio name", "merchant", state.merchant)}${field("Customer", "customer", state.customer)}${field("Item name", "item", state.items[0].name)}${field("Quantity", "qty", state.items[0].qty, "number", 'min="1" max="99" step="1"')}${field("Price (USD)", "price", state.items[0].price, "number", 'min="0" max="10000" step="0.01"')}</div></section><section class="gr-right-content" aria-label="Live receipt">${preview()}</section></div></div>`;
+      shownTotal = calculate(state.items).total;
+      root.innerHTML = `<div class="gr-app gr-simple"><header><div><h2>GuildReceipt</h2><p>A receipt, made simple.</p></div><button data-reset>Reset</button></header><div class="gr-layout"><section class="gr-wizard" aria-label="Receipt details"><h3>Make it yours</h3><p>Pick a preset or edit the details. Your receipt updates as you type.</p><div class="gr-presets" role="group" aria-label="Item presets">${presets.map(([name], i) => `<button type="button" data-preset="${i}" aria-pressed="${state.items[0].name === name}">${escapeHTML(name)}</button>`).join("")}</div><div class="gr-fields">${field("Studio name", "merchant", state.merchant)}${field("Customer", "customer", state.customer)}${field("Item name", "item", state.items[0].name)}${field("Quantity", "qty", state.items[0].qty, "number", 'min="1" max="99" step="1"')}${field("Price (USD)", "price", state.items[0].price, "number", 'min="0" max="10000" step="0.01"')}</div></section><section class="gr-right-content" aria-label="Live receipt"><div class="gr-printer" aria-hidden="true"></div><div class="gr-slot">${preview()}</div></section></div></div>`;
+      print();
     }
     root.addEventListener("input", (event) => {
       const { name, value } = event.target;
@@ -390,13 +504,22 @@
       if (name === "item") state.items[0].name = value.slice(0, 100);
       if (name === "qty") state.items[0].qty = Math.max(1, Math.min(99, Math.floor(Number(value) || 1)));
       if (name === "price") state.items[0].price = Math.max(0, Math.min(1e4, Number(value) || 0));
-      root.querySelector(".gr-right-content").innerHTML = preview();
+      root.querySelector(".gr-slot").innerHTML = preview();
+      for (const b of root.querySelectorAll("[data-preset]")) b.setAttribute("aria-pressed", String(presets[b.dataset.preset][0] === state.items[0].name));
+      tweenTotal();
     });
     root.addEventListener("change", (event) => {
       if (event.target.name === "qty") event.target.value = state.items[0].qty;
       if (event.target.name === "price") event.target.value = state.items[0].price;
     });
     root.addEventListener("click", (event) => {
+      const preset = event.target.closest("[data-preset]");
+      if (preset) {
+        const [name, qty, price] = presets[preset.dataset.preset];
+        state.items[0] = { name, qty, price };
+        render();
+        root.querySelector(`[data-preset="${preset.dataset.preset}"]`).focus();
+      }
       if (event.target.closest("[data-reset]")) {
         state = freshReceipt();
         render();
@@ -406,8 +529,14 @@
     return {};
   }
 
-  // ../../../../../Downloads/DiamondGamer-Interactive-Website/demos/main.js
-  var apps = { souffle: { title: "Soufflé — homepage", create: createSouffle }, fern: { title: "FernSMP Services — support", create: createFern, url: "https://fernsmp.net/", link: "Visit FernSMP" }, receipt: { title: "GuildReceipt — live receipt", create: createReceipt, url: "https://receipt-generator.diamondgamer.xyz/", link: "Open GuildReceipt" } };
+  // demos/main.js
+  var apps = { souffle: { name: "Soufflé", title: "Soufflé · sample app", create: createSouffle, url: "https://souffle.ink/en/ca/", link: "Visit souffle.ink" }, fern: { name: "FernSMP Services", title: "FernSMP Services · support", create: createFern, url: "https://fernsmp.net/", link: "Visit FernSMP" }, receipt: { name: "GuildReceipt", title: "GuildReceipt · live receipt", create: createReceipt, url: "https://receipt-generator.diamondgamer.xyz/", link: "Open GuildReceipt" } };
+  function popIn(dialog, launcher) {
+    if (!window.gsap || reduced()) return;
+    const d = dialog.getBoundingClientRect(), l = launcher?.isConnected ? launcher.getBoundingClientRect() : null;
+    const origin = l && l.width ? `${l.left + l.width / 2 - d.left}px ${l.top + l.height / 2 - d.top}px` : "50% 60%";
+    gsap.fromTo(dialog, { autoAlpha: 0, scale: 0.9, y: 16, transformOrigin: origin }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: "power3.out", overwrite: true, clearProps: "transform,opacity,visibility,transformOrigin" });
+  }
   var desktop = document.querySelector("#demo-desktop");
   var dock = document.querySelector("#demo-dock");
   var windows = /* @__PURE__ */ new Map();
@@ -419,7 +548,7 @@
     for (const [id, w] of windows) if (w.minimized) {
       const button = document.createElement("button");
       button.type = "button";
-      button.textContent = "Restore " + apps[id].title.split(" — ")[0];
+      button.textContent = "Restore " + apps[id].name;
       button.addEventListener("click", () => restore(id));
       dock.append(button);
     }
@@ -487,7 +616,7 @@
     const dialog = document.createElement("dialog");
     dialog.className = "demo-window " + id + "-window";
     dialog.setAttribute("aria-labelledby", "window-title-" + id);
-    dialog.innerHTML = `<header class="demo-titlebar" tabindex="0" aria-label="Application window. Arrow keys move the window."><div class="window-controls"><button data-window="close" aria-label="Close demo" title="Close demo"><span aria-hidden="true">×</span></button><button data-window="minimize" aria-label="Minimize demo" title="Minimize demo"><span aria-hidden="true">−</span></button><button data-window="maximize" aria-label="Maximize window" aria-pressed="false" title="Maximize or restore"><span aria-hidden="true">↗</span></button></div><h2 id="window-title-${id}">${apps[id].title}</h2>${apps[id].url ? `<a class="window-project-link" href="${apps[id].url}" target="_blank" rel="noopener noreferrer">${apps[id].link} ${icon("arrow-up-right")}</a>` : '<span class="window-local">Development paused</span>'}</header><div class="demo-body"></div><div class="demo-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>`;
+    dialog.innerHTML = `<header class="demo-titlebar" tabindex="0" aria-label="Application window. Arrow keys move the window."><div class="window-controls"><button data-window="close" aria-label="Close demo" title="Close demo"><span aria-hidden="true">×</span></button><button data-window="minimize" aria-label="Minimize demo" title="Minimize demo"><span aria-hidden="true">−</span></button><button data-window="maximize" aria-label="Maximize window" aria-pressed="false" title="Maximize or restore"><span aria-hidden="true">↗</span></button></div><h2 id="window-title-${id}">${apps[id].title}</h2><a class="window-project-link" href="${apps[id].url}" target="_blank" rel="noopener noreferrer">${apps[id].link} ${icon("arrow-up-right")}</a></header><div class="demo-body"></div><div class="demo-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>`;
     desktop.append(dialog);
     const w = { dialog, launcher, minimized: false, maximized: false, x: 0, y: 0 };
     windows.set(id, w);
@@ -546,7 +675,7 @@
     };
     dialog.showModal();
     updateScroll();
-    animateIn(dialog);
+    popIn(dialog, launcher);
   }
   document.addEventListener("click", (e) => {
     const launcher = e.target.closest("[data-demo]");

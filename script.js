@@ -4,7 +4,7 @@ for(const button of document.querySelectorAll('[data-copy]'))button.addEventList
 const filters=[...document.querySelectorAll('[data-filter]')],projects=[...document.querySelectorAll('[data-category]')];
 const workCopy={
  all:'I manage communities and build apps, Discord bots and web projects. Here’s a selection of the work behind it.',
- app:'I turn app ideas into approachable experiences. Soufflé explores how a simple scan can help people discover the places around them. Development is currently paused.',
+ app:'Soufflé is my iPhone app for curious explorers. Point your camera at a place and get the story behind it. It’s coming soon, and you can join the waitlist at souffle.ink.',
  bot:'I build Discord tools for support, community activities and staff organization. Explore FernSMP Services, Diamond Bot, Soufflé Services and a small look at my internal staff tools.',
  web:'I make useful web tools and playful experiments, from a simple commission receipt generator to a 3D maze game you can play in your browser.'
 };
@@ -15,7 +15,9 @@ function setFilter(value,updateUrl=false){
  document.querySelector('#focus-description').textContent=workCopy[value];
  const visibleProjects=projects.filter(project=>!project.hidden);
  const count=visibleProjects.length;
- for(const project of projects)project.classList.toggle('project-last-visible',count%2===1&&project===visibleProjects[count-1]);
+ // The featured project spans the full row, so only the others decide whether the last card sits alone.
+ const paired=visibleProjects.filter(project=>!project.classList.contains('featured-project'));
+ for(const project of projects)project.classList.toggle('project-last-visible',paired.length%2===1&&project===paired.at(-1));
  document.querySelector('#filter-status').textContent=count+' showcase'+(count===1?'':'s');
  document.dispatchEvent(new CustomEvent('workfilterchange',{detail:{value,animate:updateUrl}}));
  if(updateUrl){const url=new URL(location.href);value==='all'?url.searchParams.delete('work'):url.searchParams.set('work',value);history.replaceState(null,'',url);}
@@ -46,17 +48,17 @@ if(window.gsap){
    introPlayed=true;
    const intro=gsap.timeline({defaults:{duration:.48,ease:'power3.out',clearProps:'transform,opacity,visibility'}});
    intro.addLabel('identity',0)
-    .fromTo('.profile-logo',{y:10,scale:.96,autoAlpha:.65},{y:0,scale:1,autoAlpha:1},'identity')
-    .fromTo('.hero h1',{y:10,autoAlpha:.65},{y:0,autoAlpha:1},'identity+=.06')
-    .fromTo('.profile-role,.hero-description',{y:8,autoAlpha:.7},{y:0,autoAlpha:1,stagger:.045},'identity+=.12')
-    .fromTo('.profile-stats>div',{y:6,autoAlpha:.7},{y:0,autoAlpha:1,stagger:.045},'identity+=.2');
+    .fromTo('.profile-role,.hero h1,.hero-description,.hero-actions',{y:10,autoAlpha:0},{y:0,autoAlpha:1,stagger:.06,duration:.5},'identity')
+    .fromTo('.profile-logo',{scale:.96,autoAlpha:0},{scale:1,autoAlpha:1,duration:.5},'identity+=.1')
+    .fromTo('.profile-stats>div',{y:8,autoAlpha:0},{y:0,autoAlpha:1,stagger:.05,duration:.4},'identity+=.25');
   }
   // Reveal only what enters the viewport. Nothing is pre-hidden off screen.
   const observed=[...document.querySelectorAll('.section-heading,.edited-heading,.work-project,.community-card,.collaborator-card,.video,.promo-short,.contact-section>div')];
   const observer=new IntersectionObserver(entries=>{
    const visible=entries.filter(entry=>entry.isIntersecting&&entry.target.getBoundingClientRect().height>0).map(entry=>entry.target);
    visible.forEach(el=>observer.unobserve(el));
-   animate(visible,{y:32,autoAlpha:.18},{y:0,autoAlpha:1,duration:.7,ease:'power3.out'});
+   // Subtle reveal: short distance, quick, gentle ease. Content should never feel like it is flying in.
+   animate(visible,{y:12,autoAlpha:0},{y:0,autoAlpha:1,duration:.35,ease:'power1.out'});
   },{threshold:.12,rootMargin:'0px 0px -16px 0px'});
   observed.forEach(el=>observer.observe(el));
 
@@ -68,7 +70,8 @@ if(window.gsap){
    const button=filters.querySelector('[aria-pressed="true"]');
    if(!button)return;
    const groupRect=filters.getBoundingClientRect(),buttonRect=button.getBoundingClientRect();
-   const vars={x:buttonRect.left-groupRect.left,y:buttonRect.bottom-groupRect.top-2,scaleX:buttonRect.width};
+   // width on one absolutely positioned pill is cheap (no siblings reflow) and keeps its rounded ends undistorted.
+   const vars={x:buttonRect.left-groupRect.left,y:buttonRect.top-groupRect.top,width:buttonRect.width};
    if(immediate)gsap.set(indicator,vars);else gsap.to(indicator,{...vars,duration:.28,ease:'power3.out',overwrite:true});
   }
   const resize=new ResizeObserver(()=>moveIndicator(true));resize.observe(filters);moveIndicator(true);
@@ -76,7 +79,7 @@ if(window.gsap){
    moveIndicator();
    if(event.detail.animate){
     animate([document.querySelector('.work-filter-description')],{autoAlpha:.65,y:3},{autoAlpha:1,y:0,duration:.24});
-    const art=[...document.querySelectorAll('.work-project:not([hidden]) .project-mascot,.work-project:not([hidden]) .receipt-cover-paper,.work-project:not([hidden]) .game-cover>img,.work-project:not([hidden]) .adam-troll-cover>img')];
+    const art=[...document.querySelectorAll('.work-project:not([hidden]) .souffle-phones,.work-project:not([hidden]) .project-mascot,.work-project:not([hidden]) .receipt-cover-paper,.work-project:not([hidden]) .game-cover>img,.work-project:not([hidden]) .adam-troll-cover>img')];
     gsap.killTweensOf(art);
     animate(art,{autoAlpha:.65},{autoAlpha:1,duration:.28,clearProps:'opacity,visibility'});
    }
@@ -98,7 +101,6 @@ if(window.gsap){
     removers.push(()=>{hover.kill();gsap.set(art,{clearProps:'transform,willChange'});});
    }
   }
-  if(context.conditions.fine){for(const img of document.querySelectorAll('img')){if(img.closest('.demo-launch,.video,.promo-short,.collaborator-card,.community-card,.past-grid article'))continue;listen(img,'pointerenter',()=>gsap.to(img,{scale:1.035,duration:.3,overwrite:true}));listen(img,'pointerleave',()=>gsap.to(img,{scale:1,duration:.3,overwrite:true,clearProps:'transform'}));}}
   const finishRunning=()=>{for(const tween of [...running])tween.progress(1);};
   listen(document,'visibilitychange',()=>{if(document.hidden)finishRunning();});
   return()=>{
